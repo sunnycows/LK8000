@@ -55,6 +55,16 @@ DMALLOC=n
 OPTIMIZE    := -O2 -g
 PROFILE	    :=
 REMOVE_NS   := n
+HOST        := $(shell sh -c 'uname -s 2>/dev/null || echo not')
+
+# configure shell tools based on HOST
+ifeq ($(HOST),Darwin)
+ SED_R := sed -E
+ XARGS_R := xargs
+else
+ SED_R := sed -R
+ XARGS_R := xargs -r
+endif
 
 ifeq ($(DEBUG),y)
  REMOVE_NS :=
@@ -646,6 +656,7 @@ endif
 ifeq ($(CONFIG_PC),y)
  CPPFLAGS	+= -D_WINDOWS -DWIN32 -DCECORE $(UNICODE)
 
+GCC_GTEQ_480 := $(shell expr `$(CC) -dumpversion | $(SED_R) 's/\.\([0-9][0-9]\)/\1/g' -e 's/\.\([0-9]\)/0\1/g' -e 's/^[0-9]\{3,4\}$$/&00/'` \>= 40800)
 ifeq ($(GCC_GTEQ_480),1)
     CPPFLAGS	+= -D_CRT_NON_CONFORMING_SWPRINTFS
  endif
@@ -1500,11 +1511,16 @@ dirtarget	=$(subst \\,_,$(subst /,_,$(dir $@)))
 cc-flags	=$(DEPFLAGS) $(CFLAGS) $(CPPFLAGS) $(CPPFLAGS_$(dirtarget)) $(TARGET_ARCH)
 cxx-flags	=$(DEPFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(CPPFLAGS_$(dirtarget)) $(TARGET_ARCH)
 
-
+ifeq ($(MAKECMDGOALS), data)
+ OPENGL :=y
+endif
 
 ####### targets
 .DEFAULT_GOAL := all
-.PHONY: FORCE all clean cleani tags rebuild cppcheck install
+.PHONY: FORCE all clean cleani tags rebuild cppcheck install data
+
+data:	$(PNG) $(MASKED_PNG) $(BITMAP_FILES) $(BIN)/resource.a
+	@$(NQ)echo "  DONE"
 
 all:	$(DISTRIB_OUTPUT) $(OUTPUTS)
 	
@@ -1514,7 +1530,7 @@ rebuild:
 
 clean: cleani
 	@$(NQ)echo "  CLEAN   $(BIN)"
-	$(Q)$(FIND) $(BIN) $(IGNORE) \( -name '*.[oa]' -o -name '*.rsc' -o -name '.*.d' -o -name '*.min.*'  -o -name '*.png' \) -type f -print | xargs -r $(RM)
+	$(Q)$(FIND) $(BIN) $(IGNORE) \( -name '*.[oa]' -o -name '*.rsc' -o -name '.*.d' -o -name '*.min.*'  -o -name '*.png' \) -type f -print | $(XARGS_R) $(RM)
 	$(Q)$(RM) -rf $(BIN)
 	$(Q)$(RM) $(OUTPUTS_NS)
 	$(Q)$(RM) $(OUTPUTS)
@@ -1524,7 +1540,7 @@ clean: cleani
 
 cleani:
 	@$(NQ)echo "  CLEANI"
-	$(Q)$(FIND) . $(IGNORE) \( -name '*.i' \) -type f -print | xargs -r $(RM)
+	$(Q)$(FIND) . $(IGNORE) \( -name '*.i' \) -type f -print | $(XARGS_R) $(RM)
 
 tags:
 	@$(NQ)echo "  TAGS"
@@ -1667,20 +1683,20 @@ $(BIN)/Resource/resource_wave.o:  $(RSCSRC)/resource_wave.S
 
 $(BIN)/Resource/resource_bmp.png.S : $(RSCSRC)/resource_bmp.S $(patsubst Common/Data/Bitmaps/%.bmp,$(BIN)/Data/Bitmaps/%.png,$(BITMAP_RES))
 	@$(NQ)echo "  update $@"
-	@sed -r 's|(^.*)Common/(Data/Bitmaps[^"]+)(.bmp).*$$|\1$(BIN)/\2.png|g' $< > $@
+	@$(SED_R) -r 's|(^.*)Common/(Data/Bitmaps[^"]+)(.bmp).*$$|\1$(BIN)/\2.png|g' $< > $@
 
 $(BIN)/Resource/resource_xml.min.S :  $(RSCSRC)/resource_xml.S $(patsubst Common/Data/Dialogs/%.xml,$(BIN)/Data/Dialogs/%.min.xml,$(DIALOG_XML))
 	@$(NQ)echo "  update $@"
-	@sed -r 's|(^.*)Common/(Data/Dialogs[^"]+)(.xml.*)$$|\1$(BIN)/\2.min\3|g' $< > $@
+	@$(SED_R) -r 's|(^.*)Common/(Data/Dialogs[^"]+)(.xml.*)$$|\1$(BIN)/\2.min\3|g' $< > $@
 
-$(BIN)/%.rsc: $(BIN)/%.min.rc 
+$(BIN)/%.rsc: $(BIN)/%.min.rc
 	@$(NQ)echo "  WINDRES $@"
 	$(Q)$(WINDRES) $(WINDRESFLAGS) $< $@
 
 $(BIN)/%.min.rc: $(SRC)/%.rc $(patsubst Common/Data/Dialogs/%.xml,$(BIN)/Data/Dialogs/%.min.xml,$(DIALOG_XML))
 	@echo "$@: $< " `sed -nr 's|^.*"\.\./(Data[^"]+)".*$$|Common/\1|gp' $<` > $(DEPFILE)
 	@$(NQ)echo "  build $@"
-	@sed -r 's|(^.*")\.\./(Data/Dialogs[^"]+)(.xml".*)$$|\1$(BIN)/\2.min\3|g' $< > $@
+	@$(SED_R) 's|(^.*")\.\./(Data/Dialogs[^"]+)(.xml".*)$$|\1$(BIN)/\2.min\3|g' $< > $@
 
 $(BIN)/Data/Dialogs/%.min.xml: Common/Data/Dialogs/%.xml
 	@$(NQ)echo "  minimize $@"
