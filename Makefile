@@ -62,7 +62,7 @@ ifeq ($(HOST),Darwin)
  SED_R := sed -E
  XARGS_R := xargs
 else
- SED_R := sed -R
+ SED_R := sed -r
  XARGS_R := xargs -r
 endif
 
