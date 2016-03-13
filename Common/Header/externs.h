@@ -11,8 +11,12 @@
 
 #ifdef __linux__
 #include "StdLinux.h"
-#else
+#endif
+#ifdef _WIN32
 #include "StdAfx.h"
+#endif
+#ifdef __APPLE__
+#include "StdApple.h"
 #endif
 
 // options first, then all dependencies
