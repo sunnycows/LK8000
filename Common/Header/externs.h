@@ -16,8 +16,12 @@
 
 #ifdef __linux__
 #include "StdLinux.h"
-#else
+#endif
+#ifdef _WIN32
 #include "StdAfx.h"
+#endif
+#ifdef __APPLE__
+#include "StdApple.h"
 #endif
 #ifdef __cplusplus
 #include "Screen/Features.hpp"
