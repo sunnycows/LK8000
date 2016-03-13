@@ -51,7 +51,7 @@ private:
     bool _PollingMode;
     DWORD _dwMask;
 };
-#elif __linux__
+#elif defined(__linux__) || defined(__APPLE__)
     #include "TTYPort.h"
     typedef TTYPort SerialPort;
 #else

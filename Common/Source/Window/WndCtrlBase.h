@@ -17,6 +17,10 @@
 #include "Linux/WndCtrlBase.h"
 #endif
 
+#ifdef __APPLE__
+#include "Linux/WndCtrlBase.h"
+#endif
+
 #ifdef WIN32
 #include "Win32/WndCtrlBase.h"
 #endif

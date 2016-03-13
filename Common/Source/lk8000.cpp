@@ -85,7 +85,7 @@
 #include "Airspace/Sonar.h"
 #include <OS/RotateScreen.h>
 
-#ifdef __linux__
+#if defined(__linux__) || defined(__APPLE__)
 #include <sys/utsname.h>
 #endif
 

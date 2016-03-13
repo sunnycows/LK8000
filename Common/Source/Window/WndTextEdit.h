@@ -20,6 +20,10 @@
 #include "Linux/WndTextEdit.h"
 #endif
 
+#ifdef __APPLE__
+#include "Linux/WndTextEdit.h"
+#endif
+
 
 #endif	/* WNDTEXTEDIT_H */
 

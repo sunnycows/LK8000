@@ -16,6 +16,10 @@
 #include "Screen/Window.hpp"
 #endif
 
+#ifdef __APPLE__
+#include "Screen/Window.hpp"
+#endif
+
 #ifdef WIN32
 #include "Win32/Window.h"
 #endif

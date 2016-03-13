@@ -16,7 +16,7 @@
 #endif
 #endif
 
-#ifdef __linux__
+#if defined(__linux__) || defined(__APPLE__)
 	#include <stdio.h>
 	#include <sys/socket.h>
 	#include <sys/types.h>

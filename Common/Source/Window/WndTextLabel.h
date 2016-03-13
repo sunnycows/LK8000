@@ -12,6 +12,10 @@
 #include "Linux/WndTextLabel.h"
 #endif
 
+#ifdef __APPLE__
+#include "Linux/WndTextLabel.h"
+#endif
+
 #ifdef WIN32
 #include "Win32/WndTextLabel.h"
 #endif

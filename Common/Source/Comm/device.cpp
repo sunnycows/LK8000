@@ -16,7 +16,7 @@
 #include "TCPPort.h"
 #include "devPVCOM.h"
 #include <functional>
-#ifdef __linux__
+#if defined(__linux__) || defined(__APPLE__)
   #include <dirent.h>
   #include <unistd.h>
 
