@@ -734,7 +734,10 @@ void LKSurface::RestoreState(int nSaved) {
 
 
 #define  _COS(x) cos( ((4*atan(1))/2)-(x*2.0*(4*atan(1))/64.0))
-static const double xcoords[] = {
+#ifndef __APPLE__
+constexpr
+#endif
+static double xcoords[] = {
     _COS(0), _COS(1), _COS(2), _COS(3), _COS(4), _COS(5), _COS(6), _COS(7),
     _COS(8), _COS(9), _COS(10), _COS(11), _COS(12), _COS(13), _COS(14), _COS(15),
     _COS(16), _COS(17), _COS(18), _COS(19), _COS(20), _COS(21), _COS(22), _COS(23),
@@ -746,7 +749,10 @@ static const double xcoords[] = {
 };
 
 #define  _SIN(x) sin(((4*atan(1))/2)-(x*2.0*(4*atan(1))/64.0))
-static const double ycoords[] = {
+#ifndef __APPLE__
+constexpr
+#endif
+static double ycoords[] = {
     _SIN(0), _SIN(1), _SIN(2), _SIN(3), _SIN(4), _SIN(5), _SIN(6), _SIN(7),
     _SIN(8), _SIN(9), _SIN(10), _SIN(11), _SIN(12), _SIN(13), _SIN(14), _SIN(15),
     _SIN(16), _SIN(17), _SIN(18), _SIN(19), _SIN(20), _SIN(21), _SIN(22), _SIN(23),
