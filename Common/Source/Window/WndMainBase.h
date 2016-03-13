@@ -20,6 +20,10 @@
 #include "Linux/WndMainBase.h"
 #endif
 
+#ifdef __APPLE__
+#include "Linux/WndMainBase.h"
+#endif
+
 
 #endif	/* WNDMAINBASE_H */
 

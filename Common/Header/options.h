@@ -39,7 +39,7 @@
     #define DISABLEEXTAUDIO
 #endif
 
-#ifdef __linux__
+#if defined(__linux__) || defined(__APPLE__)
 
 // Cpu load : use averaged number of processes in the system run queue instead of real cpu usage
 // #define USE_LOADAVG_CPU

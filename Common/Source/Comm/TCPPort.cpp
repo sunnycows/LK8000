@@ -14,7 +14,7 @@
 #include <functional>
 using namespace std::placeholders;
 
-#ifdef __linux__
+#if defined(__linux__) || defined(__APPLE__)
 // Optionally disable the tcp/ip optimization, to reduce latencies
 // This has effect only on write operations.
 // Only for Linux based systems
@@ -24,7 +24,7 @@ using namespace std::placeholders;
 #endif
 #endif
 
-#ifdef __linux__
+#if defined(__linux__) || defined(__APPLE__)
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #endif
@@ -54,7 +54,7 @@ bool TCPClientPort::Connect() {
         return false;
     }
 
-#ifdef __linux__
+#if defined(__linux__) || defined(__APPLE__)
 #ifdef DISABLE_NAGLE
   int nodelay_flag = 1;
   setsockopt(mSocket, IPPROTO_TCP, TCP_NODELAY, (void*) &nodelay_flag, sizeof(int));

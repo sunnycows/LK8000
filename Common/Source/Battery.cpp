@@ -67,7 +67,7 @@ bool GetBatteryInfo(BATTERYINFO* pBatteryInfo) {
 #endif
 #endif
 
-#if defined(__linux__)
+#if defined(__linux__) || defined(__APPLE__)
 #ifdef KOBO
 #include "OS/FileUtil.hpp"
 #include "Hardware/CPU.hpp"

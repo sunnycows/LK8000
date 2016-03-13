@@ -11,7 +11,7 @@
 
 #ifndef TTYPORT_H
 #define	TTYPORT_H
-#ifdef __linux__
+#if defined(__linux__) || defined(__APPLE__)
 #include "ComPort.h"
 #include <atomic>
 #include <termios.h>
