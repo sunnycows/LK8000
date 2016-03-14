@@ -8,7 +8,13 @@
 #include "externs.h"
 #include "TTYPort.h"
 #include "utils/stl_utils.h"
+#ifndef __APPLE__
 #include <tr1/functional>
+using namespace std::tr1::placeholders;
+#else
+#include <functional>
+using namespace std::placeholders;
+#endif
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/time.h>
@@ -22,8 +28,6 @@
 #include "Kobo/System.hpp"
 #endif
 
-
-using namespace std::tr1::placeholders;
 
 TTYPort::TTYPort(int idx, const tstring& sName, unsigned dwSpeed, BitIndex_t BitSize, bool polling) :
         ComPort(idx, sName),
@@ -277,7 +281,11 @@ unsigned TTYPort::RxThread() {
 
         int nRecv = ReadData(szString);
         if (nRecv > 0) {
+#ifndef __APPLE__
             std::for_each(std::begin(szString), std::begin(szString) + nRecv, std::tr1::bind(&TTYPort::ProcessChar, this, _1));
+#else
+            std::for_each(std::begin(szString), std::begin(szString) + nRecv, std::bind(&TTYPort::ProcessChar, this, _1));
+#endif
             dwWaitTime = 5; // avoid cpu overhead;
         } else {
             dwWaitTime = 50; // if no more data wait 50ms ( max data rate 20Hz )
