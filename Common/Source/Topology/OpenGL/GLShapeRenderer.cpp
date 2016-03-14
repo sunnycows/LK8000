@@ -9,6 +9,7 @@
  * Created on August 26, 2015, 7:37 PM
  */
 
+#include "externs.h"
 #include "GLShapeRenderer.h"
 
 #include <memory>
@@ -18,7 +19,8 @@
 #include "Screen/OpenGL/Scope.hpp"
 #include "Screen/OpenGL/VertexPointer.hpp"
 
-#include "externs.h"
+#include "Screen/Point.hpp"
+#include "MapWindow.h"
 #include "Topology.h"
 #include "../Draw/ScreenProjection.h"
 
