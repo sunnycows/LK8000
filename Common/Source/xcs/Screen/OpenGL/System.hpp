@@ -38,7 +38,9 @@ Copyright_License {
 #include <SDL_opengl.h>
 #endif
 #elif defined(HAVE_GLES2)
+#ifndef __APPLE__
 #include <GLES2/gl2.h>
+#endif
 #elif defined(HAVE_GLES)
 #include <GLES/gl.h>
 #else

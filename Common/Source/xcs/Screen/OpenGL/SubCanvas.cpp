@@ -28,6 +28,10 @@ Copyright_License {
 #include "Shaders.hpp"
 #endif
 
+#ifdef __APPLE__
+#include <algorithm>
+#endif
+
 SubCanvas::SubCanvas(Canvas &canvas, RasterPoint _offset, PixelSize _size)
   : relative(_offset)
 {
