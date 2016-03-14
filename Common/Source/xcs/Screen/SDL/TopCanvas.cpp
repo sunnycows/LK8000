@@ -104,7 +104,9 @@ MakeSDLFlags(bool full_screen, bool resizable)
 
   if (full_screen)
 #if SDL_MAJOR_VERSION >= 2
+#if !defined(__APPLE__)
     flags |= SDL_WINDOW_FULLSCREEN;
+#endif
 #else
     flags |= SDL_FULLSCREEN;
 #endif
