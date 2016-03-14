@@ -33,7 +33,7 @@ bool ScreenHasChanged(void) {
   const PixelRect rc(MainWindow.GetClientRect());
   if (doinit) {
 
-#if (WINDOWSPC>0) || defined(__linux__)
+#if (WINDOWSPC>0) || defined(__linux__) || defined(__APPLE__)
 	oldSCREENWIDTH=rc.GetSize().cx;
 	oldSCREENHEIGHT=rc.GetSize().cy;
 #else
@@ -49,7 +49,7 @@ bool ScreenHasChanged(void) {
   }
 
   // On PC, simply check for WIDTH and HEIGHT changed
-  #if (WINDOWSPC>0) || defined(__linux__)
+  #if (WINDOWSPC>0) || defined(__linux__) || defined(__APPLE__)
   x=rc.GetSize().cx;
   y=rc.GetSize().cy;
   #else

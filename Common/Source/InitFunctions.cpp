@@ -48,6 +48,11 @@
 #include "Android/NativeView.hpp"
 #endif
 
+#ifdef __APPLE__
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#endif
+
 // windows
 WndMain MainWindow; // Main Window singleton
 
@@ -187,6 +192,11 @@ BOOL InitInstance()
 #else
   WindowSize=WindowResize(ScreenSizeX, ScreenSizeY);
 #endif
+#endif
+
+#ifdef __APPLE__
+    UIScreen *m = [UIScreen mainScreen];
+    WindowSize = WindowResize(m.bounds.size.width, m.bounds.size.height);
 #endif
 
   #if TESTBENCH
