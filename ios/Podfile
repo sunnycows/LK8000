@@ -1,0 +1,19 @@
+xcodeproj 'LK8000.xcodeproj'
+
+target 'LK8000' do
+pod 'freetype', '~> 2.6.4'
+pod 'libpng', '~> 1.6.18'
+pod 'ZipUtilities', '~> 1.7.2'
+pod 'boost', '~> 1.59.0'
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    if target.name == 'libpng'
+      target.build_configurations.each do |config|
+        config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)', 'PNG_ARM_NEON_OPT=0']
+      end
+    end
+  end
+end
+
+end

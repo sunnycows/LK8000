@@ -1,0 +1,35 @@
+PODS:
+  - boost (1.59.0):
+    - boost/graph-includes (= 1.59.0)
+    - boost/math-includes (= 1.59.0)
+    - boost/numeric-includes (= 1.59.0)
+    - boost/pointer_cast-includes (= 1.59.0)
+    - boost/preprocessor-includes (= 1.59.0)
+    - boost/shared_ptr-includes (= 1.59.0)
+    - boost/string_algorithms-includes (= 1.59.0)
+  - boost/graph-includes (1.59.0)
+  - boost/math-includes (1.59.0)
+  - boost/numeric-includes (1.59.0)
+  - boost/pointer_cast-includes (1.59.0)
+  - boost/preprocessor-includes (1.59.0)
+  - boost/shared_ptr-includes (1.59.0)
+  - boost/string_algorithms-includes (1.59.0)
+  - freetype (2.6.4)
+  - libpng (1.6.18)
+  - ZipUtilities (1.7.2)
+
+DEPENDENCIES:
+  - boost (~> 1.59.0)
+  - freetype (~> 2.6.4)
+  - libpng (~> 1.6.18)
+  - ZipUtilities (~> 1.7.2)
+
+SPEC CHECKSUMS:
+  boost: 30a15ffb6d9aa4646dd3caffc960753f4cb4ca4e
+  freetype: f1607aa45440e7cc17c85c32e901f32b7b801fad
+  libpng: 9c661ee692282485a9cf7fcf0159458c91b4f943
+  ZipUtilities: e266a234f60bc53d47e1a030a353275e7213b17b
+
+PODFILE CHECKSUM: 1846b2d78e38d3ba04c25760e9a1dd1c021e324e
+
+COCOAPODS: 1.0.0.beta.6
