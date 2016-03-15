@@ -29,7 +29,9 @@
 
 */
 #include "options.h"
+#ifndef __APPLE__
 #include <malloc.h>
+#endif
 #include <string.h>
 #include <tchar.h>
 #include <zzip/lib.h>
