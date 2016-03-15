@@ -16,6 +16,10 @@
 #include <android/log.h>
 #endif
 
+#ifdef __APPLE__
+#import <Foundation/Foundation.h>
+#endif
+
 void StartupLogFreeRamAndStorage() {
   size_t freeram = CheckFreeRam()/1024;
   TCHAR buffer[MAX_PATH];
@@ -30,7 +34,7 @@ void StartupLogFreeRamAndStorage() {
  */
 void DebugStore(const char *Str, ...)
 {
-#ifndef NDEBUG
+#if defined(DEBUG) && !defined(__APPLE__)
 
   FILE *stream = nullptr;
 
@@ -142,7 +146,11 @@ void StartupStore(const TCHAR *Str, ...)
 #elif defined(__linux__) && !defined(NDEBUG)
   printf("%s\n", buf);
 #endif
-  
+
+#ifdef __APPLE__
+    NSString *s = [[NSString alloc] initWithCString:buf encoding:NSASCIIStringEncoding];
+    NSLog(s);
+#endif
 
   FILE *startupStoreFile = NULL;
   static TCHAR szFileName[MAX_PATH];
