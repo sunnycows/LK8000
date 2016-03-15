@@ -1,9 +1,9 @@
 #if !defined(_STDAPPLE_)
 #define _STDAPPLE_
-#endif
 
 #include <sys/errno.h>
 #include <objc/objc.h>
+#include <algorithm>
 #include <cstring>
 #include <cstddef>
 #include <cstdio>
@@ -28,5 +28,4 @@ extern "C" {
 #ifdef __cplusplus
 }
 #endif
-
-
+#endif
