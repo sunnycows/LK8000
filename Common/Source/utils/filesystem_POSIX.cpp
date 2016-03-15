@@ -88,8 +88,14 @@ bool lk::filesystem::copyFile(const TCHAR* szSrc, const TCHAR* szDst, bool overw
 
 
     // copy file content
+#ifndef __APPLE__
     off_t offset = 0;
     ssize_t dest_size = sendfile(dest, source, &offset, stat_source.st_size);
+#else
+    ssize_t dest_size = -1;
+    errno = EINVAL;
+#endif
+
     if (dest_size == -1 && errno == EINVAL) {
         // compat for Linux kernel before 2.6.33
         unsigned char Buffer[1024];
