@@ -1,10 +1,12 @@
 xcodeproj 'LK8000.xcodeproj'
 
 target 'LK8000' do
+
 pod 'freetype', '~> 2.6.4'
 pod 'libpng', '~> 1.6.18'
 pod 'ZipUtilities', '~> 1.7.2'
 pod 'boost', '~> 1.59.0'
+pod 'glm', '~> 0.9.4.6'
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
