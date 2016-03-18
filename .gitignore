@@ -50,3 +50,19 @@ output.map
 /LK8000-CUBIE-ns
 /LK8000-CUBIE_debug
 /LK8000-CUBIE_debug-ns
+# Xcode
+ios/build/*
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+profile
+*.moved-aside
+.DS_Store
+ios/pods/
+ios/Data/
