@@ -1973,12 +1973,9 @@
 		8AECFCFD1C8B793000CD6EFE /* mmapped.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mmapped.c; path = zziplib/zzip/mmapped.c; sourceTree = SOURCE_ROOT; };
 		8AECFDB61C8BAD4C00CD6EFE /* err.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = err.c; path = zziplib/zzip/err.c; sourceTree = SOURCE_ROOT; };
 		8AECFDB71C8BAD4C00CD6EFE /* info.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = info.c; path = zziplib/zzip/info.c; sourceTree = SOURCE_ROOT; };
-		B9620F78A130910E8CBF2C40 /* libPods-LK8000i.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LK8000i.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF0D7B5DE5E922F9A2B5F522 /* libPods-LK8000.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LK8000.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAE62F4D2476009492B7EE35 /* Pods-LK8000.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LK8000.release.xcconfig"; path = "Pods/Target Support Files/Pods-LK8000/Pods-LK8000.release.xcconfig"; sourceTree = "<group>"; };
-		E310EBDD068491403026EEB8 /* Pods-LK8000i.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LK8000i.release.xcconfig"; path = "Pods/Target Support Files/Pods-LK8000i/Pods-LK8000i.release.xcconfig"; sourceTree = "<group>"; };
 		F35FE2B7E189DD7AD4E6A43C /* Pods-LK8000.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LK8000.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LK8000/Pods-LK8000.debug.xcconfig"; sourceTree = "<group>"; };
-		F6648727A85EF4F86B50CDC5 /* Pods-LK8000i.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LK8000i.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LK8000i/Pods-LK8000i.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2004,8 +2001,6 @@
 		627A72B1127B8458FBA999C2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F6648727A85EF4F86B50CDC5 /* Pods-LK8000i.debug.xcconfig */,
-				E310EBDD068491403026EEB8 /* Pods-LK8000i.release.xcconfig */,
 				F35FE2B7E189DD7AD4E6A43C /* Pods-LK8000.debug.xcconfig */,
 				DAE62F4D2476009492B7EE35 /* Pods-LK8000.release.xcconfig */,
 			);
@@ -4102,7 +4097,6 @@
 				8AECFCAA1C8B50B000CD6EFE /* CoreAudio.framework */,
 				8AECFCAB1C8B50B000CD6EFE /* CoreAudioKit.framework */,
 				8AECFAD11C8A66A600CD6EFE /* OpenGLES.framework */,
-				B9620F78A130910E8CBF2C40 /* libPods-LK8000i.a */,
 				BF0D7B5DE5E922F9A2B5F522 /* libPods-LK8000.a */,
 			);
 			name = Frameworks;
