@@ -15,7 +15,6 @@
 		8ADDD2261C8C9657004CD260 /* resource_data.S in Sources */ = {isa = PBXBuildFile; fileRef = 8AECF5D11C8A5B6000CD6EFE /* resource_data.S */; };
 		8ADDD48E1C8CBA2F004CD260 /* Archive.zip in Resources */ = {isa = PBXBuildFile; fileRef = 8ADDD48D1C8CBA2F004CD260 /* Archive.zip */; };
 		8ADDD4921C8CBF52004CD260 /* ArchiveUnzip.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADDD4911C8CBF52004CD260 /* ArchiveUnzip.m */; };
-		8ADDD4A61C8D12AE004CD260 /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ADDD4A51C8D12A1004CD260 /* libSDL2.a */; };
 		8AECF2331C8A59E900CD6EFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AECF2321C8A59E900CD6EFE /* Assets.xcassets */; };
 		8AECF2361C8A59E900CD6EFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AECF2341C8A59E900CD6EFE /* LaunchScreen.storyboard */; };
 		8AECF7E21C8A5B6000CD6EFE /* header.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8AECF28E1C8A5B5F00CD6EFE /* header.txt */; };
@@ -632,16 +631,6 @@
 		};
 /* End PBXBuildRule section */
 
-/* Begin PBXContainerItemProxy section */
-		8ADDD4A41C8D12A1004CD260 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8ADDD49F1C8D12A1004CD260 /* SDL.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = FD6526630DE8FCCB002AD96B;
-			remoteInfo = libSDL;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		8A479ECB1C9589D2000998D4 /* StdApple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StdApple.h; sourceTree = "<group>"; };
 		8A479ECD1C9821AD000998D4 /* SoundIOS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundIOS.cpp; sourceTree = "<group>"; };
@@ -652,7 +641,6 @@
 		8ADDD48D1C8CBA2F004CD260 /* Archive.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = Archive.zip; path = Data/Archive.zip; sourceTree = SOURCE_ROOT; };
 		8ADDD4901C8CBF52004CD260 /* ArchiveUnzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArchiveUnzip.h; sourceTree = "<group>"; };
 		8ADDD4911C8CBF52004CD260 /* ArchiveUnzip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArchiveUnzip.m; sourceTree = "<group>"; };
-		8ADDD49F1C8D12A1004CD260 /* SDL.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDL.xcodeproj; path = "SDL2-2.0.4/Xcode-iOS/SDL/SDL.xcodeproj"; sourceTree = "<group>"; };
 		8AECF21F1C8A59E800CD6EFE /* LK8000.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LK8000.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AECF2231C8A59E900CD6EFE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8AECF2251C8A59E900CD6EFE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1983,7 +1971,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8ADDD4A61C8D12AE004CD260 /* libSDL2.a in Frameworks */,
 				8AECFCC31C8B65D800CD6EFE /* CoreMotion.framework in Frameworks */,
 				8AECFCB21C8B50EB00CD6EFE /* GameController.framework in Frameworks */,
 				8AECFCB31C8B50EB00CD6EFE /* GameKit.framework in Frameworks */,
@@ -2023,14 +2010,6 @@
 				8ADDD2231C8C93AD004CD260 /* resource_xml.min.S */,
 			);
 			name = "Resources built from makefile";
-			sourceTree = "<group>";
-		};
-		8ADDD4A01C8D12A1004CD260 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				8ADDD4A51C8D12A1004CD260 /* libSDL2.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		8AECF2161C8A59E800CD6EFE = {
@@ -4088,7 +4067,6 @@
 		C1858EFA2F40D13DED5DBCE7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8ADDD49F1C8D12A1004CD260 /* SDL.xcodeproj */,
 				8AECFCC21C8B65D800CD6EFE /* CoreMotion.framework */,
 				8AECFCB01C8B50EB00CD6EFE /* GameController.framework */,
 				8AECFCB11C8B50EB00CD6EFE /* GameKit.framework */,
@@ -4152,28 +4130,12 @@
 			mainGroup = 8AECF2161C8A59E800CD6EFE;
 			productRefGroup = 8AECF2201C8A59E800CD6EFE /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 8ADDD4A01C8D12A1004CD260 /* Products */;
-					ProjectRef = 8ADDD49F1C8D12A1004CD260 /* SDL.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				8AECF21E1C8A59E800CD6EFE /* LK8000 */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		8ADDD4A51C8D12A1004CD260 /* libSDL2.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libSDL2.a;
-			remoteRef = 8ADDD4A41C8D12A1004CD260 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8AECF21D1C8A59E800CD6EFE /* Resources */ = {
@@ -4894,11 +4856,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				"HEADER_SEARCH_PATHS[arch=*]" = (
+				HEADER_SEARCH_PATHS = (
 					../Common/Header,
 					../Common/Header/linuxcompat,
 					../Common/Source,
-					"SDL2-2.0.4/include",
 					"$(inherited)/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
@@ -4906,7 +4867,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				"USER_HEADER_SEARCH_PATHS[arch=*]" = "../Common/Source ../Common/Source/xcs ../Common/Header $(inherited)/**";
+				USER_HEADER_SEARCH_PATHS = "../Common/Source ../Common/Source/xcs ../Common/Header $(inherited)/**";
 				USE_HEADERMAP = NO;
 			};
 			name = Debug;
@@ -4969,11 +4930,6 @@
 					USE_SDL2,
 					HAVE_POSIX,
 					DISABLEAUDIO,
-				);
-				"HEADER_SEARCH_PATHS[arch=*]" = (
-					"\"${PODS_ROOT}/Headers/Private/freetype\"",
-					"\"${PODS_ROOT}/Headers/Public/freetype\"",
-					"$(inherited)",
 				);
 				INFOPLIST_FILE = LK8000i/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
