@@ -89,6 +89,10 @@
 #include <sys/utsname.h>
 #endif
 
+#ifdef __APPLE__
+#define main LK8000_main
+#endif
+
 using std::min;
 using std::max;
 
