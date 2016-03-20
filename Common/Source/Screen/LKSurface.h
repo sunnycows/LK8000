@@ -115,7 +115,9 @@ public:
     Canvas* Detach();
 
     operator Canvas&() const {
+#ifndef __APPLE__
         LKASSERT(_pCanvas);
+#endif
         return (*_pCanvas);
     }
 
