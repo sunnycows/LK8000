@@ -131,7 +131,7 @@ bool Startup(const TCHAR* szCmdLine) {
   StartupStore(_T("------------------------------------------------------------%s"),NEWLINE);
 #ifdef KOBO
   StartupStore(TEXT(". Starting %s %s%s"), LK8000_Version,_T("KOBO"),NEWLINE);
-#elif defined(__linux__)
+#elif defined(__linux__) || defined(__APPLE__)
   StartupStore(TEXT(". Starting %s %s%s"), LK8000_Version,_T("LINUX"),NEWLINE);
 
   struct utsname sysinfo = {};
