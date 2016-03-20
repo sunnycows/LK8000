@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		30BDB60CE806E2DF0A645B5C /* libPods-LK8000.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF0D7B5DE5E922F9A2B5F522 /* libPods-LK8000.a */; };
 		8A0683B11C924E8000D8BEE6 /* Font.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8AECF7391C8A5B6000CD6EFE /* Font.cpp */; };
 		8A479ECE1C9821AD000998D4 /* SoundIOS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8A479ECD1C9821AD000998D4 /* SoundIOS.cpp */; };
+		8A94A9661C9DC74300639756 /* LKCLHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A94A9651C9DC74300639756 /* LKCLHelper.m */; };
+		8A94A9691C9DD97900639756 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A94A9681C9DD97900639756 /* CoreLocation.framework */; };
 		8ADDD2241C8C93AD004CD260 /* resource_bmp.png.S in Sources */ = {isa = PBXBuildFile; fileRef = 8ADDD2221C8C93AD004CD260 /* resource_bmp.png.S */; };
 		8ADDD2251C8C93AD004CD260 /* resource_xml.min.S in Sources */ = {isa = PBXBuildFile; fileRef = 8ADDD2231C8C93AD004CD260 /* resource_xml.min.S */; };
 		8ADDD2261C8C9657004CD260 /* resource_data.S in Sources */ = {isa = PBXBuildFile; fileRef = 8AECF5D11C8A5B6000CD6EFE /* resource_data.S */; };
@@ -608,6 +609,7 @@
 		8AECFDB31C8BACB000CD6EFE /* sweep.c in Sources */ = {isa = PBXBuildFile; fileRef = 8AECF5231C8A5B5F00CD6EFE /* sweep.c */; };
 		8AECFDB41C8BACB000CD6EFE /* tessellate.c in Sources */ = {isa = PBXBuildFile; fileRef = 8AECF5271C8A5B5F00CD6EFE /* tessellate.c */; };
 		8AECFDB51C8BACB000CD6EFE /* tessmono.c in Sources */ = {isa = PBXBuildFile; fileRef = 8AECF5291C8A5B5F00CD6EFE /* tessmono.c */; };
+		FF48FA892A95531FBB3FD43D /* libPods-LK8000.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EF6D44C10BAF79C2B9EC5CD /* libPods-LK8000.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -634,17 +636,19 @@
 /* Begin PBXFileReference section */
 		8A479ECB1C9589D2000998D4 /* StdApple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StdApple.h; sourceTree = "<group>"; };
 		8A479ECD1C9821AD000998D4 /* SoundIOS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundIOS.cpp; sourceTree = "<group>"; };
-		8A6439331C918CC6004F42B6 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; name = Makefile; path = ../../Makefile; sourceTree = "<group>"; };
 		8A6439381C91922A004F42B6 /* Font.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Font.cpp; sourceTree = "<group>"; };
+		8A94A9641C9DC74300639756 /* LKCLHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LKCLHelper.h; path = ios/LK8000i/LKCLHelper.h; sourceTree = "<group>"; };
+		8A94A9651C9DC74300639756 /* LKCLHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LKCLHelper.m; path = ios/LK8000i/LKCLHelper.m; sourceTree = "<group>"; };
+		8A94A9681C9DD97900639756 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8ADDD2221C8C93AD004CD260 /* resource_bmp.png.S */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; name = resource_bmp.png.S; path = Bin/LINUX/Resource/resource_bmp.png.S; sourceTree = "<group>"; };
 		8ADDD2231C8C93AD004CD260 /* resource_xml.min.S */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; lineEnding = 0; name = resource_xml.min.S; path = Bin/LINUX/Resource/resource_xml.min.S; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.asm.ppc; };
 		8ADDD48D1C8CBA2F004CD260 /* Archive.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = Archive.zip; path = Data/Archive.zip; sourceTree = SOURCE_ROOT; };
-		8ADDD4901C8CBF52004CD260 /* ArchiveUnzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArchiveUnzip.h; sourceTree = "<group>"; };
-		8ADDD4911C8CBF52004CD260 /* ArchiveUnzip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArchiveUnzip.m; sourceTree = "<group>"; };
+		8ADDD4901C8CBF52004CD260 /* ArchiveUnzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArchiveUnzip.h; path = ios/LK8000i/ArchiveUnzip.h; sourceTree = "<group>"; };
+		8ADDD4911C8CBF52004CD260 /* ArchiveUnzip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArchiveUnzip.m; path = ios/LK8000i/ArchiveUnzip.m; sourceTree = "<group>"; };
 		8AECF21F1C8A59E800CD6EFE /* LK8000.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LK8000.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AECF2231C8A59E900CD6EFE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		8AECF2251C8A59E900CD6EFE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		8AECF2261C8A59E900CD6EFE /* AppDelegate.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = AppDelegate.m; sourceTree = "<group>"; };
+		8AECF2251C8A59E900CD6EFE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ios/LK8000i/AppDelegate.h; sourceTree = "<group>"; };
+		8AECF2261C8A59E900CD6EFE /* AppDelegate.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; name = AppDelegate.m; path = ios/LK8000i/AppDelegate.m; sourceTree = "<group>"; };
 		8AECF2321C8A59E900CD6EFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8AECF2351C8A59E900CD6EFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8AECF2371C8A59E900CD6EFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1949,19 +1953,7 @@
 		8AECFCB01C8B50EB00CD6EFE /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = System/Library/Frameworks/GameController.framework; sourceTree = SDKROOT; };
 		8AECFCB11C8B50EB00CD6EFE /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		8AECFCC21C8B65D800CD6EFE /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
-		8AECFCF41C8B793000CD6EFE /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = zip.c; path = zziplib/zzip/zip.c; sourceTree = SOURCE_ROOT; };
-		8AECFCF51C8B793000CD6EFE /* write.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = write.c; path = zziplib/zzip/write.c; sourceTree = SOURCE_ROOT; };
-		8AECFCF61C8B793000CD6EFE /* file.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = file.c; path = zziplib/zzip/file.c; sourceTree = SOURCE_ROOT; };
-		8AECFCF71C8B793000CD6EFE /* stat.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = stat.c; path = zziplib/zzip/stat.c; sourceTree = SOURCE_ROOT; };
-		8AECFCF81C8B793000CD6EFE /* plugin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = plugin.c; path = zziplib/zzip/plugin.c; sourceTree = SOURCE_ROOT; };
-		8AECFCF91C8B793000CD6EFE /* dir.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = dir.c; path = zziplib/zzip/dir.c; sourceTree = SOURCE_ROOT; };
-		8AECFCFA1C8B793000CD6EFE /* fseeko.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fseeko.c; path = zziplib/zzip/fseeko.c; sourceTree = SOURCE_ROOT; };
-		8AECFCFB1C8B793000CD6EFE /* fetch.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fetch.c; path = zziplib/zzip/fetch.c; sourceTree = SOURCE_ROOT; };
-		8AECFCFC1C8B793000CD6EFE /* memdisk.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = memdisk.c; path = zziplib/zzip/memdisk.c; sourceTree = SOURCE_ROOT; };
-		8AECFCFD1C8B793000CD6EFE /* mmapped.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mmapped.c; path = zziplib/zzip/mmapped.c; sourceTree = SOURCE_ROOT; };
-		8AECFDB61C8BAD4C00CD6EFE /* err.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = err.c; path = zziplib/zzip/err.c; sourceTree = SOURCE_ROOT; };
-		8AECFDB71C8BAD4C00CD6EFE /* info.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = info.c; path = zziplib/zzip/info.c; sourceTree = SOURCE_ROOT; };
-		BF0D7B5DE5E922F9A2B5F522 /* libPods-LK8000.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LK8000.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EF6D44C10BAF79C2B9EC5CD /* libPods-LK8000.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LK8000.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAE62F4D2476009492B7EE35 /* Pods-LK8000.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LK8000.release.xcconfig"; path = "Pods/Target Support Files/Pods-LK8000/Pods-LK8000.release.xcconfig"; sourceTree = "<group>"; };
 		F35FE2B7E189DD7AD4E6A43C /* Pods-LK8000.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LK8000.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LK8000/Pods-LK8000.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1971,6 +1963,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A94A9691C9DD97900639756 /* CoreLocation.framework in Frameworks */,
 				8AECFCC31C8B65D800CD6EFE /* CoreMotion.framework in Frameworks */,
 				8AECFCB21C8B50EB00CD6EFE /* GameController.framework in Frameworks */,
 				8AECFCB31C8B50EB00CD6EFE /* GameKit.framework in Frameworks */,
@@ -1978,7 +1971,7 @@
 				8AECFCAE1C8B50B000CD6EFE /* CoreAudio.framework in Frameworks */,
 				8AECFCAF1C8B50B000CD6EFE /* CoreAudioKit.framework in Frameworks */,
 				8AECFAD21C8A66A600CD6EFE /* OpenGLES.framework in Frameworks */,
-				30BDB60CE806E2DF0A645B5C /* libPods-LK8000.a in Frameworks */,
+				FF48FA892A95531FBB3FD43D /* libPods-LK8000.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2000,6 +1993,20 @@
 				8A6439381C91922A004F42B6 /* Font.cpp */,
 			);
 			path = IOS;
+			sourceTree = "<group>";
+		};
+		8A94A9671C9DC75200639756 /* iOS specific */ = {
+			isa = PBXGroup;
+			children = (
+				8AECF2251C8A59E900CD6EFE /* AppDelegate.h */,
+				8AECF2261C8A59E900CD6EFE /* AppDelegate.m */,
+				8A94A9641C9DC74300639756 /* LKCLHelper.h */,
+				8A94A9651C9DC74300639756 /* LKCLHelper.m */,
+				8ADDD4901C8CBF52004CD260 /* ArchiveUnzip.h */,
+				8ADDD4911C8CBF52004CD260 /* ArchiveUnzip.m */,
+			);
+			name = "iOS specific";
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		8ADDD2211C8C9346004CD260 /* Resources built from makefile */ = {
@@ -2033,16 +2040,9 @@
 		8AECF2211C8A59E900CD6EFE /* LK8000i */ = {
 			isa = PBXGroup;
 			children = (
-				8AECFCF31C8B78E100CD6EFE /* zzip */,
 				8AECF23D1C8A5A0900CD6EFE /* LK8000 */,
-				8AECF2251C8A59E900CD6EFE /* AppDelegate.h */,
-				8AECF2261C8A59E900CD6EFE /* AppDelegate.m */,
-				8AECF2321C8A59E900CD6EFE /* Assets.xcassets */,
-				8AECF2341C8A59E900CD6EFE /* LaunchScreen.storyboard */,
-				8AECF2371C8A59E900CD6EFE /* Info.plist */,
+				8A94A9671C9DC75200639756 /* iOS specific */,
 				8AECF2221C8A59E900CD6EFE /* Supporting Files */,
-				8ADDD4901C8CBF52004CD260 /* ArchiveUnzip.h */,
-				8ADDD4911C8CBF52004CD260 /* ArchiveUnzip.m */,
 			);
 			path = LK8000i;
 			sourceTree = SOURCE_ROOT;
@@ -2050,7 +2050,9 @@
 		8AECF2221C8A59E900CD6EFE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8A6439331C918CC6004F42B6 /* Makefile */,
+				8AECF2321C8A59E900CD6EFE /* Assets.xcassets */,
+				8AECF2341C8A59E900CD6EFE /* LaunchScreen.storyboard */,
+				8AECF2371C8A59E900CD6EFE /* Info.plist */,
 				8AECF2231C8A59E900CD6EFE /* main.m */,
 			);
 			name = "Supporting Files";
@@ -4044,29 +4046,10 @@
 			path = ../Common/Utils;
 			sourceTree = SOURCE_ROOT;
 		};
-		8AECFCF31C8B78E100CD6EFE /* zzip */ = {
-			isa = PBXGroup;
-			children = (
-				8AECFDB61C8BAD4C00CD6EFE /* err.c */,
-				8AECFDB71C8BAD4C00CD6EFE /* info.c */,
-				8AECFCF41C8B793000CD6EFE /* zip.c */,
-				8AECFCF51C8B793000CD6EFE /* write.c */,
-				8AECFCF61C8B793000CD6EFE /* file.c */,
-				8AECFCF71C8B793000CD6EFE /* stat.c */,
-				8AECFCF81C8B793000CD6EFE /* plugin.c */,
-				8AECFCF91C8B793000CD6EFE /* dir.c */,
-				8AECFCFA1C8B793000CD6EFE /* fseeko.c */,
-				8AECFCFB1C8B793000CD6EFE /* fetch.c */,
-				8AECFCFC1C8B793000CD6EFE /* memdisk.c */,
-				8AECFCFD1C8B793000CD6EFE /* mmapped.c */,
-			);
-			name = zzip;
-			path = zziplib;
-			sourceTree = SOURCE_ROOT;
-		};
 		C1858EFA2F40D13DED5DBCE7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8A94A9681C9DD97900639756 /* CoreLocation.framework */,
 				8AECFCC21C8B65D800CD6EFE /* CoreMotion.framework */,
 				8AECFCB01C8B50EB00CD6EFE /* GameController.framework */,
 				8AECFCB11C8B50EB00CD6EFE /* GameKit.framework */,
@@ -4075,7 +4058,7 @@
 				8AECFCAA1C8B50B000CD6EFE /* CoreAudio.framework */,
 				8AECFCAB1C8B50B000CD6EFE /* CoreAudioKit.framework */,
 				8AECFAD11C8A66A600CD6EFE /* OpenGLES.framework */,
-				BF0D7B5DE5E922F9A2B5F522 /* libPods-LK8000.a */,
+				8EF6D44C10BAF79C2B9EC5CD /* libPods-LK8000.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -4116,6 +4099,11 @@
 				TargetAttributes = {
 					8AECF21E1C8A59E800CD6EFE = {
 						CreatedOnToolsVersion = 7.2.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -4309,6 +4297,7 @@
 				8AECFB761C8B2A3900CD6EFE /* DrawStartSector.cpp in Sources */,
 				8AECFCC51C8B665300CD6EFE /* BufferCanvas.cpp in Sources */,
 				8AECFC121C8B339D00CD6EFE /* md5internal.cpp in Sources */,
+				8A94A9661C9DC74300639756 /* LKCLHelper.m in Sources */,
 				8AECFC971C8B4B5F00CD6EFE /* RenderWind.cpp in Sources */,
 				8AECFD411C8B85EF00CD6EFE /* Queue.cpp in Sources */,
 				8AECFBB01C8B2CE500CD6EFE /* AutoMC.cpp in Sources */,
