@@ -10,6 +10,9 @@
 #include "DoInits.h"
 #include "Asset.hpp"
 
+#ifdef __APPLE__
+#import "ArchiveUnzip.h"
+#endif
 
 #ifdef ANDROID
 #include <android/log.h>
@@ -185,6 +188,11 @@ const TCHAR * LKGetSystemPath(void) {
 const TCHAR * LKGetLocalPath(void) {
 #ifdef KOBO
     return _T("/mnt/onboard/" LKDATADIR "/");
+#else
+
+#ifdef __APPLE__
+    NSString *t = [ArchiveUnzip pathForArchiveRoot:nil];
+    return [t cStringUsingEncoding:NSASCIIStringEncoding];
 #else
 
     static TCHAR localpath[MAX_PATH + 1] = {0};
