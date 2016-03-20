@@ -12,6 +12,8 @@
 #include <sys/stat.h>
 #ifndef __APPLE__
 #include <sys/sendfile.h>
+#else
+#include <stdlib.h>
 #endif
 #include <sys/types.h>
 #include <pwd.h>
