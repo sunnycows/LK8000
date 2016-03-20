@@ -42,6 +42,12 @@ Copyright_License {
 #include "Util/UTF8.hpp"
 #endif
 
+#ifdef __APPLE__
+#include <Functional>
+#include <TargetConditionals.h>
+#import "ArchiveUnzip.h"
+#endif
+
 #if defined(__clang__) && defined(__arm__)
 /* work around warning: 'register' storage class specifier is
    deprecated */
@@ -152,11 +158,19 @@ Font::Initialise()
     render_mode = FT_RENDER_MODE_MONO;
   }
 
+#ifndef __APPLE__
   font_path = FindDefaultFont();
   bold_font_path = FindDefaultBoldFont();
   italic_font_path = FindDefaultItalicFont();
   bold_italic_font_path = FindDefaultBoldItalicFont();
   monospace_font_path = FindDefaultMonospaceFont();
+#else
+  font_path = [ArchiveUnzip pathForFont:LK8000Font_Default];
+  bold_font_path = [ArchiveUnzip pathForFont:LK8000Font_Bold];
+  italic_font_path = [ArchiveUnzip pathForFont:LK8000Font_BoldItalic];
+  bold_italic_font_path = [ArchiveUnzip pathForFont:LK8000Font_Italic];
+  monospace_font_path = [ArchiveUnzip pathForFont:LK8000Font_Monospace];
+#endif
 }
 
 gcc_pure
