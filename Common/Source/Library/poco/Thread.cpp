@@ -148,6 +148,7 @@ std::string Thread::makeName()
 }
 
 
+#ifndef __APPLE__
 namespace
 {
 	static FastMutex uniqueIdMutex;
@@ -162,6 +163,17 @@ int Thread::uniqueId()
 	++count;
 	return count;
 }
+#else
+int Thread::uniqueId()
+{
+    static FastMutex uniqueIdMutex;
+    FastMutex::ScopedLock lock(uniqueIdMutex);
+    
+    static unsigned count = 0;
+    ++count;
+    return count;
+}
+#endif
 
 
 void Thread::setName(const std::string& name)
