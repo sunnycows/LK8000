@@ -570,7 +570,6 @@
 		8AECFD4A1C8B86B600CD6EFE /* InflateLineReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8AECF6DC1C8A5B6000CD6EFE /* InflateLineReader.cpp */; };
 		8AECFD4B1C8B86B600CD6EFE /* InflateSource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8AECF6DE1C8A5B6000CD6EFE /* InflateSource.cpp */; };
 		8AECFD4C1C8B86B600CD6EFE /* LineSplitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8AECF6E11C8A5B6000CD6EFE /* LineSplitter.cpp */; };
-		8AECFD501C8B890200CD6EFE /* Memory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8AECF5C21C8A5B6000CD6EFE /* Memory.cpp */; };
 		8AECFD511C8B890200CD6EFE /* RotateScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8AECF5C31C8A5B6000CD6EFE /* RotateScreen.cpp */; };
 		8AECFD521C8B890200CD6EFE /* WindowResize.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8AECF5C41C8A5B6000CD6EFE /* WindowResize.cpp */; };
 		8AECFD531C8B8D0000CD6EFE /* stringext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8AECF6341C8A5B6000CD6EFE /* stringext.cpp */; };
@@ -4723,7 +4722,6 @@
 				8AECFB951C8B2C1B00CD6EFE /* MapWindowMode.cpp in Sources */,
 				8AECFBEE1C8B2D5800CD6EFE /* ReadyToStartAdvance.cpp in Sources */,
 				8AECFC651C8B4B3400CD6EFE /* dlgConfiguration.cpp in Sources */,
-				8AECFD501C8B890200CD6EFE /* Memory.cpp in Sources */,
 				8AECFC561C8B4A3B00CD6EFE /* vlapisys_win.cpp in Sources */,
 				8AECFD091C8B7C8C00CD6EFE /* Bitmap.cpp in Sources */,
 				8AECFD3C1C8B85B500CD6EFE /* Globals.cpp in Sources */,
