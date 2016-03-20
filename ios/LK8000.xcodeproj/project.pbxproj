@@ -646,7 +646,6 @@
 		8ADDD4901C8CBF52004CD260 /* ArchiveUnzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArchiveUnzip.h; path = ios/LK8000i/ArchiveUnzip.h; sourceTree = "<group>"; };
 		8ADDD4911C8CBF52004CD260 /* ArchiveUnzip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArchiveUnzip.m; path = ios/LK8000i/ArchiveUnzip.m; sourceTree = "<group>"; };
 		8AECF21F1C8A59E800CD6EFE /* LK8000.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LK8000.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8AECF2231C8A59E900CD6EFE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8AECF2251C8A59E900CD6EFE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ios/LK8000i/AppDelegate.h; sourceTree = "<group>"; };
 		8AECF2261C8A59E900CD6EFE /* AppDelegate.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; name = AppDelegate.m; path = ios/LK8000i/AppDelegate.m; sourceTree = "<group>"; };
 		8AECF2321C8A59E900CD6EFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -2053,7 +2052,6 @@
 				8AECF2321C8A59E900CD6EFE /* Assets.xcassets */,
 				8AECF2341C8A59E900CD6EFE /* LaunchScreen.storyboard */,
 				8AECF2371C8A59E900CD6EFE /* Info.plist */,
-				8AECF2231C8A59E900CD6EFE /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
