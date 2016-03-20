@@ -351,7 +351,7 @@ static const struct {
   #include <windows.h>
 #endif // WIN32
 
-#ifdef __linux__
+#if defined(__linux__) || (defined __APPLE__)
   #include "tchar.h"
   #include "types.h"
 
