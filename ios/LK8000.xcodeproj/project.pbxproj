@@ -11,6 +11,7 @@
 		8A479ECE1C9821AD000998D4 /* SoundIOS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8A479ECD1C9821AD000998D4 /* SoundIOS.cpp */; };
 		8A94A9661C9DC74300639756 /* LKCLHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A94A9651C9DC74300639756 /* LKCLHelper.m */; };
 		8A94A9691C9DD97900639756 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A94A9681C9DD97900639756 /* CoreLocation.framework */; };
+		8A9FD3E31C9F34B500176E4A /* SystemInfo.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8A9FD3E21C9F34B500176E4A /* SystemInfo.mm */; };
 		8ADDD2241C8C93AD004CD260 /* resource_bmp.png.S in Sources */ = {isa = PBXBuildFile; fileRef = 8ADDD2221C8C93AD004CD260 /* resource_bmp.png.S */; };
 		8ADDD2251C8C93AD004CD260 /* resource_xml.min.S in Sources */ = {isa = PBXBuildFile; fileRef = 8ADDD2231C8C93AD004CD260 /* resource_xml.min.S */; };
 		8ADDD2261C8C9657004CD260 /* resource_data.S in Sources */ = {isa = PBXBuildFile; fileRef = 8AECF5D11C8A5B6000CD6EFE /* resource_data.S */; };
@@ -640,6 +641,7 @@
 		8A94A9641C9DC74300639756 /* LKCLHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LKCLHelper.h; path = ios/LK8000i/LKCLHelper.h; sourceTree = "<group>"; };
 		8A94A9651C9DC74300639756 /* LKCLHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LKCLHelper.m; path = ios/LK8000i/LKCLHelper.m; sourceTree = "<group>"; };
 		8A94A9681C9DD97900639756 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		8A9FD3E21C9F34B500176E4A /* SystemInfo.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SystemInfo.mm; sourceTree = "<group>"; };
 		8ADDD2221C8C93AD004CD260 /* resource_bmp.png.S */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; name = resource_bmp.png.S; path = Bin/LINUX/Resource/resource_bmp.png.S; sourceTree = "<group>"; };
 		8ADDD2231C8C93AD004CD260 /* resource_xml.min.S */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; lineEnding = 0; name = resource_xml.min.S; path = Bin/LINUX/Resource/resource_xml.min.S; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.asm.ppc; };
 		8ADDD48D1C8CBA2F004CD260 /* Archive.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = Archive.zip; path = Data/Archive.zip; sourceTree = SOURCE_ROOT; };
@@ -1412,25 +1414,6 @@
 		8AECF56C1C8A5B5F00CD6EFE /* TimeFunctions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TimeFunctions.cpp; sourceTree = "<group>"; };
 		8AECF56D1C8A5B5F00CD6EFE /* Utm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utm.cpp; sourceTree = "<group>"; };
 		8AECF56E1C8A5B5F00CD6EFE /* xmlParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = xmlParser.cpp; sourceTree = "<group>"; };
-		8AECF5701C8A5B5F00CD6EFE /* adler32.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = adler32.c; sourceTree = "<group>"; };
-		8AECF5711C8A5B5F00CD6EFE /* compress.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = compress.c; sourceTree = "<group>"; };
-		8AECF5721C8A5B5F00CD6EFE /* crc32.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crc32.c; sourceTree = "<group>"; };
-		8AECF5731C8A5B5F00CD6EFE /* deflate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = deflate.c; sourceTree = "<group>"; };
-		8AECF5741C8A5B5F00CD6EFE /* err.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = err.c; sourceTree = "<group>"; };
-		8AECF5751C8A5B5F00CD6EFE /* fetch.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fetch.c; sourceTree = "<group>"; };
-		8AECF5761C8A5B5F00CD6EFE /* file.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = file.c; sourceTree = "<group>"; };
-		8AECF5771C8A5B5F00CD6EFE /* gzio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gzio.c; sourceTree = "<group>"; };
-		8AECF5781C8A5B5F00CD6EFE /* infback.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = infback.c; sourceTree = "<group>"; };
-		8AECF5791C8A5B5F00CD6EFE /* inffast.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = inffast.c; sourceTree = "<group>"; };
-		8AECF57A1C8A5B5F00CD6EFE /* inflate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = inflate.c; sourceTree = "<group>"; };
-		8AECF57B1C8A5B5F00CD6EFE /* info.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = info.c; sourceTree = "<group>"; };
-		8AECF57C1C8A5B5F00CD6EFE /* inftrees.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = inftrees.c; sourceTree = "<group>"; };
-		8AECF57D1C8A5B5F00CD6EFE /* plugin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = plugin.c; sourceTree = "<group>"; };
-		8AECF57E1C8A5B5F00CD6EFE /* trees.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = trees.c; sourceTree = "<group>"; };
-		8AECF57F1C8A5B5F00CD6EFE /* uncompr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = uncompr.c; sourceTree = "<group>"; };
-		8AECF5801C8A5B5F00CD6EFE /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
-		8AECF5811C8A5B5F00CD6EFE /* zstat.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zstat.c; sourceTree = "<group>"; };
-		8AECF5821C8A5B5F00CD6EFE /* zutil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zutil.c; sourceTree = "<group>"; };
 		8AECF5831C8A5B5F00CD6EFE /* LiveTracker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = LiveTracker.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		8AECF5841C8A5B5F00CD6EFE /* lk8000.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 2; path = lk8000.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		8AECF5851C8A5B5F00CD6EFE /* lk8000.rc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 2; path = lk8000.rc; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = "<none>"; };
@@ -2006,6 +1989,14 @@
 			);
 			name = "iOS specific";
 			path = ../..;
+			sourceTree = "<group>";
+		};
+		8A9FD3E11C9F34B500176E4A /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				8A9FD3E21C9F34B500176E4A /* SystemInfo.mm */,
+			);
+			path = iOS;
 			sourceTree = "<group>";
 		};
 		8ADDD2211C8C9346004CD260 /* Resources built from makefile */ = {
@@ -3001,7 +2992,6 @@
 				8AECF56C1C8A5B5F00CD6EFE /* TimeFunctions.cpp */,
 				8AECF56D1C8A5B5F00CD6EFE /* Utm.cpp */,
 				8AECF56E1C8A5B5F00CD6EFE /* xmlParser.cpp */,
-				8AECF56F1C8A5B5F00CD6EFE /* zzip */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -3104,32 +3094,6 @@
 			path = poco;
 			sourceTree = "<group>";
 		};
-		8AECF56F1C8A5B5F00CD6EFE /* zzip */ = {
-			isa = PBXGroup;
-			children = (
-				8AECF5701C8A5B5F00CD6EFE /* adler32.c */,
-				8AECF5711C8A5B5F00CD6EFE /* compress.c */,
-				8AECF5721C8A5B5F00CD6EFE /* crc32.c */,
-				8AECF5731C8A5B5F00CD6EFE /* deflate.c */,
-				8AECF5741C8A5B5F00CD6EFE /* err.c */,
-				8AECF5751C8A5B5F00CD6EFE /* fetch.c */,
-				8AECF5761C8A5B5F00CD6EFE /* file.c */,
-				8AECF5771C8A5B5F00CD6EFE /* gzio.c */,
-				8AECF5781C8A5B5F00CD6EFE /* infback.c */,
-				8AECF5791C8A5B5F00CD6EFE /* inffast.c */,
-				8AECF57A1C8A5B5F00CD6EFE /* inflate.c */,
-				8AECF57B1C8A5B5F00CD6EFE /* info.c */,
-				8AECF57C1C8A5B5F00CD6EFE /* inftrees.c */,
-				8AECF57D1C8A5B5F00CD6EFE /* plugin.c */,
-				8AECF57E1C8A5B5F00CD6EFE /* trees.c */,
-				8AECF57F1C8A5B5F00CD6EFE /* uncompr.c */,
-				8AECF5801C8A5B5F00CD6EFE /* zip.c */,
-				8AECF5811C8A5B5F00CD6EFE /* zstat.c */,
-				8AECF5821C8A5B5F00CD6EFE /* zutil.c */,
-			);
-			path = zzip;
-			sourceTree = "<group>";
-		};
 		8AECF5881C8A5B5F00CD6EFE /* LKInterface */ = {
 			isa = PBXGroup;
 			children = (
@@ -3177,6 +3141,7 @@
 		8AECF5B71C8A5B6000CD6EFE /* OS */ = {
 			isa = PBXGroup;
 			children = (
+				8A9FD3E11C9F34B500176E4A /* iOS */,
 				8AECF5B81C8A5B6000CD6EFE /* Linux */,
 				8AECF5C51C8A5B6000CD6EFE /* Memory.h */,
 				8AECF5C61C8A5B6000CD6EFE /* RotateScreen.h */,
@@ -4727,6 +4692,7 @@
 				8AECFAF21C8B14B900CD6EFE /* FlarmIdFile.cpp in Sources */,
 				8AECFC6C1C8B4B3400CD6EFE /* dlgLKAirspaceWarning.cpp in Sources */,
 				8AECFD5C1C8B8E2D00CD6EFE /* Trace.cpp in Sources */,
+				8A9FD3E31C9F34B500176E4A /* SystemInfo.mm in Sources */,
 				8AECFB981C8B2C6500CD6EFE /* DrawMultimap.cpp in Sources */,
 				8AECFC771C8B4B3C00CD6EFE /* dlgStartTask.cpp in Sources */,
 				8AECFBD61C8B2CE500CD6EFE /* Orbiter.cpp in Sources */,
