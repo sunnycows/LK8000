@@ -34,16 +34,6 @@ void MapWindow::DrawFinalGlide(LKSurface& Surface, const RECT& rc) {
         {0, 0}
     };
     
-    RasterPoint GlideBar0[7] = {
-        {0, 0},
-        {IBLSCALE(9), IBLSCALE(-9)},
-        {IBLSCALE(18), 0},
-        {IBLSCALE(18), 0},
-        {IBLSCALE(9), 0},
-        {0, 0},
-        {0, 0}
-    };
-
     LKSurface::OldPen hpOld;
     LKSurface::OldBrush hbOld;
 
