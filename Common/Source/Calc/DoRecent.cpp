@@ -11,7 +11,7 @@
 // Load and save the recent list
 bool LoadRecentList() {
 
-   TCHAR buffer[100];
+   TCHAR buffer[MAX_PATH];
    FILE *fp;
    char st[100];
    int i=0, nwp;
