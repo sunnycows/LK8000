@@ -71,7 +71,7 @@ bool LoadRecentList() {
 
 bool SaveRecentList() {
 
-   TCHAR buffer[100];
+   TCHAR buffer[MAX_PATH];
    FILE *fp;
    int i;
 
