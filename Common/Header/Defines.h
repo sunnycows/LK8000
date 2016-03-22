@@ -960,7 +960,7 @@ static const double PI = (4*atan(1));
 #define IMHERE	StartupStore(_T(">>> %s:%u\n"), _T(__FILE__), __LINE__);
 
 #ifndef MAX_PATH
-#ifdef __APPLE__
+#ifdef PATH_MAX
 #define MAX_PATH PATH_MAX
 #else
 #define MAX_PATH 260
