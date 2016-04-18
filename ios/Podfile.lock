@@ -14,6 +14,9 @@ PODS:
   - boost/preprocessor-includes (1.59.0)
   - boost/shared_ptr-includes (1.59.0)
   - boost/string_algorithms-includes (1.59.0)
+  - Crashlytics (3.7.0):
+    - Fabric (~> 1.6.3)
+  - Fabric (1.6.7)
   - freetype (2.6.4)
   - glm (0.9.4.6)
   - libpng (1.6.18)
@@ -23,6 +26,8 @@ PODS:
 
 DEPENDENCIES:
   - boost (~> 1.59.0)
+  - Crashlytics
+  - Fabric
   - freetype (~> 2.6.4)
   - glm (~> 0.9.4.6)
   - libpng (~> 1.6.18)
@@ -32,6 +37,8 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   boost: 30a15ffb6d9aa4646dd3caffc960753f4cb4ca4e
+  Crashlytics: c3a2333dea9e2733d2777f730910321fc9e25c0d
+  Fabric: caf7580c725e64db144f610ac65cd60956911dc7
   freetype: 5c9c189ff447f510d17fd079d361fa3b448b6c07
   glm: e22c8d9df10404059b19c2952f9fa44d9a9f3056
   libpng: 9c661ee692282485a9cf7fcf0159458c91b4f943
@@ -39,6 +46,6 @@ SPEC CHECKSUMS:
   ZipUtilities: e266a234f60bc53d47e1a030a353275e7213b17b
   zziplib: 6ebfd4fb05db2f6d812174ce6ee669fe8ffcb4b9
 
-PODFILE CHECKSUM: 5efca48279a9b1b28b6ee3c090858959ee5dab01
+PODFILE CHECKSUM: 1260f025eb48683d532e1536c072ac12c670040d
 
 COCOAPODS: 1.0.0.beta.6
