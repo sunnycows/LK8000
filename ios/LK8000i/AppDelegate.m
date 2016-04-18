@@ -9,6 +9,8 @@
 
 #import <Objc/runtime.h>
 #import <SDL.h>
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 #import "AppDelegate.h"
 #import "ArchiveUnzip.h"
@@ -61,7 +63,7 @@ void SwizzleClassMethod(Class c, SEL orig, SEL newSel) {
 
 @implementation AppDelegate
 
-- (NSString *)getGeolocationWithCoreLocation:(CLLocation *)location {
+- (NSArray *)getGeolocationWithCoreLocation:(CLLocation *)location {
     // 10進数の緯度経度を60進数の緯度経度に変換します。
     CLLocationDegrees latitude = [self convertCLLocationDegreesToNmea:location.coordinate.latitude];
     CLLocationDegrees longitude = [self convertCLLocationDegreesToNmea:location.coordinate.longitude];
@@ -93,7 +95,7 @@ void SwizzleClassMethod(Class c, SEL orig, SEL newSel) {
     nmea0183GPGGAChecksum &= 0x0ff;
     [nmea0183GPGGA insertString:@"$" atIndex:0];
     [nmea0183GPGGA appendString:@"*"];
-    [nmea0183GPGGA appendFormat:@"%02lX", (long)nmea0183GPGGAChecksum]; // チェックサム
+    [nmea0183GPGGA appendFormat:@"%02lX\n", (long)nmea0183GPGGAChecksum]; // チェックサム
     
     // GPRMCレコード
     NSMutableString *nmea0183GPRMC = [[NSMutableString alloc] init];
@@ -104,8 +106,8 @@ void SwizzleClassMethod(Class c, SEL orig, SEL newSel) {
     [nmea0183GPRMCDateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
     [nmea0183GPRMCDateFormatter setDateFormat:@"ddMMyy"];
     [nmea0183GPRMC appendString:@"GPRMC,"];
-    [nmea0183GPRMC appendString:@"A,"]; // ステータス: 有効
     [nmea0183GPRMC appendFormat:@"%@,", [nmea0183GPRMCTimestampFormatter stringFromDate:location.timestamp]]; // 測位時刻
+    [nmea0183GPRMC appendString:@"A,"]; // ステータス: 有効
     [nmea0183GPRMC appendFormat:@"%08.4f,", latitude]; // 緯度
     [nmea0183GPRMC appendFormat:@"%@,", (latitude > 0.0 ? @"N" : @"S")]; // 北緯、南緯
     [nmea0183GPRMC appendFormat:@"%08.4f,", longitude]; // 経度
@@ -123,26 +125,22 @@ void SwizzleClassMethod(Class c, SEL orig, SEL newSel) {
     nmea0183GPRMCChecksum &= 0x0ff;
     [nmea0183GPRMC insertString:@"$" atIndex:0];
     [nmea0183GPRMC appendString:@"*"];
-    [nmea0183GPRMC appendFormat:@"%02lX", (long)nmea0183GPRMCChecksum]; // チェックサム
+    [nmea0183GPRMC appendFormat:@"%02lX\n", (long)nmea0183GPRMCChecksum]; // チェックサム
     
     // カメラに位置情報を設定します。
-    NSString *nmea0183 = [NSString stringWithFormat:@"%@\n%@\n", nmea0183GPGGA, nmea0183GPRMC];
-    return nmea0183;
-    
-    //return [self setGeolocation:nmea0183 error:error];
+    return @[nmea0183GPGGA, nmea0183GPRMC];
 }
 
-- (double)aconvertCLLocationDegreesToNmea:(CLLocationDegrees)degrees {
-    double degreeSign = ((degrees > 0.0) ? +1 : ((degrees < 0.0) ? -1 : 0));
-    double degree = ABS(degrees);
-    double degreeDecimal = floor(degree);
-    double degreeFraction = degree - degreeDecimal;
-    double minutes = degreeFraction * 60.0;
-    double minutesDecimal = floor(minutes);
-    double minutesFraction = minutes - minutesDecimal;
-    double seconds = minutesFraction * 60.0;
-    double nmea = degreeSign * (degreeDecimal * 100.0 + minutesDecimal + seconds / 100.0);
-    return nmea;
+- (NSString *)nmeaChecksum:(NSString *)sentence {
+    unichar nmea0183GPRMCChecksum = 0;
+    
+    for (NSInteger index = 0; index < sentence.length; index++) {
+        nmea0183GPRMCChecksum ^= [sentence characterAtIndex:index];
+    }
+    nmea0183GPRMCChecksum &= 0x0ff;
+    
+    NSString *check = [NSString stringWithFormat:@"$%@*%02lX\n", sentence, (long)nmea0183GPRMCChecksum];
+    return check;
 }
 
 - (double)convertCLLocationDegreesToNmea:(CLLocationDegrees)degrees {
@@ -155,7 +153,9 @@ void SwizzleClassMethod(Class c, SEL orig, SEL newSel) {
     return nmea;
 }
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+- (bool)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [Fabric with:@[[Crashlytics class]]];
+
     static ArchiveUnzip *archive = [ArchiveUnzip new];
 
     __block BOOL unzip, locupdate, done;
@@ -181,35 +181,48 @@ void SwizzleClassMethod(Class c, SEL orig, SEL newSel) {
     
     [self.uiWindow setRootViewController:uv];
     [self.uiWindow makeKeyAndVisible];
-    
+
     
     [[LKCLHelper sharedInstance] requestLocationIfPossibleWithUI:YES
-                                                           block:^BOOL(LKCLHelperStatus status, CLLocation *location) {
+                                                           block:^bool(LKCLHelperStatus status, CLLocation *location, CMAltitudeData *altitude) {
                                                                NSLog(@"%lu", (unsigned long)status);
                                                                locupdate = YES;
                                                                
                                                                if (unzip && locupdate && !done) {
                                                                    done = YES;
                                                                    [super application:application didFinishLaunchingWithOptions:launchOptions];
-                                                                   return YES;
+                                                                   return true;
                                                                }
                                                                
                                                                if (done) {
-                                                                   [self sendLocation:location];
+                                                                   [self sendLocation:location
+                                                                             altitude:altitude];
                                                                }
-                                                               return YES;
+                                                               return true;
                                                            }];
     return YES;
 }
 
-- (void)sendLocation:(CLLocation *)location {
-    NSString *nmea = [self getGeolocationWithCoreLocation:location];
-    const char *ct = [nmea UTF8String];
-    char *t = (char *)malloc(strlen(ct)+1);
-    memset(t, 0, strlen(ct)+1);
-    memcpy(t, ct, strlen(ct));
-    NMEAParser::ParseNMEAString(0, t, &GPS_INFO);
-    free(t);
+- (void)sendLocation:(CLLocation *)location altitude:(CMAltitudeData *)altitude {
+    static char t[1024];
+    
+    if (location) {
+        NSArray *nmeas = [self getGeolocationWithCoreLocation:location];
+        for (NSString *nmea in nmeas) {
+            NSLog(@"%@", nmea);
+            const char *ct = [nmea UTF8String];
+            strcpy(t, ct);
+            NMEAParser::ParseNMEAString(0, t, &GPS_INFO);
+        }
+    }
+    
+    if (altitude) {
+        NSString *nmea = [self nmeaChecksum:[NSString stringWithFormat:@"PGRMZ,%.4f,f", [altitude.pressure floatValue]]];
+        NSLog(@"%@", nmea);
+        const char *ct = [nmea UTF8String];
+        strcpy(t, ct);
+        NMEAParser::ParseNMEAString(0, t, &GPS_INFO);
+    }
 }
 
 //#define DEBUG_INTEGRATION

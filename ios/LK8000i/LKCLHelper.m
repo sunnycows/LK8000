@@ -7,16 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreMotion/CoreMotion.h>
 #import "LKCLHelper.h"
 
 #define KUserDefaultsKey @"LKCLHelperStatus@"
 
 @interface LKCLHelper () <CLLocationManagerDelegate, UIAlertViewDelegate>
-@property (nonatomic, copy) BOOL (^callback)(LKCLHelperStatus, CLLocation *);
+@property (nonatomic, copy) bool (^callback)(LKCLHelperStatus, CLLocation *, CMAltitudeData *);
 @property (nonatomic, weak) UIAlertView *av_appspecific;
 @property (nonatomic, weak) UIAlertView *av_systemdisallow;
 @property (nonatomic, assign) BOOL requesting_userpermission;
 @property (nonatomic, assign) BOOL iosseven;
+@property (nonatomic, strong) CMAltimeter *altimeter;
+@property (nonatomic, strong) CMAltitudeData *altitudeData;
 @end
 
 @implementation LKCLHelper
@@ -47,6 +50,8 @@
         self.manager = [[CLLocationManager alloc] init];
         self.iosseven = ![self.manager respondsToSelector:@selector(requestWhenInUseAuthorization)];
         self.manager.delegate = self;
+        self.manager.desiredAccuracy = kCLLocationAccuracyBest;
+        self.manager.headingFilter = 1.0f;
     }
     return self;
 }
@@ -66,7 +71,7 @@
         case kCLAuthorizationStatusAuthorizedWhenInUse:
             self.status = kLKCLHelperStatus_SystemRequest_Allow;
             if (self.callback) {
-                [self.manager startUpdatingLocation];
+                [self startTracking];
             }
             return;
             break;
@@ -82,35 +87,61 @@
     }
     
     if (self.callback) {
-        self.callback(self.status, nil);
+        self.callback(self.status, nil, nil);
         self.callback = nil;
     }
 }
 
+- (void)startTracking {
+    [self.manager startUpdatingLocation];
+    if ([CLLocationManager headingAvailable])
+        [self.manager startUpdatingHeading];
+    [self startTrackingAltitude];
+}
+
+- (void)stopTracking {
+    [self.manager stopUpdatingLocation];
+    if ([CLLocationManager headingAvailable])
+        [self.manager stopUpdatingHeading];
+    [self stopTrackingAltitude];
+}
+
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     if (self.callback) {
-        BOOL keep = self.callback(self.status, locations.lastObject);
+        BOOL keep = self.callback(self.status, locations.lastObject, nil);
         if (keep == NO) {
-            [self.manager stopUpdatingLocation];
+            [self stopTracking];
             self.callback = nil;
         }
     }
 }
 
+- (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
+    if (newHeading.headingAccuracy < 0)
+        return;
+
+    CLLocationDirection  theHeading = ((newHeading.trueHeading > 0) ?
+                                       newHeading.trueHeading : newHeading.magneticHeading);
+    NSLog(@"Heading: %f", theHeading);
+}
+
+
 - (void)locationManagerDidPauseLocationUpdates:(CLLocationManager *)manager {
     self.callback = nil;
-    [self.manager stopUpdatingLocation];
+    [self stopTracking];
 }
 
 - (void)requestLocationIfPossibleWithUI:(BOOL)ui
-                                  block:(BOOL (^)(LKCLHelperStatus status, CLLocation *location))block {
+                                  block:(bool (^)(LKCLHelperStatus status,
+                                                  CLLocation *location,
+                                                  CMAltitudeData *data))block {
 
     //NSAssert(self.callback == nil, @"Can't register 2 callbacks");
     //NSAssert(self.status != kLKCLHelperStatus_Location, @"Already updating location");
     
     // Doouble tap filter
     if (self.callback) {
-        self.callback(self.status, nil);
+        self.callback(self.status, nil, nil);
         self.callback = nil;
     }
     
@@ -122,7 +153,7 @@
             case kLKCLHelperStatus_AppSpecific_NotDetermined:
             case kLKCLHelperStatus_AppSpecific_Disallow:
             case kLKCLHelperStatus_SystemRequest_Disallow:
-                block(self.status, nil);
+                block(self.status, nil, nil);
                 return;
                 break;
                 
@@ -132,7 +163,7 @@
         }
         
         if (self.status == kLKCLHelperStatus_SystemRequest_Allow) {
-            [self.manager startUpdatingLocation];
+            [self startTracking];
         }
     } else {
         self.callback = block;
@@ -147,7 +178,7 @@
             case kLKCLHelperStatus_SystemRequest_Disallow:
                 // we need permissions from main Settings
                 if (self.iosseven) {
-                    block(self.status, nil);
+                    block(self.status, nil, nil);
                     self.callback = nil;
                 }
                 [self showSystemDisallowed];
@@ -159,7 +190,7 @@
         }
         
         if (self.status == kLKCLHelperStatus_SystemRequest_Allow) {
-            [self.manager startUpdatingLocation];
+            [self startTracking];
         }
     }
     
@@ -212,12 +243,12 @@
                 [self.manager requestWhenInUseAuthorization];
             } else {
                 // iOS == 7
-                [self.manager startUpdatingLocation];
+                [self startTracking];
             }
         } else  {
             // no
             self.status = kLKCLHelperStatus_AppSpecific_Disallow;
-            self.callback(self.status, nil);
+            self.callback(self.status, nil, nil);
             self.callback = nil;
         }
     }
@@ -228,6 +259,31 @@
             [[UIApplication sharedApplication] openURL:url];
         }
     }
+}
+
+- (IBAction)startTrackingAltitude {
+    if (![CMAltimeter isRelativeAltitudeAvailable]) {
+        return;
+    }
+    
+    self.altimeter = [[CMAltimeter alloc] init];
+
+    [self.altimeter startRelativeAltitudeUpdatesToQueue:[NSOperationQueue mainQueue]
+                                            withHandler:^(CMAltitudeData * _Nullable altitudeData, NSError * _Nullable error) {
+                                                NSLog(@"%@", altitudeData.pressure);
+                                                self.altitudeData = altitudeData;
+                                                if (self.callback) {
+                                                    bool keep = self.callback(self.status, nil, altitudeData);
+                                                    if (keep == NO) {
+                                                        [self stopTracking];
+                                                        self.callback = nil;
+                                                    }
+                                                }
+    }];
+}
+
+- (void)stopTrackingAltitude {
+    [self.altimeter stopRelativeAltitudeUpdates];
 }
 
 
