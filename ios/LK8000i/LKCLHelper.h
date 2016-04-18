@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+#import <CoreMotion/CoreMotion.h>
 
 typedef enum : NSUInteger {
     kLKCLHelperStatus_AppSpecific_NotDermined_Requesting,
@@ -27,6 +28,8 @@ typedef enum : NSUInteger {
 + (instancetype)sharedInstance;
 
 - (void)requestLocationIfPossibleWithUI:(BOOL)ui
-                                  block:(BOOL (^)(LKCLHelperStatus status, CLLocation *location))block;
+                                  block:(bool (^)(LKCLHelperStatus status,
+                                                  CLLocation *location,
+                                                  CMAltitudeData *altitude))block;
 
 @end
