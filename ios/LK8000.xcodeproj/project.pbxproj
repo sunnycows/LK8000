@@ -4037,6 +4037,7 @@
 				8AECF21D1C8A59E800CD6EFE /* Resources */,
 				C4BDA26D64C63FD49B9275DE /* 📦 Embed Pods Frameworks */,
 				54F3191A5AF5B40D1319EB95 /* 📦 Copy Pods Resources */,
+				8AD3C9F71CA4A670000985B4 /* ShellScript */,
 			);
 			buildRules = (
 				8AECFCB81C8B5C6A00CD6EFE /* PBXBuildRule */,
@@ -4060,6 +4061,7 @@
 				TargetAttributes = {
 					8AECF21E1C8A59E800CD6EFE = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = XBC8ZV2BGE;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -4135,6 +4137,19 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		8AD3C9F71CA4A670000985B4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
 		};
 		C4BDA26D64C63FD49B9275DE /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -4798,6 +4813,10 @@
 					USE_FULLSCREEN,
 					_DIRENT_HAVE_D_TYPE,
 					__APPLE__,
+					IOS,
+					USE_SDL2,
+					HAVE_POSIX,
+					DISABLEAUDIO,
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -4846,16 +4865,39 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					HAVE_GLES2,
+					ENABLE_OPENGL,
+					USE_GLSL,
+					HAVE_GLES,
+					USE_FREETYPE,
+					ENABLE_SDL,
+					USE_FULLSCREEN,
+					_DIRENT_HAVE_D_TYPE,
+					__APPLE__,
+					IOS,
+					USE_SDL2,
+					HAVE_POSIX,
+					DISABLEAUDIO,
+				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					../Common/Header,
+					../Common/Header/linuxcompat,
+					../Common/Source,
+					"$(inherited)/**",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "../Common/Source ../Common/Source/xcs ../Common/Header $(inherited)/** $(SOURCE_ROOT)/LK8000i";
 				USE_HEADERMAP = NO;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -4866,23 +4908,11 @@
 			baseConfigurationReference = F35FE2B7E189DD7AD4E6A43C /* Pods-LK8000.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-					HAVE_GLES2,
-					ENABLE_OPENGL,
-					USE_GLSL,
-					HAVE_GLES,
-					IOS,
-					USE_FREETYPE,
-					ENABLE_SDL,
-					USE_SDL2,
-					HAVE_POSIX,
-					DISABLEAUDIO,
-				);
+				CODE_SIGN_IDENTITY = "iPhone Developer: Nicola Ferruzzi (7F94GX6M9M)";
 				INFOPLIST_FILE = LK8000i/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = me.vp8.LK8000i;
+				PRODUCT_BUNDLE_IDENTIFIER = land.sticker.lk8000;
 				PRODUCT_NAME = LK8000;
 			};
 			name = Debug;
@@ -4892,9 +4922,11 @@
 			baseConfigurationReference = DAE62F4D2476009492B7EE35 /* Pods-LK8000.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Nicola Ferruzzi (7F94GX6M9M)";
 				INFOPLIST_FILE = LK8000i/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = me.vp8.LK8000i;
+				PRODUCT_BUNDLE_IDENTIFIER = land.sticker.lk8000;
 				PRODUCT_NAME = LK8000;
 			};
 			name = Release;
