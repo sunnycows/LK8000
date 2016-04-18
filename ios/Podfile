@@ -12,6 +12,8 @@ pod 'boost', '~> 1.59.0'
 pod 'glm', '~> 0.9.4.6'
 pod 'zziplib'
 pod 'sdl2'
+pod 'Fabric'
+pod 'Crashlytics'
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
