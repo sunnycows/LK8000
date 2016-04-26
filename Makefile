@@ -1519,7 +1519,7 @@ endif
 .DEFAULT_GOAL := all
 .PHONY: FORCE all clean cleani tags rebuild cppcheck install data
 
-data:	$(PNG) $(MASKED_PNG) $(BITMAP_FILES) $(BIN)/resource.a
+data:	$(PNG) $(MASKED_PNG) $(BITMAP_FILES) $(BIN)/Resource/resource_xml.min.S $(BIN)/Resource/resource_bmp.png.S
 	@$(NQ)echo "  DONE"
 
 all:	$(DISTRIB_OUTPUT) $(OUTPUTS)
