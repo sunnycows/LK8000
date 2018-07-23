@@ -12,9 +12,9 @@
 		8A94A9661C9DC74300639756 /* LKCLHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A94A9651C9DC74300639756 /* LKCLHelper.m */; };
 		8A94A9691C9DD97900639756 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A94A9681C9DD97900639756 /* CoreLocation.framework */; };
 		8A9FD3E31C9F34B500176E4A /* SystemInfo.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8A9FD3E21C9F34B500176E4A /* SystemInfo.mm */; };
+		8AB6A7D81CE5095C00576504 /* resource_data.S in Sources */ = {isa = PBXBuildFile; fileRef = 8AECF5D11C8A5B6000CD6EFE /* resource_data.S */; };
 		8ADDD2241C8C93AD004CD260 /* resource_bmp.png.S in Sources */ = {isa = PBXBuildFile; fileRef = 8ADDD2221C8C93AD004CD260 /* resource_bmp.png.S */; };
 		8ADDD2251C8C93AD004CD260 /* resource_xml.min.S in Sources */ = {isa = PBXBuildFile; fileRef = 8ADDD2231C8C93AD004CD260 /* resource_xml.min.S */; };
-		8ADDD2261C8C9657004CD260 /* resource_data.S in Sources */ = {isa = PBXBuildFile; fileRef = 8AECF5D11C8A5B6000CD6EFE /* resource_data.S */; };
 		8ADDD48E1C8CBA2F004CD260 /* Archive.zip in Resources */ = {isa = PBXBuildFile; fileRef = 8ADDD48D1C8CBA2F004CD260 /* Archive.zip */; };
 		8ADDD4921C8CBF52004CD260 /* ArchiveUnzip.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADDD4911C8CBF52004CD260 /* ArchiveUnzip.m */; };
 		8AECF2331C8A59E900CD6EFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AECF2321C8A59E900CD6EFE /* Assets.xcassets */; };
@@ -1478,7 +1478,7 @@
 		8AECF5CE1C8A5B6000CD6EFE /* ProcessTimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProcessTimer.cpp; sourceTree = "<group>"; };
 		8AECF5D01C8A5B6000CD6EFE /* resource_bmp.S */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = resource_bmp.S; sourceTree = "<group>"; };
 		8AECF5D11C8A5B6000CD6EFE /* resource_data.S */ = {isa = PBXFileReference; explicitFileType = sourcecode.asm; fileEncoding = 4; path = resource_data.S; sourceTree = "<group>"; };
-		8AECF5D21C8A5B6000CD6EFE /* resource_xml.S */ = {isa = PBXFileReference; explicitFileType = sourcecode.asm; fileEncoding = 4; lineEnding = 0; path = resource_xml.S; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.asm.ppc; };
+		8AECF5D21C8A5B6000CD6EFE /* resource_xml.S */ = {isa = PBXFileReference; explicitFileType = sourcecode.asm; fileEncoding = 4; lineEnding = 0; path = resource_xml.S; sourceTree = "<group>"; };
 		8AECF5D31C8A5B6000CD6EFE /* resource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 2; path = resource.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		8AECF5D51C8A5B6000CD6EFE /* ClearTask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ClearTask.cpp; sourceTree = "<group>"; };
 		8AECF5D61C8A5B6000CD6EFE /* CTaskFileHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CTaskFileHelper.cpp; sourceTree = "<group>"; };
@@ -4062,6 +4062,7 @@
 					8AECF21E1C8A59E800CD6EFE = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = XBC8ZV2BGE;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -4149,7 +4150,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 22cfdf76e40a36f79fe950fa7bb469f92e3782dd afbb0f99a535a5c8811dd1debe4b7821e70b91641baff9efbee6f26b78353c00";
 		};
 		C4BDA26D64C63FD49B9275DE /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -4291,7 +4292,6 @@
 				8AECFBC31C8B2CE500CD6EFE /* DoNearest.cpp in Sources */,
 				8AECFC521C8B4A3B00CD6EFE /* dbbconv.cpp in Sources */,
 				8AECFB5D1C8B2A0900CD6EFE /* DoAirspaces.cpp in Sources */,
-				8ADDD2261C8C9657004CD260 /* resource_data.S in Sources */,
 				8AECFD481C8B86A100CD6EFE /* Process.cpp in Sources */,
 				8AECFB411C8B294B00CD6EFE /* PressureFunctions.cpp in Sources */,
 				8AECFB241C8B27F500CD6EFE /* DefaultTask.cpp in Sources */,
@@ -4607,6 +4607,7 @@
 				8AECFB1A1C8B26BB00CD6EFE /* mapxbase.c in Sources */,
 				8AECFC501C8B49F800CD6EFE /* devLXNano3.cpp in Sources */,
 				8AECFB051C8B16F700CD6EFE /* LKProfileLoad.cpp in Sources */,
+				8AB6A7D81CE5095C00576504 /* resource_data.S in Sources */,
 				8AECFB7D1C8B2A3900CD6EFE /* DrawTRI.cpp in Sources */,
 				8AECFC431C8B49CA00CD6EFE /* devVolkslogger.cpp in Sources */,
 				8AECFBCB1C8B2CE500CD6EFE /* FreeFlight.cpp in Sources */,
@@ -4909,11 +4910,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Nicola Ferruzzi (7F94GX6M9M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = XBC8ZV2BGE;
 				INFOPLIST_FILE = LK8000i/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = land.sticker.lk8000;
 				PRODUCT_NAME = LK8000;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -4923,6 +4928,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Nicola Ferruzzi (7F94GX6M9M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = XBC8ZV2BGE;
 				INFOPLIST_FILE = LK8000i/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

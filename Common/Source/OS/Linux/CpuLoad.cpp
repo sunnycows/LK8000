@@ -8,7 +8,7 @@
  *
  */
 #include "externs.h"
-
+#include <numeric>
 #ifdef USE_LOADAVG_CPU
 
 int CpuSummary() {
