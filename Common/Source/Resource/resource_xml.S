@@ -36,7 +36,7 @@
 
 .endm	
 
-    .section .rodata
+    .const_data
 
     /* XMLDIALOG */
     binfile IDR_XML_MULTISELECTLIST_L, Common/Data/Dialogs/dlgMultiSelectList_L.xml

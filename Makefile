@@ -470,7 +470,7 @@ ifeq ($(CONFIG_LINUX),y)
 
  ifeq ($(USE_SDL),y)
   CE_DEFS += -DENABLE_SDL
-    
+
   # check if libSDL2 exist
   USE_SDL2 ?= $(shell $(PKG_CONFIG) --exists sdl2 && echo y)
   ifeq ($(USE_SDL2),y)
@@ -549,7 +549,7 @@ ifeq ($(CONFIG_LINUX),y)
 
   $(eval $(call pkg-config-library,SNDFILE,sndfile))
   CE_DEFS += $(patsubst -I%,-isystem %,$(SNDFILE_CPPFLAGS))
-  
+
   $(eval $(call pkg-config-library,ALSA,alsa))
   CE_DEFS += $(patsubst -I%,-isystem %,$(ALSA_CPPFLAGS))
 
@@ -818,21 +818,21 @@ WINDOW += \
 	$(SRC_WINDOW)/Win32/WndCtrlBase.cpp \
 
 endif
-	
 
-ifeq ($(USE_SOUND_EXTDEV), y)	
+
+ifeq ($(USE_SOUND_EXTDEV), y)
 SOUND := \
 	$(SRC)/Sound/ExtDev/Sound.cpp \
 	$(SRC)/Sound/ExtDev/sound_table.cpp \
 
-else ifeq ($(USE_SDL), y)	
+else ifeq ($(USE_SDL), y)
 SOUND := \
 	$(SRC)/Sound/SDL/Sound.cpp \
-	
+
 else ifeq ($(SNDFILE)$(ALSA),yy)
 SOUND := \
 	$(SRC)/Sound/alsa/Sound.cpp \
-	
+
 endif
 
 ifeq ($(CONFIG_WIN32),y)
@@ -840,7 +840,7 @@ SOUND := \
 	$(SRC)/Sound/Win32/Sound.cpp \
 
 endif
-	
+
 SCREEN := \
 	$(SRC_SCREEN)/LKColor.cpp \
 	$(SRC_SCREEN)/LKPen.cpp \
@@ -854,9 +854,9 @@ SCREEN := \
 ifeq ($(CONFIG_WIN32),y)
 SCREEN += \
 	$(SRC_SCREEN)/GDI/AlphaBlend.cpp \
-	
+
 endif
-	
+
 LIBRARY	:=\
 	$(LIB)/bsearch.cpp \
 	$(LIB)/Crc.cpp\
@@ -908,7 +908,7 @@ LKINTER	:=\
 	$(NTR)/OverTargets.cpp\
 	$(NTR)/VirtualKeys.cpp\
 	$(NTR)/CScreenOrientation.cpp\
-	
+
 
 DRAW	:=\
 	$(DRW)/CalculateScreen.cpp \
@@ -1116,7 +1116,7 @@ TOPOL	:=\
 ifeq ($(OPENGL),y)
 TOPOL	+=\
 	$(TOP)/OpenGL/GLShapeRenderer.cpp  \
-	
+
 endif
 
 MAPDRAW	:=\
@@ -1290,7 +1290,7 @@ DLGS	:=\
 	$(DLG)/dlgBluetooth.cpp\
 	$(DLG)/dlgIgcFile.cpp\
 	$(DLG)/dlgProgress.cpp \
-	
+
 SRC_FILES :=\
 	$(WINDOW) \
 	$(SCREEN) \
@@ -1454,7 +1454,7 @@ GLU :=\
     $(GLUSRC)/sweep.c \
     $(GLUSRC)/tess.c \
     $(GLUSRC)/tessellate.c \
-    $(GLUSRC)/tessmono.c 
+    $(GLUSRC)/tessmono.c
 
 
 DIALOG_XML = $(wildcard Common/Data/Dialogs/*.xml)
@@ -1469,20 +1469,20 @@ DISTRIB_OUTPUT := \
 	Kobo-install-otg.zip \
 	Kobo-install.zip
 
-# temporary still we don't have kobo menu.	
+# temporary still we don't have kobo menu.
 SRC_FILES += \
 	$(SRC)/xcs/Kobo/System.cpp \
 	$(SRC)/xcs/Kobo/Kernel.cpp \
 	$(SRC)/xcs/Kobo/Model.cpp
-	
+
 
 endif
 
 OBJS 	:=\
 	$(patsubst $(SRC)%.cpp,$(BIN)%.o,$(SRC_FILES)) \
-	$(BIN)/poco.a 
-	
-ifneq ($(WIN32_RESOURCE), y)	
+	$(BIN)/poco.a
+
+ifneq ($(WIN32_RESOURCE), y)
 OBJS	+= $(BIN)/resource.a
 endif
 
@@ -1495,7 +1495,7 @@ ifneq ($(CONFIG_LINUX),y)
 endif
 
 ifeq ($(OPENGL),y)
-OBJS	+= $(BIN)/glutess.a 
+OBJS	+= $(BIN)/glutess.a
 endif
 
 IGNORE	:= \( -name .git \) -prune -o
@@ -1547,7 +1547,7 @@ tags:
 	$(Q)$(ETAGS) --declarations --output=TAGS `find . -name *\\\.[ch] -or -name *\\\.cpp`
 	$(Q)$(EBROWSE) -s `find . -name *\\\.[ch] -or -name *\\\.cpp`
 
-cppcheck : 
+cppcheck :
 	$(Q)cppcheck --force --enable=all -q -j4 $(SRC_FILES)
 #	$(Q)cppcheck --force --enable=warning -q -j4 $(ZZIPSRC)
 #	$(Q)cppcheck --force --enable=warning -q -j4 $(COMPAT)
@@ -1613,7 +1613,7 @@ endif
 
 ####### rules
 
-$(OUTPUTS) : $(OUTPUTS_NS) 
+$(OUTPUTS) : $(OUTPUTS_NS)
 	@$(NQ)echo "  STRIP   $@"
 	$(Q)$(STRIP) $< -o $@
 ifneq ($(TARGET),OPENVARIO)
@@ -1706,24 +1706,24 @@ $(BIN)/Data/Dialogs/%.min.xml: Common/Data/Dialogs/%.xml
 $(MASKED_PNG) : $(patsubst $(PNG_TARGET)/%.PNG, $(BITMAP_DIR)/%.BMP, $@)
 	@$(NQ)echo "  Convert Image	  $@"
 	$(Q)$(MKDIR) $(dir $@)
-ifeq ($(OPENGL),y)	
-	$(Q)convert -crop 50%x100% +repage $(patsubst $(PNG_TARGET)/%.PNG, $(BITMAP_DIR)/%.BMP, $@) +swap -alpha Off -compose CopyOpacity -composite PNG32:$@	
+ifeq ($(OPENGL),y)
+	$(Q)convert -crop 50%x100% +repage $(patsubst $(PNG_TARGET)/%.PNG, $(BITMAP_DIR)/%.BMP, $@) +swap -alpha Off -compose CopyOpacity -composite PNG32:$@
 else
-	$(Q)convert $(patsubst $(PNG_TARGET)/%.PNG, $(BITMAP_DIR)/%.BMP, $@) PNG24:$@	
+	$(Q)convert $(patsubst $(PNG_TARGET)/%.PNG, $(BITMAP_DIR)/%.BMP, $@) PNG24:$@
 endif
 
 $(PNG) : $(patsubst $(PNG_TARGET)/%.PNG, $(BITMAP_DIR)/%.BMP, $@)
 	@$(NQ)echo "  Convert Image	  $@"
 	$(Q)$(MKDIR) $(dir $@)
-	$(Q)convert $(patsubst $(PNG_TARGET)/%.PNG, $(BITMAP_DIR)/%.BMP, $@) PNG24:$@	
+	$(Q)convert $(patsubst $(PNG_TARGET)/%.PNG, $(BITMAP_DIR)/%.BMP, $@) PNG24:$@
 
 $(BIN)/Data/Bitmaps/%.png: Common/Data/Bitmaps/%.bmp
 	@$(NQ)echo "  Convert Image	  $@"
 	$(Q)$(MKDIR) $(dir $@)
-ifeq ($(OPENGL),y)	
-	$(Q)convert -crop 50%x100% +repage $^ +swap -alpha Off -compose CopyOpacity -composite PNG32:$@	
+ifeq ($(OPENGL),y)
+	$(Q)convert -crop 50%x100% +repage $^ +swap -alpha Off -compose CopyOpacity -composite PNG32:$@
 else
-	$(Q)convert $^ PNG24:$@	
+	$(Q)convert $^ PNG24:$@
 endif
 
 .PRECIOUS: $(BIN)/Data/Dialogs/%.min.xml \

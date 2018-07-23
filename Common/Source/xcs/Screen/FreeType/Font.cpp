@@ -43,9 +43,9 @@ Copyright_License {
 #endif
 
 #ifdef __APPLE__
-#include <Functional>
+#include <functional>
 #include <TargetConditionals.h>
-#import "ArchiveUnzip.h"
+#import "../../../LK8000/ios/LK8000i/ArchiveUnzip.h"
 #endif
 
 #if defined(__clang__) && defined(__arm__)
