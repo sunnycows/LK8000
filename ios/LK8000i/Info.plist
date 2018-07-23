@@ -19,7 +19,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>10</string>
+	<string>11</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -36,8 +36,12 @@
 	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>LK8000 requires your position to show you fily infomrations and properly log IGC files</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>LK8000 requires your position in background to properly log IGC files</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>LK8000 requires your position to show you fly informations</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>
