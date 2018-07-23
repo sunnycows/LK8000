@@ -36,22 +36,13 @@
     self = [super init];
     if (self) {
         self.status = kLKCLHelperStatus_AppSpecific_NotDermined_Requesting;
-        
-/*
-        NSNumber *us = [[NSUserDefaults standardUserDefaults] objectForKey:KUserDefaultsKey];
-        if (us != nil) {
-            NNCLHelperStatus uss = (NNCLHelperStatus)[us unsignedIntegerValue];
-            if (uss == kNNCLHelperStatus_AppSpecific_Disallow) {
-                self.status = kNNCLHelperStatus_AppSpecific_Disallow;
-            }
-        }
- */
-        
+
         self.manager = [[CLLocationManager alloc] init];
         self.iosseven = ![self.manager respondsToSelector:@selector(requestWhenInUseAuthorization)];
         self.manager.delegate = self;
         self.manager.desiredAccuracy = kCLLocationAccuracyBest;
         self.manager.headingFilter = 1.0f;
+        self.manager.allowsBackgroundLocationUpdates = true;
     }
     return self;
 }
@@ -198,21 +189,21 @@
 }
 
 - (void)showAppspecificRequest {
-    NSString *title = NSLocalizedString(@"Attenzione", @"Attenzione");
-    NSString *msg = NSLocalizedString(@"LK8000 vorrebbe accedere alla tua posizione.", @"LK8000 vorrebbe accedere alla tua posizione.");
+    NSString *title = NSLocalizedString(@"Warning", @"Warning");
+    NSString *msg = NSLocalizedString(@"LK8000 requires your position.", @"LK8000 requires your position to show fly informations and create IGC log files");
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
                                                     message:msg
                                                    delegate:self
-                                          cancelButtonTitle:NSLocalizedString(@"Non permettere", @"Non permettere")
-                                          otherButtonTitles:NSLocalizedString(@"Prosegui", @"Prosegui"), nil];
+                                          cancelButtonTitle:NSLocalizedString(@"Do not allow", @"Do not allow")
+                                          otherButtonTitles:NSLocalizedString(@"Ok", @"Ok"), nil];
     self.av_appspecific = alert;
     [alert show];
 }
 
 - (void)showSystemDisallowed {
-    NSString *title = NSLocalizedString(@"Attenzione", @"Attenzione");
-    NSString *msg = NSLocalizedString(@"LK8000 non ha accesso alla tua posizione.", @"LK8000 non ha accesso alla tua posizione.");
+    NSString *title = NSLocalizedString(@"Error", @"Error");
+    NSString *msg = NSLocalizedString(@"LK8000 has not been not allowed to receive your position.", @"LK8000 has not been not allowed to receive your position.");
     NSMutableString *mmsg = [NSMutableString new];
     
     [mmsg appendString:msg];
@@ -220,7 +211,7 @@
     if (self.iosseven) {
         [mmsg appendString:NSLocalizedString(@"Per abilitare la posizione dell'utente apri Impostazioni -> Privacy -> Posizione -> attiva LK8000", @"Per abilitare la posizione dell'utente apri Impostazioni -> Privacy -> Posizione -> attiva LK8000")];
     } else {
-        [mmsg appendString:NSLocalizedString(@"Per abilitarla prosegui.", @"Per abilitarla prosegui.")];
+        [mmsg appendString:NSLocalizedString(@"To enable location updates tap here.", @"To enable location updates tap here.")];
     }
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
@@ -240,7 +231,7 @@
             
             if (!self.iosseven) {
                 // iOS >= 8
-                [self.manager requestWhenInUseAuthorization];
+                [self.manager requestAlwaysAuthorization];
             } else {
                 // iOS == 7
                 [self startTracking];
@@ -268,15 +259,17 @@
     
     self.altimeter = [[CMAltimeter alloc] init];
 
+    __weak typeof(self) wself = self;
+
     [self.altimeter startRelativeAltitudeUpdatesToQueue:[NSOperationQueue mainQueue]
                                             withHandler:^(CMAltitudeData * _Nullable altitudeData, NSError * _Nullable error) {
                                                 NSLog(@"%@", altitudeData.pressure);
-                                                self.altitudeData = altitudeData;
-                                                if (self.callback) {
-                                                    bool keep = self.callback(self.status, nil, altitudeData);
+                                                wself.altitudeData = altitudeData;
+                                                if (wself.callback) {
+                                                    bool keep = wself.callback(wself.status, nil, altitudeData);
                                                     if (keep == NO) {
-                                                        [self stopTracking];
-                                                        self.callback = nil;
+                                                        [wself stopTracking];
+                                                        wself.callback = nil;
                                                     }
                                                 }
     }];

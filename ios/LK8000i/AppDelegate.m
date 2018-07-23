@@ -17,7 +17,7 @@
 #import "LKCLHelper.h"
 
 #include "externs.h"
-#include "parser.h"
+#include "Parser.h"
 
 extern NMEA_INFO GPS_INFO;
 
