@@ -13,6 +13,7 @@
 		8A94A9691C9DD97900639756 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A94A9681C9DD97900639756 /* CoreLocation.framework */; };
 		8A9FD3E31C9F34B500176E4A /* SystemInfo.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8A9FD3E21C9F34B500176E4A /* SystemInfo.mm */; };
 		8AB6A7D81CE5095C00576504 /* resource_data.S in Sources */ = {isa = PBXBuildFile; fileRef = 8AECF5D11C8A5B6000CD6EFE /* resource_data.S */; };
+		8ABD3C8D2106430A004E7E28 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABD3C8C2106430A004E7E28 /* main.m */; };
 		8ADDD2241C8C93AD004CD260 /* resource_bmp.png.S in Sources */ = {isa = PBXBuildFile; fileRef = 8ADDD2221C8C93AD004CD260 /* resource_bmp.png.S */; };
 		8ADDD2251C8C93AD004CD260 /* resource_xml.min.S in Sources */ = {isa = PBXBuildFile; fileRef = 8ADDD2231C8C93AD004CD260 /* resource_xml.min.S */; };
 		8ADDD48E1C8CBA2F004CD260 /* Archive.zip in Resources */ = {isa = PBXBuildFile; fileRef = 8ADDD48D1C8CBA2F004CD260 /* Archive.zip */; };
@@ -640,6 +641,7 @@
 		8A94A9651C9DC74300639756 /* LKCLHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LKCLHelper.m; path = ios/LK8000i/LKCLHelper.m; sourceTree = "<group>"; };
 		8A94A9681C9DD97900639756 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8A9FD3E21C9F34B500176E4A /* SystemInfo.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SystemInfo.mm; sourceTree = "<group>"; };
+		8ABD3C8C2106430A004E7E28 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ios/LK8000i/main.m; sourceTree = "<group>"; };
 		8ADDD2221C8C93AD004CD260 /* resource_bmp.png.S */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; name = resource_bmp.png.S; path = Bin/LINUX/Resource/resource_bmp.png.S; sourceTree = "<group>"; };
 		8ADDD2231C8C93AD004CD260 /* resource_xml.min.S */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; lineEnding = 0; name = resource_xml.min.S; path = Bin/LINUX/Resource/resource_xml.min.S; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.asm.ppc; };
 		8ADDD48D1C8CBA2F004CD260 /* Archive.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = Archive.zip; path = Data/Archive.zip; sourceTree = SOURCE_ROOT; };
@@ -1984,6 +1986,7 @@
 				8A94A9651C9DC74300639756 /* LKCLHelper.m */,
 				8ADDD4901C8CBF52004CD260 /* ArchiveUnzip.h */,
 				8ADDD4911C8CBF52004CD260 /* ArchiveUnzip.m */,
+				8ABD3C8C2106430A004E7E28 /* main.m */,
 			);
 			name = "iOS specific";
 			path = ../..;
@@ -4031,6 +4034,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8AECF23A1C8A59E900CD6EFE /* Build configuration list for PBXNativeTarget "LK8000" */;
 			buildPhases = (
+				E1A7F87F022D6569219D0D0A /* [CP] Check Pods Manifest.lock */,
 				78FBC05B81FA093B659A6DE1 /* 📦 Check Pods Manifest.lock */,
 				8AECF21B1C8A59E800CD6EFE /* Sources */,
 				8AECF21C1C8A59E800CD6EFE /* Frameworks */,
@@ -4038,6 +4042,8 @@
 				C4BDA26D64C63FD49B9275DE /* 📦 Embed Pods Frameworks */,
 				54F3191A5AF5B40D1319EB95 /* 📦 Copy Pods Resources */,
 				8AD3C9F71CA4A670000985B4 /* ShellScript */,
+				D15DB6E2F33D4A6B7241A964 /* [CP] Embed Pods Frameworks */,
+				02307C66ACC6A7775FFEF57E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 				8AECFCB81C8B5C6A00CD6EFE /* PBXBuildRule */,
@@ -4109,6 +4115,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		02307C66ACC6A7775FFEF57E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LK8000/Pods-LK8000-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		54F3191A5AF5B40D1319EB95 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -4165,6 +4186,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LK8000/Pods-LK8000-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D15DB6E2F33D4A6B7241A964 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LK8000/Pods-LK8000-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E1A7F87F022D6569219D0D0A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LK8000-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -4694,6 +4748,7 @@
 				8AECFD491C8B86B600CD6EFE /* FileSource.cpp in Sources */,
 				8AECFC7E1C8B4B3C00CD6EFE /* dlgTaskWaypoint.cpp in Sources */,
 				8AECFC831C8B4B3C00CD6EFE /* dlgTimeGates.cpp in Sources */,
+				8ABD3C8D2106430A004E7E28 /* main.m in Sources */,
 				8AECFC1B1C8B465A00CD6EFE /* lkgpsapi.cpp in Sources */,
 				8AECFC1E1C8B469B00CD6EFE /* UpdateBaroSource.cpp in Sources */,
 				8AECFBD71C8B2CE500CD6EFE /* Pirker.cpp in Sources */,
@@ -4932,6 +4987,21 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Nicola Ferruzzi (7F94GX6M9M)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = XBC8ZV2BGE;
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/boost\"",
+					"\"$(PODS_ROOT)/freetype/include\"",
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Crashlytics\"",
+					"\"${PODS_ROOT}/Headers/Public/Fabric\"",
+					"\"${PODS_ROOT}/Headers/Public/ZipUtilities\"",
+					"\"${PODS_ROOT}/Headers/Public/boost\"",
+					"\"${PODS_ROOT}/Headers/Public/freetype\"",
+					"\"${PODS_ROOT}/Headers/Public/glm\"",
+					"\"${PODS_ROOT}/Headers/Public/libpng\"",
+					"\"${PODS_ROOT}/Headers/Public/sdl2\"/**",
+					"\"${PODS_ROOT}/Headers/Public/zziplib\"",
+				);
 				INFOPLIST_FILE = LK8000i/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -4950,6 +5020,21 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Nicola Ferruzzi (7F94GX6M9M)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = XBC8ZV2BGE;
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/boost\"",
+					"\"$(PODS_ROOT)/freetype/include\"",
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Crashlytics\"",
+					"\"${PODS_ROOT}/Headers/Public/Fabric\"",
+					"\"${PODS_ROOT}/Headers/Public/ZipUtilities\"",
+					"\"${PODS_ROOT}/Headers/Public/boost\"",
+					"\"${PODS_ROOT}/Headers/Public/freetype\"",
+					"\"${PODS_ROOT}/Headers/Public/glm\"",
+					"\"${PODS_ROOT}/Headers/Public/libpng\"",
+					"\"${PODS_ROOT}/Headers/Public/sdl2\"/**",
+					"\"${PODS_ROOT}/Headers/Public/zziplib\"",
+				);
 				INFOPLIST_FILE = LK8000i/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

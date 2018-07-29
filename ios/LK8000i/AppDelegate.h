@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "../Pods/Headers/Private/sdl2/SDL_uikitappdelegate.h"
+//#import "../Pods/Headers/Private/sdl2/SDL_uikitappdelegate.h"
 
-@interface AppDelegate : SDLUIKitDelegate
-@property (nonatomic, strong) UIWindow *uiWindow;
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@property (strong, nonatomic) UIWindow *window;
 @end
+
+
 

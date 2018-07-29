@@ -1,7 +1,7 @@
 source 'https://github.com/CocoaPods/Specs.git'
 source 'https://github.com/nferruzzi/libsdl2.git'
-
-xcodeproj 'LK8000.xcodeproj'
+platform :ios, '9.0'
+project 'LK8000.xcodeproj'
 
 target 'LK8000' do
 
@@ -11,7 +11,7 @@ pod 'ZipUtilities', '~> 1.7.2'
 pod 'boost', '~> 1.59.0'
 pod 'glm', '~> 0.9.4.6'
 pod 'zziplib'
-pod 'sdl2'
+pod 'sdl2', '~> 2.0.8'
 pod 'Fabric'
 pod 'Crashlytics'
 

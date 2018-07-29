@@ -108,6 +108,8 @@
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
+    return;
+
     if (newHeading.headingAccuracy < 0)
         return;
 
