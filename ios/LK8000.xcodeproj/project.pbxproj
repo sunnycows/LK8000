@@ -12,6 +12,7 @@
 		8A94A9661C9DC74300639756 /* LKCLHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A94A9651C9DC74300639756 /* LKCLHelper.m */; };
 		8A94A9691C9DD97900639756 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A94A9681C9DD97900639756 /* CoreLocation.framework */; };
 		8A9FD3E31C9F34B500176E4A /* SystemInfo.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8A9FD3E21C9F34B500176E4A /* SystemInfo.mm */; };
+		8AA73283210DE96C00CB8CA2 /* CLLocation+NMEA.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA73282210DE96C00CB8CA2 /* CLLocation+NMEA.m */; };
 		8AB6A7D81CE5095C00576504 /* resource_data.S in Sources */ = {isa = PBXBuildFile; fileRef = 8AECF5D11C8A5B6000CD6EFE /* resource_data.S */; };
 		8ABD3C8D2106430A004E7E28 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABD3C8C2106430A004E7E28 /* main.m */; };
 		8ADDD2241C8C93AD004CD260 /* resource_bmp.png.S in Sources */ = {isa = PBXBuildFile; fileRef = 8ADDD2221C8C93AD004CD260 /* resource_bmp.png.S */; };
@@ -641,6 +642,8 @@
 		8A94A9651C9DC74300639756 /* LKCLHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LKCLHelper.m; path = ios/LK8000i/LKCLHelper.m; sourceTree = "<group>"; };
 		8A94A9681C9DD97900639756 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8A9FD3E21C9F34B500176E4A /* SystemInfo.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SystemInfo.mm; sourceTree = "<group>"; };
+		8AA73281210DE96C00CB8CA2 /* CLLocation+NMEA.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CLLocation+NMEA.h"; path = "ios/LK8000i/CLLocation+NMEA.h"; sourceTree = "<group>"; };
+		8AA73282210DE96C00CB8CA2 /* CLLocation+NMEA.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CLLocation+NMEA.m"; path = "ios/LK8000i/CLLocation+NMEA.m"; sourceTree = "<group>"; };
 		8ABD3C8C2106430A004E7E28 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ios/LK8000i/main.m; sourceTree = "<group>"; };
 		8ADDD2221C8C93AD004CD260 /* resource_bmp.png.S */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; name = resource_bmp.png.S; path = Bin/LINUX/Resource/resource_bmp.png.S; sourceTree = "<group>"; };
 		8ADDD2231C8C93AD004CD260 /* resource_xml.min.S */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; lineEnding = 0; name = resource_xml.min.S; path = Bin/LINUX/Resource/resource_xml.min.S; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.asm.ppc; };
@@ -1987,6 +1990,8 @@
 				8ADDD4901C8CBF52004CD260 /* ArchiveUnzip.h */,
 				8ADDD4911C8CBF52004CD260 /* ArchiveUnzip.m */,
 				8ABD3C8C2106430A004E7E28 /* main.m */,
+				8AA73281210DE96C00CB8CA2 /* CLLocation+NMEA.h */,
+				8AA73282210DE96C00CB8CA2 /* CLLocation+NMEA.m */,
 			);
 			name = "iOS specific";
 			path = ../..;
@@ -4352,6 +4357,7 @@
 				8AECFC941C8B4B5F00CD6EFE /* RenderSpeed.cpp in Sources */,
 				8AECFC821C8B4B3C00CD6EFE /* dlgThermalDetails.cpp in Sources */,
 				8AECFBBF1C8B2CE500CD6EFE /* DoCalculationsSlow.cpp in Sources */,
+				8AA73283210DE96C00CB8CA2 /* CLLocation+NMEA.m in Sources */,
 				8AECFB7E1C8B2A3900CD6EFE /* DrawWind.cpp in Sources */,
 				8AECFB3C1C8B294B00CD6EFE /* DrawFunctions.cpp in Sources */,
 				8AECFC441C8B49CA00CD6EFE /* devWesterboer.cpp in Sources */,
