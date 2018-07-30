@@ -7,8 +7,6 @@
 //
 // libPNG requires: -DPNG_ARM_NEON_OPT=0
 
-#import <Objc/runtime.h>
-
 extern "C" {
     #include "../Pods/sdl2/include/SDL.h"
     #include "../Pods/sdl2/include/SDL_events.h"
@@ -22,14 +20,6 @@ extern "C" {
 #import <Crashlytics/Crashlytics.h>
 
 #import "AppDelegate.h"
-#import "ArchiveUnzip.h"
-#import "LKCLHelper.h"
-#import "CLLocation+NMEA.h"
-
-#include "externs.h"
-#include "Parser.h"
-
-extern NMEA_INFO GPS_INFO;
 
 #pragma mark 
 
@@ -52,66 +42,13 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
 
     UIScreen *screen = [UIScreen mainScreen];
     self.window = [[UIWindow alloc]initWithFrame:screen.bounds];
-    UIViewController *uv = [[UIViewController alloc] init];
-    uv.view.backgroundColor = [UIColor yellowColor];
-    
+    UIStoryboard *main = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    UIViewController *uv = [main instantiateInitialViewController];
+
     [self.window setRootViewController:uv];
     [self.window makeKeyAndVisible];
 
-    static ArchiveUnzip *archive = [ArchiveUnzip new];
-    [archive startDecompression:^(NSError *error) {
-        // Wait for decompression; LK8000 requires a proper data folders in order
-        // to initialize properly
-        NSLog(@"Decompression done: %@", error);
-        [self performSelector:@selector(requestPosition) withObject:nil];
-    }];
-
     return YES;
-}
-
-- (void)requestPosition{
-    __block BOOL canRunLK8000 = true;
-    __weak typeof(self) wself = self;
-
-    [[LKCLHelper sharedInstance] requestLocationIfPossibleWithUI:YES
-                                                           block:^bool(LKCLHelperStatus status, CLLocation *location, CMAltitudeData *altitude) {
-                                                               if (canRunLK8000) {
-                                                                   canRunLK8000 = false;
-                                                                   [wself performSelector:@selector(runLK8000) withObject:nil];
-                                                               }
-                                                               [self sendLocation:location altitude:altitude];
-                                                               return TRUE;
-                                                           }];
-
-}
-
-- (void)runLK8000 {
-    SDL_SetMainReady();
-    SDL_iPhoneSetEventPump(SDL_TRUE);
-    LK8000_main(0, NULL);
-    SDL_iPhoneSetEventPump(SDL_FALSE);
-}
-
-- (void)sendLocation:(CLLocation *)location altitude:(CMAltitudeData *)altitude {
-    static char t[1024];
-    
-    if (location) {
-        NSArray *nmeas = [location getNMEA];
-        for (NSString *nmea in nmeas) {
-            NSLog(@"%@", nmea);
-            const char *ct = [nmea UTF8String];
-            strcpy(t, ct);
-            NMEAParser::ParseNMEAString(0, t, &GPS_INFO);
-        }
-    }
-    
-    if (altitude) {
-        NSString *nmea = [CLLocation nmeaChecksum:[NSString stringWithFormat:@"PGRMZ,%.4f,f", [altitude.pressure floatValue]]];
-        NSLog(@"%@", nmea);
-        const char *ct = [nmea UTF8String];
-        strcpy(t, ct);
-        NMEAParser::ParseNMEAString(0, t, &GPS_INFO);
-    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

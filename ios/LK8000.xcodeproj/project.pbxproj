@@ -13,6 +13,8 @@
 		8A94A9691C9DD97900639756 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A94A9681C9DD97900639756 /* CoreLocation.framework */; };
 		8A9FD3E31C9F34B500176E4A /* SystemInfo.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8A9FD3E21C9F34B500176E4A /* SystemInfo.mm */; };
 		8AA73283210DE96C00CB8CA2 /* CLLocation+NMEA.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AA73282210DE96C00CB8CA2 /* CLLocation+NMEA.m */; };
+		8AA73285210DEDEC00CB8CA2 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AA73284210DEDEC00CB8CA2 /* MainStoryboard.storyboard */; };
+		8AA73288210DF05000CB8CA2 /* MainViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8AA73287210DF05000CB8CA2 /* MainViewController.mm */; };
 		8AB6A7D81CE5095C00576504 /* resource_data.S in Sources */ = {isa = PBXBuildFile; fileRef = 8AECF5D11C8A5B6000CD6EFE /* resource_data.S */; };
 		8ABD3C8D2106430A004E7E28 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABD3C8C2106430A004E7E28 /* main.m */; };
 		8ADDD2241C8C93AD004CD260 /* resource_bmp.png.S in Sources */ = {isa = PBXBuildFile; fileRef = 8ADDD2221C8C93AD004CD260 /* resource_bmp.png.S */; };
@@ -644,6 +646,9 @@
 		8A9FD3E21C9F34B500176E4A /* SystemInfo.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SystemInfo.mm; sourceTree = "<group>"; };
 		8AA73281210DE96C00CB8CA2 /* CLLocation+NMEA.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CLLocation+NMEA.h"; path = "ios/LK8000i/CLLocation+NMEA.h"; sourceTree = "<group>"; };
 		8AA73282210DE96C00CB8CA2 /* CLLocation+NMEA.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CLLocation+NMEA.m"; path = "ios/LK8000i/CLLocation+NMEA.m"; sourceTree = "<group>"; };
+		8AA73284210DEDEC00CB8CA2 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = MainStoryboard.storyboard; path = ios/LK8000i/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		8AA73286210DF05000CB8CA2 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = ios/LK8000i/MainViewController.h; sourceTree = "<group>"; };
+		8AA73287210DF05000CB8CA2 /* MainViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = MainViewController.mm; path = ios/LK8000i/MainViewController.mm; sourceTree = "<group>"; };
 		8ABD3C8C2106430A004E7E28 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ios/LK8000i/main.m; sourceTree = "<group>"; };
 		8ADDD2221C8C93AD004CD260 /* resource_bmp.png.S */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; name = resource_bmp.png.S; path = Bin/LINUX/Resource/resource_bmp.png.S; sourceTree = "<group>"; };
 		8ADDD2231C8C93AD004CD260 /* resource_xml.min.S */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; lineEnding = 0; name = resource_xml.min.S; path = Bin/LINUX/Resource/resource_xml.min.S; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.asm.ppc; };
@@ -1992,6 +1997,9 @@
 				8ABD3C8C2106430A004E7E28 /* main.m */,
 				8AA73281210DE96C00CB8CA2 /* CLLocation+NMEA.h */,
 				8AA73282210DE96C00CB8CA2 /* CLLocation+NMEA.m */,
+				8AA73284210DEDEC00CB8CA2 /* MainStoryboard.storyboard */,
+				8AA73286210DF05000CB8CA2 /* MainViewController.h */,
+				8AA73287210DF05000CB8CA2 /* MainViewController.mm */,
 			);
 			name = "iOS specific";
 			path = ../..;
@@ -4111,6 +4119,7 @@
 				8AECF2331C8A59E900CD6EFE /* Assets.xcassets in Resources */,
 				8AECF2361C8A59E900CD6EFE /* LaunchScreen.storyboard in Resources */,
 				8AECF9461C8A5B6100CD6EFE /* LICENSE in Resources */,
+				8AA73285210DEDEC00CB8CA2 /* MainStoryboard.storyboard in Resources */,
 				8AECF7E51C8A5B6000CD6EFE /* jas_config.h.in in Resources */,
 				8AECF7E21C8A5B6000CD6EFE /* header.txt in Resources */,
 				8AECF9A61C8A5B6200CD6EFE /* lk8000.rc in Resources */,
@@ -4251,6 +4260,7 @@
 				8AECFBD31C8B2CE500CD6EFE /* MagneticVariation.cpp in Sources */,
 				8AECFC401C8B499200CD6EFE /* devLXV7_EXP.cpp in Sources */,
 				8AECFB541C8B29CC00CD6EFE /* Read.cpp in Sources */,
+				8AA73288210DF05000CB8CA2 /* MainViewController.mm in Sources */,
 				8AECFBDB1C8B2CE500CD6EFE /* SpeedToFly.cpp in Sources */,
 				8AECFCA11C8B4B7F00CD6EFE /* RotateStartPoints.cpp in Sources */,
 				8ADDD2241C8C93AD004CD260 /* resource_bmp.png.S in Sources */,

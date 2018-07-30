@@ -259,13 +259,12 @@
         return;
     }
     
-    self.altimeter = [[CMAltimeter alloc] init];
+    self.altimeter = [CMAltimeter new];
 
     __weak typeof(self) wself = self;
 
     [self.altimeter startRelativeAltitudeUpdatesToQueue:[NSOperationQueue mainQueue]
                                             withHandler:^(CMAltitudeData * _Nullable altitudeData, NSError * _Nullable error) {
-                                                NSLog(@"%@", altitudeData.pressure);
                                                 wself.altitudeData = altitudeData;
                                                 if (wself.callback) {
                                                     bool keep = wself.callback(wself.status, nil, altitudeData);
