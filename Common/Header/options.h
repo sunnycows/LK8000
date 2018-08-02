@@ -173,7 +173,7 @@
 // #define BCT_ALT_FIX
 
 // use WGS84 earth model
-#if !defined(UNDER_CE)
+#if !defined(UNDER_CE) && !defined(__APPLE__)
     #define _WGS84
     #ifdef __cplusplus
         #include <GeographicLib/Constants.hpp>

@@ -134,7 +134,7 @@ extern bool GlobalRunning;
             NSLog(@"%@", nmea);
             const char *ct = [nmea UTF8String];
             strcpy(t, ct);
-            NMEAParser::ParseNMEAString(0, t, &GPS_INFO);
+//            NMEAParser::ParseNMEAString_Internal(0, t, &GPS_INFO);
         }
     }
 
@@ -145,7 +145,7 @@ extern bool GlobalRunning;
         NSLog(@"%@", nmea);
         const char *ct = [nmea UTF8String];
         strcpy(t, ct);
-        NMEAParser::ParseNMEAString(0, t, &GPS_INFO);
+//        NMEAParser::ParseNMEAString_Internal(0, t, &GPS_INFO);
     }
 }
 

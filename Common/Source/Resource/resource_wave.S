@@ -36,7 +36,7 @@
 
 .endm	
 
-    .section .rodata
+    .const_data
 
     binfile IDR_WAV_MM0, Common/Data/Sounds/MM0.WAV
     binfile IDR_WAV_MM1, Common/Data/Sounds/MM1.WAV

@@ -673,7 +673,7 @@ int main(int argc, char *argv[]) {
 #endif
 
   // use mutex to avoid multiple instances of lk8000 be running
-#if (!((WINDOWSPC>0) && TESTBENCH)) && !defined(ANDROID)
+#if (!((WINDOWSPC>0) && TESTBENCH)) && !defined(ANDROID) && !defined(__APPLE__)
    if (!Mutex.tryLock()) {
 	  return(-2);
   }

@@ -188,9 +188,7 @@ const TCHAR * LKGetSystemPath(void) {
 const TCHAR * LKGetLocalPath(void) {
 #ifdef KOBO
     return _T("/mnt/onboard/" LKDATADIR "/");
-#else
-
-#ifdef __APPLE__
+#elif __APPLE__
     NSString *t = [ArchiveUnzip pathForArchiveRoot:nil];
     return [t cStringUsingEncoding:NSASCIIStringEncoding];
 #else
