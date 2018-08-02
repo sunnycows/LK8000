@@ -641,7 +641,7 @@
 			outputFiles = (
 				"$(DERIVED_FILE_DIR)/${INPUT_FILE_NAME}.o",
 			);
-			script = "cd ..\nclang -x assembler-with-cpp -arch x86_64 -c ${INPUT_FILE_PATH} -o ${DERIVED_FILE_DIR}/${INPUT_FILE_NAME}.o";
+			script = "cd ..\nclang -x assembler-with-cpp -fembed-bitcode -arch ${ARCHS} -c ${INPUT_FILE_PATH} -o ${DERIVED_FILE_DIR}/${INPUT_FILE_NAME}.o";
 		};
 		8AECF2441C8A5AF000CD6EFE /* PBXBuildRule */ = {
 			isa = PBXBuildRule;
