@@ -10,7 +10,7 @@
 #include "LKObjects.h"
 #ifdef ENABLE_OPENGL
 #include "Screen/OpenGL/Scope.hpp"
-#include <Screen/OpenGL/VertexPointer.hpp>
+#include "Screen/OpenGL/VertexPointer.hpp"
 #endif
 //
 // Draw the reachable SHADED terrain glide amoeba

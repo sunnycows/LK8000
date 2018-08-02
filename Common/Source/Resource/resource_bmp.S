@@ -36,7 +36,7 @@
 
 .endm	
 
-    .section .rodata
+    .const_data
 
     binfile IDB_EMPTY,              Common/Data/Bitmaps/Empty.bmp
     binfile IDB_TOWN                Common/Data/Bitmaps/town.bmp

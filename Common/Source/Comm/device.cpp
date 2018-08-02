@@ -653,7 +653,11 @@ BOOL devInit() {
           Com = new UsbSerialPort(i, &Port[4], dwSpeed[SpeedIndex], BitIndex);
 #endif
         } else {
+#ifndef __APPLE__
             Com = new SerialPort(i, Port, dwSpeed[SpeedIndex], BitIndex, PollingMode);
+#else
+            Com = NULL;
+#endif
         }
 
         if (Com && Com->Initialize()) {

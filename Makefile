@@ -1683,11 +1683,11 @@ $(BIN)/Resource/resource_wave.o:  $(RSCSRC)/resource_wave.S
 
 $(BIN)/Resource/resource_bmp.png.S : $(RSCSRC)/resource_bmp.S $(patsubst Common/Data/Bitmaps/%.bmp,$(BIN)/Data/Bitmaps/%.png,$(BITMAP_RES))
 	@$(NQ)echo "  update $@"
-	@$(SED_R) -r 's|(^.*)Common/(Data/Bitmaps[^"]+)(.bmp).*$$|\1$(BIN)/\2.png|g' $< > $@
+	@$(SED_R) 's|(^.*)Common/(Data/Bitmaps[^"]+)(.bmp).*$$|\1$(BIN)/\2.png|g' $< > $@
 
 $(BIN)/Resource/resource_xml.min.S :  $(RSCSRC)/resource_xml.S $(patsubst Common/Data/Dialogs/%.xml,$(BIN)/Data/Dialogs/%.min.xml,$(DIALOG_XML))
 	@$(NQ)echo "  update $@"
-	@$(SED_R) -r 's|(^.*)Common/(Data/Dialogs[^"]+)(.xml.*)$$|\1$(BIN)/\2.min\3|g' $< > $@
+	@$(SED_R) 's|(^.*)Common/(Data/Dialogs[^"]+)(.xml.*)$$|\1$(BIN)/\2.min\3|g' $< > $@
 
 $(BIN)/%.rsc: $(BIN)/%.min.rc
 	@$(NQ)echo "  WINDRES $@"

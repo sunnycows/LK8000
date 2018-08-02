@@ -225,7 +225,11 @@ void MapWindow::DrawTptAirSpace(LKSurface& Surface, const RECT& rc) {
             // Fill Stencil
             Surface.SelectObject(hAirspaceBorderPen);
             Surface.SelectObject(LKBrush_Hollow);
+#ifdef __APPLE__
+            (*it)->Draw(Surface, true);
+#else
             (*it)->Draw(Surface, rc, true);
+#endif
 
             glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
             glDepthMask(GL_TRUE);
@@ -250,7 +254,11 @@ void MapWindow::DrawTptAirSpace(LKSurface& Surface, const RECT& rc) {
         } else {
             Surface.SelectObject(LKBrush_Hollow);
         }
+#ifdef __APPLE__
+        (*it)->Draw(Surface, true);
+#else
         (*it)->Draw(Surface, rc, true);
+#endif
     }//for
 }
 #endif
