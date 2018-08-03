@@ -104,11 +104,7 @@ bool  UpdateMonitor(void)
     }
 
     LKASSERT((unsigned)dev.PortNumber < array_size(wasSilent));
-#ifndef __APPLE__
     if ((LKHearthBeats-dev.HB)>10 ) {
-#else
-    if (0) {
-#endif
 #ifdef DEBUGNPM
       StartupStore(_T("... GPS Port %d : no activity LKHB=%u CBHB=%u" NEWLINE), dev.PortNumber, LKHearthBeats, dev.HB);
 #endif

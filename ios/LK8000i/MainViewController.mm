@@ -10,6 +10,7 @@
 #import "LKCLHelper.h"
 #import "ArchiveUnzip.h"
 #import "CLLocation+NMEA.h"
+#import "InternalSensors.h"
 
 extern "C" {
 #include "../Pods/sdl2/include/SDL.h"
@@ -21,9 +22,7 @@ extern "C" {
 }
 
 #include "externs.h"
-#include "Parser.h"
 
-extern bool UpdateQNH(const double newqnh);
 extern bool GlobalRunning;
 
 
@@ -42,12 +41,15 @@ extern bool GlobalRunning;
 @property (assign, nonatomic) bool setQNH;
 @property (assign, nonatomic) bool sendBAROAltitude;
 @property (assign, nonatomic) BOOL running;
+@property (strong, nonatomic) InternalSensors *internalSensors;
 @end
 
 @implementation MainViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.internalSensors = [InternalSensors new];
+    
     __weak typeof(self) wself = self;
     _buttonRUN.enabled = false;
 
@@ -86,7 +88,13 @@ extern bool GlobalRunning;
                                                                }
 
                                                                if (GlobalRunning && wself.running) {
-                                                                   [wself sendLocation:location altitude:altitude];
+                                                                   if (location) {
+                                                                       [wself.internalSensors sendLocation:location];
+                                                                   }
+
+                                                                   if (altitude) {
+                                                                       [wself.internalSensors sendAltitude:altitude];
+                                                                   }
                                                                }
 
                                                                return TRUE;
@@ -124,30 +132,5 @@ extern bool GlobalRunning;
 
     [self presentViewController:ctrl animated:TRUE completion:nil];
 }
-
-- (void)sendLocation:(CLLocation *)location altitude:(CMAltitudeData *)altitude {
-    static char t[1024];
-
-    if (location) {
-        NSArray *nmeas = [location getNMEA];
-        for (NSString *nmea in nmeas) {
-            NSLog(@"%@", nmea);
-            const char *ct = [nmea UTF8String];
-            strcpy(t, ct);
-//            NMEAParser::ParseNMEAString_Internal(0, t, &GPS_INFO);
-        }
-    }
-
-    if (altitude && _sendBAROAltitude) {
-        // GRMZ expects an absolute altitude in feets
-        double alt = (_zeroAltitude + altitude.relativeAltitude.doubleValue) * (1.0/0.3048);
-        NSString *nmea = [CLLocation nmeaChecksum:[NSString stringWithFormat:@"PGRMZ,%.4f,f", alt]];
-        NSLog(@"%@", nmea);
-        const char *ct = [nmea UTF8String];
-        strcpy(t, ct);
-//        NMEAParser::ParseNMEAString_Internal(0, t, &GPS_INFO);
-    }
-}
-
 
 @end
