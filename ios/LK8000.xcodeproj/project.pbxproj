@@ -50,6 +50,7 @@
 		8AA732F42111439E00CB8CA2 /* LKDrawLongTrail.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8AECF4CE1C8A5B5F00CD6EFE /* LKDrawLongTrail.cpp */; };
 		8ABD3C8D2106430A004E7E28 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABD3C8C2106430A004E7E28 /* main.m */; };
 		8ABEB3C02114948B0015DD56 /* InternalSensors.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8ABEB3BF2114948B0015DD56 /* InternalSensors.mm */; };
+		8ABEB3C22114C1EF0015DD56 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ABEB3C12114C1EF0015DD56 /* Media.xcassets */; };
 		8ADDD48E1C8CBA2F004CD260 /* Archive.zip in Resources */ = {isa = PBXBuildFile; fileRef = 8ADDD48D1C8CBA2F004CD260 /* Archive.zip */; };
 		8ADDD4921C8CBF52004CD260 /* ArchiveUnzip.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADDD4911C8CBF52004CD260 /* ArchiveUnzip.m */; };
 		8AECF2331C8A59E900CD6EFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AECF2321C8A59E900CD6EFE /* Assets.xcassets */; };
@@ -743,6 +744,7 @@
 		8ABD3C8C2106430A004E7E28 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ios/LK8000i/main.m; sourceTree = "<group>"; };
 		8ABEB3BE2114948B0015DD56 /* InternalSensors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InternalSensors.h; path = ios/LK8000i/InternalSensors.h; sourceTree = "<group>"; };
 		8ABEB3BF2114948B0015DD56 /* InternalSensors.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = InternalSensors.mm; path = ios/LK8000i/InternalSensors.mm; sourceTree = "<group>"; };
+		8ABEB3C12114C1EF0015DD56 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		8ADDD2221C8C93AD004CD260 /* resource_bmp.png.S */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; name = resource_bmp.png.S; path = Bin/LINUX/Resource/resource_bmp.png.S; sourceTree = "<group>"; };
 		8ADDD2231C8C93AD004CD260 /* resource_xml.min.S */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; lineEnding = 0; name = resource_xml.min.S; path = Bin/LINUX/Resource/resource_xml.min.S; sourceTree = "<group>"; };
 		8ADDD48D1C8CBA2F004CD260 /* Archive.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = Archive.zip; path = Data/Archive.zip; sourceTree = SOURCE_ROOT; };
@@ -2140,6 +2142,7 @@
 				8AECF2321C8A59E900CD6EFE /* Assets.xcassets */,
 				8AECF2341C8A59E900CD6EFE /* LaunchScreen.storyboard */,
 				8AECF2371C8A59E900CD6EFE /* Info.plist */,
+				8ABEB3C12114C1EF0015DD56 /* Media.xcassets */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -4172,6 +4175,7 @@
 			files = (
 				8ADDD48E1C8CBA2F004CD260 /* Archive.zip in Resources */,
 				8AECF2331C8A59E900CD6EFE /* Assets.xcassets in Resources */,
+				8ABEB3C22114C1EF0015DD56 /* Media.xcassets in Resources */,
 				8AECF2361C8A59E900CD6EFE /* LaunchScreen.storyboard in Resources */,
 				8AECF9461C8A5B6100CD6EFE /* LICENSE in Resources */,
 				8AA73285210DEDEC00CB8CA2 /* MainStoryboard.storyboard in Resources */,
