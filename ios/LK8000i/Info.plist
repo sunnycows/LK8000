@@ -15,11 +15,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>6.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>11</string>
+	<string>1</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -37,11 +37,11 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>LK8000 requires your position to show you fily infomrations and properly log IGC files</string>
+	<string>Always allow location is required to properly log IGC files and keep LK8000 working when you use your device while flying; is not required to display fly informations.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>LK8000 requires your position in background to properly log IGC files</string>
+	<string>Always allow location is required to properly log IGC files and keep LK8000 working when you use your device while flying; is not required to display fly informations.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>LK8000 requires your position to show you fly informations</string>
+	<string>Always allow location is required to properly log IGC files and keep LK8000 working when you use your device while flying; is not required to display fly informations.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>
