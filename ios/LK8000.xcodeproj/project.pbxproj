@@ -641,9 +641,9 @@
 			fileType = pattern.proxy;
 			isEditable = 1;
 			outputFiles = (
-				"$(DERIVED_FILE_DIR)/${INPUT_FILE_NAME}.o",
+				"$(DERIVED_FILE_DIR)/${arch}/${INPUT_FILE_NAME}.o",
 			);
-			script = "cd ..\nclang -x assembler-with-cpp -fembed-bitcode -arch ${ARCHS} -c ${INPUT_FILE_PATH} -o ${DERIVED_FILE_DIR}/${INPUT_FILE_NAME}.o";
+			script = "cd ..\nclang -x assembler-with-cpp -fembed-bitcode -arch ${arch} -c ${INPUT_FILE_PATH} -o ${DERIVED_FILE_DIR}/${arch}/${INPUT_FILE_NAME}.o";
 		};
 		8AECF2441C8A5AF000CD6EFE /* PBXBuildRule */ = {
 			isa = PBXBuildRule;
