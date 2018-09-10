@@ -605,9 +605,9 @@ void Shutdown() {
   StartupStore(TEXT(".... Close Progress Dialog%s"),NEWLINE);
 #endif
   CloseProgressDialog();
-
-
   DeInitLKFonts();
+
+#ifndef __APPLE__
   LKObjects_Delete();
   LKUnloadProfileBitmaps();
   LKUnloadFixedBitmaps();
@@ -616,6 +616,7 @@ void Shutdown() {
   InputEvents::UnloadString();
   // This is freeing char *slot in TextInBox
   MapWindow::FreeSlot();
+#endif
 
 #ifndef ANDROID
   Mutex.unlock();
