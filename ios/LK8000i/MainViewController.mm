@@ -24,6 +24,8 @@ extern "C" {
 #include "externs.h"
 
 extern bool GlobalRunning;
+extern int DeviceRegisterCount;
+
 
 
 @interface MainViewController ()
@@ -114,6 +116,7 @@ extern bool GlobalRunning;
     SDL_iPhoneSetEventPump(SDL_FALSE);
     _running = FALSE;
     GlobalRunning = FALSE;
+    DeviceRegisterCount = 0;
 }
 
 - (IBAction)onGPSPermissions:(id)sender {
