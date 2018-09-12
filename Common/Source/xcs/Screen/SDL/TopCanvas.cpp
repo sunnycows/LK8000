@@ -119,7 +119,7 @@ MakeSDLFlags(bool full_screen, bool resizable)
     flags |= SDL_RESIZABLE;
 #endif
 
-#if defined(__IPHONEOS__) && __IPHONEOS__
+#ifdef __APPLE__
   /* Hide status bar and make it retina quality on iOS devices */
   flags |= SDL_WINDOW_BORDERLESS | SDL_WINDOW_ALLOW_HIGHDPI;
 #endif

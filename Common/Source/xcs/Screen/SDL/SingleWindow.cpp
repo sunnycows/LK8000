@@ -35,12 +35,12 @@ SingleWindow::FilterEvent(const Event &_event, Window *allowed) const
 
   const SDL_Event &event = _event.event;
 
-#if defined(__IPHONEOS__)
+#ifdef __APPLE__
   PixelSize windowSize = GetSize();
 #endif
 
 switch (event.type) {
-#if defined(__IPHONEOS__)
+#ifdef __APPLE__
   case SDL_FINGERDOWN:
   case SDL_FINGERUP:
   case SDL_FINGERMOTION:

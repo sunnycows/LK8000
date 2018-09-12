@@ -51,6 +51,7 @@
 #ifdef __APPLE__
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "../../ios/LK8000i/AppDelegate.h"
 #endif
 
 // windows
@@ -153,8 +154,21 @@ BOOL InitInstance()
  #if (SDL_MAJOR_VERSION >= 2)
   SDL_DisplayMode mode = {};
   if(SDL_GetCurrentDisplayMode(0, &mode) == 0) {
+#ifndef __APPLE__
 	ScreenSizeX = mode.w;
     ScreenSizeY = mode.h;
+#else
+    UIApplication *application = [UIApplication sharedApplication];
+    BOOL isLandscape = UIInterfaceOrientationIsLandscape(application.statusBarOrientation);
+    UIScreen *m = [UIScreen mainScreen];
+    if (isLandscape) {
+      ScreenSizeX = m.nativeBounds.size.height;
+      ScreenSizeY = m.nativeBounds.size.width;
+    } else {
+      ScreenSizeX = m.nativeBounds.size.width;
+      ScreenSizeY = m.nativeBounds.size.height;
+    }
+#endif
   } else {
 	fprintf(stderr, "SDL_GetCurrentDisplayMode() has failed: %s\n", ::SDL_GetError());
   }
@@ -168,7 +182,7 @@ BOOL InitInstance()
 
   RECT WindowSize;
 
-#ifdef __linux__
+#if defined(__linux__) || defined(__APPLE__)
 #ifdef USE_VIDEOCORE
   uint32_t iWidth, iHeight;
   if(graphics_get_display_size(0, &iWidth, &iHeight) >= 0) {
@@ -191,16 +205,6 @@ BOOL InitInstance()
 #else
   WindowSize=WindowResize(ScreenSizeX, ScreenSizeY);
 #endif
-#endif
-
-#ifdef __APPLE__
-    UIApplication *application = [UIApplication sharedApplication];
-    BOOL isLandscape = UIInterfaceOrientationIsLandscape(application.statusBarOrientation);
-    UIScreen *m = [UIScreen mainScreen];
-    if (!isLandscape)
-        WindowSize = WindowResize(m.nativeBounds.size.width, m.nativeBounds.size.height);
-    else
-        WindowSize = WindowResize(m.nativeBounds.size.height, m.nativeBounds.size.width);
 #endif
 
   #if TESTBENCH
