@@ -66,15 +66,6 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
     BOOL isLandscape = UIInterfaceOrientationIsLandscape(application.statusBarOrientation);
     SDL_VideoDevice *_this = SDL_GetVideoDevice();
 
-//    UIScreen *screen = [UIScreen mainScreen];
-//   for (SDL_Window *window = _this->windows; window != nil; window = window->next) {
-//        if (isLandscape) {
-//            SDL_SendWindowEvent(window, SDL_WINDOWEVENT_RESIZED, screen.nativeBounds.size.height, screen.nativeBounds.size.width);
-//        } else {
-//            SDL_SendWindowEvent(window, SDL_WINDOWEVENT_RESIZED, screen.nativeBounds.size.width, screen.nativeBounds.size.height);
-//        }
-//    }
-
     if (_this && _this->num_displays > 0) {
         SDL_DisplayMode *desktopmode = &_this->displays[0].desktop_mode;
         SDL_DisplayMode *currentmode = &_this->displays[0].current_mode;

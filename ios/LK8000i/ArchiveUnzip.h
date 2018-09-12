@@ -19,7 +19,7 @@ typedef enum {
 @interface ArchiveUnzip : NSObject
 
 + (NSString *)pathForArchiveRoot:(NSString *)filename;
-- (NSOperation *)startDecompression:(void (^)(NSError *))onDone;
+- (void)startDecompression:(void (^)(NSError *))onDone;
 
 + (const char *)pathForFont:(LK8000Font)font;
 
