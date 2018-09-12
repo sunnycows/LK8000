@@ -7,12 +7,9 @@
 //
 
 #import "ArchiveUnzip.h"
-#import <ZipUtilities/NOZDecompress.h>
+#import <ZipUtilities/NOZUnzipper.h>
 
-static NSOperationQueue *sQueue = nil;
-
-@interface ArchiveUnzip () <NOZDecompressDelegate>
-@property (copy, nonatomic) void (^onDone)(NSError *error);
+@interface ArchiveUnzip ()
 @end
 
 @implementation ArchiveUnzip
@@ -66,38 +63,64 @@ static NSOperationQueue *sQueue = nil;
     return [[self pathForArchiveRoot:p] UTF8String];
 }
 
-+ (void)initialize
+- (void)startDecompression:(void (^)(NSError *))onDone
 {
-    dispatch_queue_t q = dispatch_queue_create("Unzip.GCD.Queue", DISPATCH_QUEUE_SERIAL);
-    sQueue = [[NSOperationQueue alloc] init];
-    sQueue.name = @"Unzip.Queue";
-    sQueue.maxConcurrentOperationCount = 1;
-    sQueue.underlyingQueue = q;
-}
-
-- (NSOperation *)startDecompression:(void (^)(NSError *))onDone
-{
+    NSString *incomingVersionPath = [[NSBundle mainBundle] pathForResource:@"ArchiveVersion" ofType:@"plist"];
+    NSString *currentVersionPath = [ArchiveUnzip pathForArchiveRoot:@"ArchiveVersion.plist"];
+    NSDictionary *incomingVersion = [NSDictionary dictionaryWithContentsOfFile:incomingVersionPath];
+    NSDictionary *currentVersion = [NSDictionary dictionaryWithContentsOfFile:currentVersionPath];
+    NSString *rootOutput = [ArchiveUnzip pathForArchiveRoot:nil];
     NSString *fn = [[NSBundle mainBundle] pathForResource:@"Archive" ofType:@"zip"];
-    
-    self.onDone = onDone;
-    
-    NOZDecompressRequest *request = [[NOZDecompressRequest alloc] initWithSourceFilePath:fn destinationDirectoryPath:[ArchiveUnzip pathForArchiveRoot:nil]];
-    
-    NOZDecompressOperation *op = [[NOZDecompressOperation alloc] initWithRequest:request delegate:self];
-    [sQueue addOperation:op];
-    
-    return op;
-}
+    BOOL ovveride = FALSE;
 
-- (void)decompressOperation:(NOZDecompressOperation *)op didCompleteWithResult:(NOZDecompressResult *)result
-{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.onDone(result.didSucceed ? nil : result.operationError);
-    });
-}
+    if ([[incomingVersion valueForKey:@"version"] intValue] > [[currentVersion valueForKey:@"version"] intValue]) {
+        ovveride = TRUE;
+    }
 
-- (void)decompressOperation:(NOZDecompressOperation *)op didUpdateProgress:(float)progress
-{
+    if (ovveride) {
+        NOZUnzipper *unzipper = [[NOZUnzipper alloc] initWithZipFile:fn];
+        NSError *error;
+
+        if (![unzipper openAndReturnError:&error]) {
+            if (onDone) onDone(error);
+            return;
+        }
+
+        if (nil == [unzipper readCentralDirectoryAndReturnError:&error]) {
+            if (onDone) onDone(error);
+            return;
+        }
+
+        __block NSError *enumError = nil;
+        [unzipper enumerateManifestEntriesUsingBlock:^(NOZCentralDirectoryRecord * record, NSUInteger index, BOOL * stop) {
+            if ([record.name containsString:@"_Configuration/DEFAULT_"] == TRUE) return;
+
+            [unzipper saveRecord:record
+                     toDirectory:rootOutput
+                         options:NOZUnzipperSaveRecordOptionOverwriteExisting
+                   progressBlock:^(int64_t totalBytes, int64_t bytesComplete, int64_t bytesCompletedThisPass, BOOL *abort) {
+                       NSLog(@"Unzipping");
+                   } error:&enumError];
+
+            if (enumError != nil && enumError.code != 21) {
+                *stop = TRUE;
+            }
+        }];
+
+        if (enumError != nil) {
+            if (onDone) onDone(error);
+            return;
+        }
+
+        if (![unzipper closeAndReturnError:&error]) {
+            if (onDone) onDone(error);
+            return;
+        }
+
+        [[NSFileManager defaultManager] copyItemAtPath:incomingVersionPath toPath:currentVersionPath error:nil];
+    }
+
+    if (onDone) onDone(nil);
 }
 
 @end

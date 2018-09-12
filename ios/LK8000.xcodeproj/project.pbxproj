@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8A0683B11C924E8000D8BEE6 /* Font.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8AECF7391C8A5B6000CD6EFE /* Font.cpp */; };
 		8A479ECE1C9821AD000998D4 /* SoundIOS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8A479ECD1C9821AD000998D4 /* SoundIOS.cpp */; };
+		8A50A31E214921CE008A3C12 /* ArchiveVersion.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A50A31D214921CE008A3C12 /* ArchiveVersion.plist */; };
 		8A5DEEF12111ABCE00722645 /* resource_wave.S in Sources */ = {isa = PBXBuildFile; fileRef = 8AA732BA2111382C00CB8CA2 /* resource_wave.S */; };
 		8A5DEEF32111ABCE00722645 /* resource_data.S in Sources */ = {isa = PBXBuildFile; fileRef = 8AECF5D11C8A5B6000CD6EFE /* resource_data.S */; };
 		8A5DEEF621135B1700722645 /* resource_bmp.png.S in Sources */ = {isa = PBXBuildFile; fileRef = 8ADDD2221C8C93AD004CD260 /* resource_bmp.png.S */; };
@@ -668,6 +669,7 @@
 /* Begin PBXFileReference section */
 		8A479ECB1C9589D2000998D4 /* StdApple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StdApple.h; sourceTree = "<group>"; };
 		8A479ECD1C9821AD000998D4 /* SoundIOS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundIOS.cpp; sourceTree = "<group>"; };
+		8A50A31D214921CE008A3C12 /* ArchiveVersion.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = ArchiveVersion.plist; path = ios/Data/ArchiveVersion.plist; sourceTree = "<group>"; };
 		8A6439381C91922A004F42B6 /* Font.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Font.cpp; sourceTree = "<group>"; };
 		8A94A9641C9DC74300639756 /* LKCLHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LKCLHelper.h; path = ios/LK8000i/LKCLHelper.h; sourceTree = "<group>"; };
 		8A94A9651C9DC74300639756 /* LKCLHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LKCLHelper.m; path = ios/LK8000i/LKCLHelper.m; sourceTree = "<group>"; };
@@ -2022,8 +2024,8 @@
 			children = (
 				8ABEB3BE2114948B0015DD56 /* InternalSensors.h */,
 				8ABEB3BF2114948B0015DD56 /* InternalSensors.mm */,
-				8AECF2251C8A59E900CD6EFE /* AppDelegate.h */,
 				8AECF2261C8A59E900CD6EFE /* AppDelegate.m */,
+				8AECF2251C8A59E900CD6EFE /* AppDelegate.h */,
 				8A94A9641C9DC74300639756 /* LKCLHelper.h */,
 				8A94A9651C9DC74300639756 /* LKCLHelper.m */,
 				8ADDD4901C8CBF52004CD260 /* ArchiveUnzip.h */,
@@ -2104,6 +2106,7 @@
 				8ADDD48D1C8CBA2F004CD260 /* Archive.zip */,
 				8ADDD2221C8C93AD004CD260 /* resource_bmp.png.S */,
 				8ADDD2231C8C93AD004CD260 /* resource_xml.min.S */,
+				8A50A31D214921CE008A3C12 /* ArchiveVersion.plist */,
 			);
 			name = "Resources built from makefile";
 			sourceTree = "<group>";
@@ -4176,6 +4179,7 @@
 				8ADDD48E1C8CBA2F004CD260 /* Archive.zip in Resources */,
 				8AECF2331C8A59E900CD6EFE /* Assets.xcassets in Resources */,
 				8ABEB3C22114C1EF0015DD56 /* Media.xcassets in Resources */,
+				8A50A31E214921CE008A3C12 /* ArchiveVersion.plist in Resources */,
 				8AECF2361C8A59E900CD6EFE /* LaunchScreen.storyboard in Resources */,
 				8AECF9461C8A5B6100CD6EFE /* LICENSE in Resources */,
 				8AA73285210DEDEC00CB8CA2 /* MainStoryboard.storyboard in Resources */,

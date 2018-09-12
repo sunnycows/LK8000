@@ -56,13 +56,15 @@ extern int DeviceRegisterCount;
     _buttonRUN.enabled = false;
 
     static ArchiveUnzip *archive = [ArchiveUnzip new];
-    [archive startDecompression:^(NSError *error) {
+
+    id block = ^(NSError * error) {
         // Wait for decompression; LK8000 requires a proper data folders in order
         // to initialize properly
         NSLog(@"Decompression done: %@", error);
-        wself.buttonRUN.enabled = false;
-        [wself requestLocation];
-    }];
+        [wself performSelectorOnMainThread:@selector(requestLocation) withObject:nil waitUntilDone:NO];
+    };
+
+    [archive performSelectorInBackground:@selector(startDecompression:) withObject:block];
 }
 
 - (void)requestLocation {
