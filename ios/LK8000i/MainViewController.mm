@@ -27,22 +27,11 @@ extern bool GlobalRunning;
 extern int DeviceRegisterCount;
 
 
-
 @interface MainViewController ()
-@property (weak, nonatomic) IBOutlet UILabel *labelGPSAltitude;
-@property (weak, nonatomic) IBOutlet UILabel *labelRelativeAltitudeFromBARO;
-@property (weak, nonatomic) IBOutlet UILabel *labelPressure;
-@property (weak, nonatomic) IBOutlet UILabel *labelGPSQuality;
 @property (weak, nonatomic) IBOutlet UIButton *buttonRUN;
-@property (weak, nonatomic) IBOutlet UILabel *labelBAROAltitude;
-@property (assign, nonatomic) double QNH;
-@property (assign, nonatomic) double zeroAltitude;
-@property (assign, nonatomic) double currentPressure;
-@property (assign, nonatomic) double currentAltitude;
-@property (assign, nonatomic) double currentRelativeAltitude;
-@property (assign, nonatomic) bool setQNH;
-@property (assign, nonatomic) bool sendBAROAltitude;
 @property (assign, nonatomic) BOOL running;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *ai;
+@property (weak, nonatomic) IBOutlet UILabel *labelDec;
 @property (strong, nonatomic) InternalSensors *internalSensors;
 @end
 
@@ -68,27 +57,18 @@ extern int DeviceRegisterCount;
 }
 
 - (void)requestLocation {
+    _labelDec.text = NSLocalizedString(@"Permissions...", @"Permissions...");
     __weak typeof(self) wself = self;
+    __block BOOL once = TRUE;
+
     [[LKCLHelper sharedInstance] requestLocationIfPossibleWithUI:YES
                                                            block:^bool(LKCLHelperStatus status, CLLocation *location, CMAltitudeData *altitude) {
-                                                               wself.buttonRUN.enabled = true;
-
-                                                               if (location) {
-                                                                   wself.currentAltitude = (double)location.altitude;
-                                                                   wself.labelGPSAltitude.text = [NSString stringWithFormat:@"Current GPS altitude: %.3f meters", location.altitude];
-                                                                   wself.labelGPSQuality.text = [NSString stringWithFormat:@"Vertical accuracy: %.3f meters", location.verticalAccuracy];
-                                                               }
-
-                                                               if (altitude) {
-                                                                   wself.currentPressure = altitude.pressure.doubleValue*10.0;
-                                                                   wself.currentRelativeAltitude = altitude.relativeAltitude.doubleValue;
-                                                                   wself.labelPressure.text = [NSString stringWithFormat:@"Current pressure: %.3f hPa", wself.currentPressure];
-                                                                   wself.labelRelativeAltitudeFromBARO.text = [NSString stringWithFormat:@"Relative BARO altitude: %.3f meters", altitude.relativeAltitude.doubleValue];
-
-                                                                   if (wself.sendBAROAltitude) {
-                                                                       double alt = wself.zeroAltitude + altitude.relativeAltitude.doubleValue;
-                                                                       wself.labelBAROAltitude.text = [NSString stringWithFormat:@"BARO altitude: %.3f", alt];
-                                                                   }
+                                                               if (once) {
+                                                                   [wself.ai stopAnimating];
+                                                                   wself.labelDec.text = NSLocalizedString(@"Ready!", @"Ready!");
+                                                                   wself.buttonRUN.hidden = false;
+                                                                   wself.buttonRUN.enabled = true;
+                                                                   once = FALSE;
                                                                }
 
                                                                if (GlobalRunning && wself.running) {
@@ -119,23 +99,6 @@ extern int DeviceRegisterCount;
     _running = FALSE;
     GlobalRunning = FALSE;
     DeviceRegisterCount = 0;
-}
-
-- (IBAction)onGPSPermissions:(id)sender {
-}
-
-- (IBAction)onSetQNH:(id)sender {
-    _QNH = _currentPressure;
-    _zeroAltitude = _currentAltitude + _currentRelativeAltitude;
-    _setQNH = TRUE;
-    _sendBAROAltitude = TRUE;
-
-    NSString *msg = [NSString stringWithFormat:@"Relative pressure: %.3f kPa associated to GPS height: %.3f", _QNH, _zeroAltitude];
-    UIAlertController *ctrl = [UIAlertController alertControllerWithTitle:@"Settings" message:msg preferredStyle:UIAlertControllerStyleActionSheet];
-    UIAlertAction *action = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
-    [ctrl addAction:action];
-
-    [self presentViewController:ctrl animated:TRUE completion:nil];
 }
 
 @end
