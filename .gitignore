@@ -65,4 +65,4 @@ profile
 *.moved-aside
 .DS_Store
 ios/pods/
-ios/Data/
+ios/Data/_*
