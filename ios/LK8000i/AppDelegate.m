@@ -35,7 +35,7 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
     [UIApplication sharedApplication].idleTimerDisabled = disable;
 }
 
-- (bool)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [Fabric with:@[[Crashlytics class]]];
 
     SDL_AddHintCallback(SDL_HINT_IDLE_TIMER_DISABLED, SDL_IdleTimerDisabledChanged, NULL);
@@ -65,6 +65,15 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
 {
     BOOL isLandscape = UIInterfaceOrientationIsLandscape(application.statusBarOrientation);
     SDL_VideoDevice *_this = SDL_GetVideoDevice();
+
+//    UIScreen *screen = [UIScreen mainScreen];
+//   for (SDL_Window *window = _this->windows; window != nil; window = window->next) {
+//        if (isLandscape) {
+//            SDL_SendWindowEvent(window, SDL_WINDOWEVENT_RESIZED, screen.nativeBounds.size.height, screen.nativeBounds.size.width);
+//        } else {
+//            SDL_SendWindowEvent(window, SDL_WINDOWEVENT_RESIZED, screen.nativeBounds.size.width, screen.nativeBounds.size.height);
+//        }
+//    }
 
     if (_this && _this->num_displays > 0) {
         SDL_DisplayMode *desktopmode = &_this->displays[0].desktop_mode;
@@ -131,6 +140,11 @@ SDL_IdleTimerDisabledChanged(void *userdata, const char *name, const char *oldVa
             SDL_SendWindowEvent(window, SDL_WINDOWEVENT_RESTORED, 0, 0);
         }
     }
+}
+
++ (int)convertToNativeSize:(int)value
+{
+    return (int)roundf([UIScreen mainScreen].nativeScale * (CGFloat)value);
 }
 
 @end

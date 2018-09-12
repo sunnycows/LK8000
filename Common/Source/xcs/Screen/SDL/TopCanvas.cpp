@@ -60,7 +60,8 @@ TopCanvas::GetRect() const
 
 #if SDL_MAJOR_VERSION >= 2
   int width, height;
-  ::SDL_GetWindowSize(window, &width, &height);
+  SDL_GL_GetDrawableSize(window, &width, &height);
+
   return { 0, 0, width, height };
 #else
   return { 0, 0, surface->w, surface->h };
@@ -119,8 +120,8 @@ MakeSDLFlags(bool full_screen, bool resizable)
 #endif
 
 #if defined(__IPHONEOS__) && __IPHONEOS__
-  /* Hide status bar on iOS devices */
-  flags |= SDL_WINDOW_BORDERLESS;
+  /* Hide status bar and make it retina quality on iOS devices */
+  flags |= SDL_WINDOW_BORDERLESS | SDL_WINDOW_ALLOW_HIGHDPI;
 #endif
 
   return flags;

@@ -34,6 +34,11 @@ Copyright_License {
 #include "Util/UTF8.hpp"
 #endif
 
+#ifdef __APPLE__
+#import "../../ios/LK8000i/AppDelegate.h"
+extern void dlgReleaseStarterBitmaps();
+#endif
+
 #if SDL_MAJOR_VERSION < 2
 void
 TopWindow::SetCaption(const TCHAR *caption)
@@ -53,6 +58,10 @@ TopWindow::Invalidate()
 bool
 TopWindow::OnEvent(const SDL_Event &event)
 {
+#ifdef __APPLE__
+  PixelSize windowSize = GetSize();
+#endif
+
   switch (event.type) {
     Window *w;
 
@@ -115,15 +124,30 @@ TopWindow::OnEvent(const SDL_Event &event)
     if (SDL_GetNumTouchFingers(event.tfinger.touchId) == 2)
       return OnMultiTouchDown();
     else
+#ifndef __APPLE__
       return false;
+#else
+      return OnMouseDown(windowSize.cx * event.tfinger.x, windowSize.cy * event.tfinger.y);
+#endif
 
   case SDL_FINGERUP:
-    if (SDL_GetNumTouchFingers(event.tfinger.touchId) == 1)
+    if (SDL_GetNumTouchFingers(event.tfinger.touchId) == 2)
       return OnMultiTouchUp();
+    else
+#ifndef __APPLE__
+      return false;
+#else
+      return OnMouseUp(windowSize.cx * event.tfinger.x, windowSize.cy * event.tfinger.y);
+
+  case SDL_FINGERMOTION:
+    if (SDL_GetNumTouchFingers(event.tfinger.touchId) == 1)
+      return OnMouseMove(windowSize.cx * event.tfinger.x, windowSize.cy * event.tfinger.y, 0);
     else
       return false;
 #endif
+#endif
 
+#ifndef __APPLE__
   case SDL_MOUSEMOTION:
     // XXX keys
     return OnMouseMove(event.motion.x, event.motion.y, 0);
@@ -151,6 +175,7 @@ TopWindow::OnEvent(const SDL_Event &event)
     double_click.Moved(RasterPoint(event.button.x, event.button.y));
 
     return OnMouseUp(event.button.x, event.button.y);
+#endif
 
   case SDL_QUIT:
     return OnClose();
@@ -169,11 +194,17 @@ TopWindow::OnEvent(const SDL_Event &event)
 
   case SDL_WINDOWEVENT:
     switch (event.window.event) {
-
-    case SDL_WINDOWEVENT_RESIZED:
-      Resize(event.window.data1, event.window.data2);
-      return true;
-
+      case SDL_WINDOWEVENT_RESIZED: {
+#ifdef __APPLE__
+        int w = [AppDelegate convertToNativeSize: event.window.data1];
+        int h = [AppDelegate convertToNativeSize: event.window.data2];
+        dlgReleaseStarterBitmaps();
+        Resize(w, h);
+#else
+        Resize(event.window.data1, event.window.data2);
+#endif
+        return true;
+    }
     case SDL_WINDOWEVENT_RESTORED:
     case SDL_WINDOWEVENT_MOVED:
     case SDL_WINDOWEVENT_SHOWN:
@@ -182,7 +213,7 @@ TopWindow::OnEvent(const SDL_Event &event)
         SDL_Window* event_window = SDL_GetWindowFromID(event.window.windowID);
         if (event_window) {
           int w, h;
-          SDL_GetWindowSize(event_window, &w, &h);
+          SDL_GL_GetDrawableSize(event_window, &w, &h);
           if ((w >= 0) && (h >= 0)) {
             Resize(w, h);
           }

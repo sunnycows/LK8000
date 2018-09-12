@@ -1926,7 +1926,7 @@
 		8AECF79F1C8A5B6000CD6EFE /* Init.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Init.cpp; sourceTree = "<group>"; };
 		8AECF7A01C8A5B6000CD6EFE /* SingleWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SingleWindow.cpp; sourceTree = "<group>"; };
 		8AECF7A11C8A5B6000CD6EFE /* TopCanvas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = TopCanvas.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
-		8AECF7A21C8A5B6000CD6EFE /* TopWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TopWindow.cpp; sourceTree = "<group>"; };
+		8AECF7A21C8A5B6000CD6EFE /* TopWindow.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = TopWindow.cpp; sourceTree = "<group>"; };
 		8AECF7A31C8A5B6000CD6EFE /* Window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Window.cpp; sourceTree = "<group>"; };
 		8AECF7A41C8A5B6000CD6EFE /* SingleWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SingleWindow.cpp; sourceTree = "<group>"; };
 		8AECF7A51C8A5B6000CD6EFE /* SingleWindow.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SingleWindow.hpp; sourceTree = "<group>"; };

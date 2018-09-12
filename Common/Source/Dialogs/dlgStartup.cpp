@@ -948,7 +948,7 @@ short dlgStartupShowModal(void) {
         RUN_MODE = RUN_DUALPROF;
     }
     if (RUN_MODE == RUN_EXIT) {
-#if __linux__
+#if defined (__linux__) || defined(__APPLE__)
         RUN_MODE = RUN_WELCOME;
 #endif
         LKSound(_T("LK_SLIDE.WAV"));
@@ -984,4 +984,10 @@ _exit:
     else
         return 1; // repeat dialog
 
+}
+
+void dlgReleaseStarterBitmaps()
+{
+    StartBitmap.Release();
+    ProfileBitmap.Release();
 }

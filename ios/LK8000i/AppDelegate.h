@@ -10,6 +10,9 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 @property (strong, nonatomic) UIWindow *window;
+
++ (int)convertToNativeSize:(int)value;
+
 @end
 
 
