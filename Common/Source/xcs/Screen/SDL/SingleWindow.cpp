@@ -35,13 +35,23 @@ SingleWindow::FilterEvent(const Event &_event, Window *allowed) const
 
   const SDL_Event &event = _event.event;
 
-  switch (event.type) {
+#if defined(__IPHONEOS__)
+  PixelSize windowSize = GetSize();
+#endif
+
+switch (event.type) {
+#if defined(__IPHONEOS__)
+  case SDL_FINGERDOWN:
+  case SDL_FINGERUP:
+  case SDL_FINGERMOTION:
+    return FilterMouseEvent(RasterPoint(windowSize.cx * event.tfinger.x, windowSize.cy * event.tfinger.y), allowed);
+#else
   case SDL_MOUSEMOTION:
   case SDL_MOUSEBUTTONDOWN:
   case SDL_MOUSEBUTTONUP:
     return FilterMouseEvent(RasterPoint(event.button.x, event.button.y),
                             allowed);
-
+#endif
   default:
     return true;
   }

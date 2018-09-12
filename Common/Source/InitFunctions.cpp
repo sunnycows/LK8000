@@ -195,8 +195,13 @@ BOOL InitInstance()
 #endif
 
 #ifdef __APPLE__
+    UIApplication *application = [UIApplication sharedApplication];
+    BOOL isLandscape = UIInterfaceOrientationIsLandscape(application.statusBarOrientation);
     UIScreen *m = [UIScreen mainScreen];
-    WindowSize = WindowResize(m.bounds.size.width, m.bounds.size.height);
+    if (!isLandscape)
+        WindowSize = WindowResize(m.nativeBounds.size.width, m.nativeBounds.size.height);
+    else
+        WindowSize = WindowResize(m.nativeBounds.size.height, m.nativeBounds.size.width);
 #endif
 
   #if TESTBENCH
