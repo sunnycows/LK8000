@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8A0683B11C924E8000D8BEE6 /* Font.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8AECF7391C8A5B6000CD6EFE /* Font.cpp */; };
+		8A323224214A75C500853E14 /* Firenze.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 8A323223214A75C500853E14 /* Firenze.gpx */; };
 		8A479ECE1C9821AD000998D4 /* SoundIOS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8A479ECD1C9821AD000998D4 /* SoundIOS.cpp */; };
 		8A50A31E214921CE008A3C12 /* ArchiveVersion.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A50A31D214921CE008A3C12 /* ArchiveVersion.plist */; };
 		8A5DEEF12111ABCE00722645 /* resource_wave.S in Sources */ = {isa = PBXBuildFile; fileRef = 8AA732BA2111382C00CB8CA2 /* resource_wave.S */; };
@@ -667,6 +668,7 @@
 /* End PBXBuildRule section */
 
 /* Begin PBXFileReference section */
+		8A323223214A75C500853E14 /* Firenze.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Firenze.gpx; sourceTree = "<group>"; };
 		8A479ECB1C9589D2000998D4 /* StdApple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StdApple.h; sourceTree = "<group>"; };
 		8A479ECD1C9821AD000998D4 /* SoundIOS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundIOS.cpp; sourceTree = "<group>"; };
 		8A50A31D214921CE008A3C12 /* ArchiveVersion.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = ArchiveVersion.plist; path = ios/Data/ArchiveVersion.plist; sourceTree = "<group>"; };
@@ -2146,6 +2148,7 @@
 				8AECF2341C8A59E900CD6EFE /* LaunchScreen.storyboard */,
 				8AECF2371C8A59E900CD6EFE /* Info.plist */,
 				8ABEB3C12114C1EF0015DD56 /* Media.xcassets */,
+				8A323223214A75C500853E14 /* Firenze.gpx */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -4177,6 +4180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8ADDD48E1C8CBA2F004CD260 /* Archive.zip in Resources */,
+				8A323224214A75C500853E14 /* Firenze.gpx in Resources */,
 				8AECF2331C8A59E900CD6EFE /* Assets.xcassets in Resources */,
 				8ABEB3C22114C1EF0015DD56 /* Media.xcassets in Resources */,
 				8A50A31E214921CE008A3C12 /* ArchiveVersion.plist in Resources */,
