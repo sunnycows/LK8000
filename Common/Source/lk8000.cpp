@@ -559,7 +559,7 @@ bool Startup(const TCHAR* szCmdLine) {
   #endif
   ProgramStarted = psInitDone;
 #ifdef ENABLE_OPENGL
-  MainWindow.Invalidate();
+  MainWindow->Invalidate();
 #endif
   GlobalRunning = true;
 	
@@ -599,7 +599,7 @@ bool Startup(const TCHAR* szCmdLine) {
 }
 
 void Shutdown() {
-  MainWindow.Destroy();
+  MainWindow->Destroy();
   Message::Destroy();
 
 #if TESTBENCH
@@ -691,9 +691,9 @@ int main(int argc, char *argv[]) {
     //
     // Main message loop
     //
-     MainWindow.RunModalLoop();
+     MainWindow->RunModalLoop();
   }
-  MainWindow.Destroy();
+  MainWindow->Destroy();
 
   Shutdown();
   pSaveScreen = nullptr;

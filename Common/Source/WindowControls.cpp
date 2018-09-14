@@ -1243,7 +1243,7 @@ WindowControl::WindowControl(WindowControl *Owner, const TCHAR *Name,
   // if Owner is Not provided, use MainWindow
   ContainerWindow* WndOnwer = Owner
           ?static_cast<ContainerWindow*>(Owner->GetClientArea())
-          :static_cast<ContainerWindow*>(&MainWindow);
+          :static_cast<ContainerWindow*>(MainWindow);
   
   if(mOwner) {
     mOwner->CalcChildRect(X, Y, Width, Height);
@@ -1803,13 +1803,13 @@ int WndForm::ShowModal(void) {
 
     LKASSERT(event_queue);
 #if defined(ANDROID) || defined(USE_POLL_EVENT) || defined(ENABLE_SDL) || defined(NON_INTERACTIVE)
-    EventLoop loop(*event_queue, MainWindow);
+    EventLoop loop(*event_queue, *MainWindow);
 #else
     EventLoop loop(*event_queue);
 #endif
     Event event;
     while (mModalResult == 0 && loop.Get(event)) {
-        if (mModal && !MainWindow.FilterEvent(event, this)) {
+        if (mModal && !MainWindow->FilterEvent(event, this)) {
             continue;
         }
         
@@ -1850,7 +1850,7 @@ int WndForm::ShowModal(void) {
     if(oldFocus) {
         oldFocus->SetFocus();
     }
-    MainWindow.UnGhost();
+    MainWindow->UnGhost();
 
 #ifdef USE_GDI    
     MapWindow::RequestFastRefresh();
@@ -1975,7 +1975,7 @@ void WndForm::SetFont(FontReference Value){
 
 void WndForm::Show() {
     ScopeLockScreen LockScreen;
-    MainWindow.UnGhost();
+    MainWindow->UnGhost();
     
     WindowControl::Show();
     SetToForeground();

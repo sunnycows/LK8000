@@ -38,7 +38,10 @@ void Globals_Init(void) {
   #endif
   int i;
 
-
+  if (MainWindow) {
+    delete MainWindow;
+  }
+  MainWindow = new WndMain();
 //  _tcscpy(LK8000_Version,_T("")); // No, this is initialised by lk8000 on startup as the first thing
 
   _tcscpy(strAssetNumber,_T(LOGGER_ASSET_ID));

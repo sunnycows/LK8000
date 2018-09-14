@@ -63,7 +63,7 @@ void MapWindow::Initialize() {
     ResetLabelDeclutter();
 
     // Default draw area is full screen, no opacity
-    //MapRect = MainWindow.GetClientRect(); // not correct
+    //MapRect = MainWindow->GetClientRect(); // not correct
 
     // This is the same we already do with RenderMapWindowBg when we select the drawing area.
     MapRect = {0, 0, ScreenSizeX, ScreenSizeY};
@@ -235,7 +235,7 @@ void MapWindow::DrawThread ()
 
 		// Now we can clear the flag. If it was off already, no problems.
 //		OnFastPanning=false;
-        MainWindow.Redraw(MapRect);
+        MainWindow->Redraw(MapRect);
 		continue;
 
 	} else {
@@ -264,7 +264,7 @@ void MapWindow::DrawThread ()
 			const RasterPoint centerscreen = { ScreenSizeX/2, ScreenSizeY/2 };
 			DrawMapScale(BackBufferSurface,MapRect,false);
 			DrawCrossHairs(BackBufferSurface, centerscreen, MapRect);
-            MainWindow.Redraw(MapRect);
+            MainWindow->Redraw(MapRect);
 			continue;
 		}
 		#endif // --------------------------
@@ -308,7 +308,7 @@ _dontbitblt:
 	if (ProgramStarted==psInitDone) {
 		ProgramStarted = psFirstDrawDone;
 	}
-    MainWindow.Redraw(MapRect);
+    MainWindow->Redraw(MapRect);
 
   } // Big LOOP
 

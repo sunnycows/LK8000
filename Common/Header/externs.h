@@ -77,7 +77,7 @@ bool Debounce();
 
 void DoStatusMessage(const TCHAR* text, const TCHAR* data = nullptr, const bool playsound = true) gcc_nonnull(1);
 
-extern WndMain MainWindow;
+extern WndMain *MainWindow;
 
 
 //

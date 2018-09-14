@@ -477,7 +477,7 @@ void Init_Fonts_1(void)
   InitializeOneFont (Custom1Font, logfontCustom1Font);
 
 
-  MainWindow.SetFont(MapWindowFont);
+  MainWindow->SetFont(MapWindowFont);
 }
 
 
