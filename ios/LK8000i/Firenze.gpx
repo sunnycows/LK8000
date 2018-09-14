@@ -8,27 +8,11 @@
      -->
     <wpt lat="43.8520011" lon="11.1461157">
         <name>Firenze</name>
-
-        <!--
-         Optionally provide a time element for each waypoint. Xcode will interpolate movement
-         at a rate of speed based on the time elapsed between each waypoint. If you do not provide
-         a time element, then Xcode will use a fixed rate of speed.
-
-         Waypoints must be sorted by time in ascending order.
-         -->
-        <time>2018-09-12T14:55:37Z</time>
+        <time>2018-09-12T12:00:00Z</time>
     </wpt>
-    <wpt lat="37.331705" lon="-122.030237">
-        <name>Cupertino</name>
-
-        <!--
-         Optionally provide a time element for each waypoint. Xcode will interpolate movement
-         at a rate of speed based on the time elapsed between each waypoint. If you do not provide
-         a time element, then Xcode will use a fixed rate of speed.
-
-         Waypoints must be sorted by time in ascending order.
-         -->
-        <time>2018-12-24T14:55:37Z</time>
+    <wpt lat="43.9550093" lon="11.3662184">
+        <name>Borgo San Lorenzo</name>
+        <time>2018-09-12T12:02:00Z</time>
     </wpt>
 
 </gpx>

@@ -77,6 +77,8 @@
         ovveride = TRUE;
     }
 
+    NSArray *blackList = [incomingVersion valueForKey:@"override"];
+
     if (ovveride) {
         NOZUnzipper *unzipper = [[NOZUnzipper alloc] initWithZipFile:fn];
         NSError *error;
@@ -93,7 +95,12 @@
 
         __block NSError *enumError = nil;
         [unzipper enumerateManifestEntriesUsingBlock:^(NOZCentralDirectoryRecord * record, NSUInteger index, BOOL * stop) {
-            if ([record.name containsString:@"_Configuration/DEFAULT_"] == TRUE) return;
+            if ([record.name containsString:@"_Configuration/DEFAULT_"] == TRUE) {
+                NSString *lp = [record.name lastPathComponent];
+                if (![blackList containsObject:lp]) {
+                    return;
+                }
+            }
 
             [unzipper saveRecord:record
                      toDirectory:rootOutput
