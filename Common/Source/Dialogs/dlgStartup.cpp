@@ -138,7 +138,7 @@ static void OnSplashPaint(WindowControl * Sender, LKSurface& Surface) {
                 if (ScreenSizeX == 854)
                     pos = 14;
                 else
-#ifdef __linux__
+#if defined(__linux__) || defined(__APPLE__)
                     pos = 12;
 #else
                     pos = 11;
@@ -146,7 +146,7 @@ static void OnSplashPaint(WindowControl * Sender, LKSurface& Surface) {
                 break;
                 // --------- portrait -------------
             case ss240x320:
-#ifdef __linux__
+#if defined(__linux__) || defined(__APPLE__)
                 pos = 19;
 #else
                 pos = 17;
@@ -174,7 +174,7 @@ static void OnSplashPaint(WindowControl * Sender, LKSurface& Surface) {
                     // try to get a rule for text position...
                     switch (ScreenGeometry) {
                         case SCREEN_GEOMETRY_43:
-#ifdef __linux__
+#if defined(__linux__) || defined(__APPLE__)
                             pos = 18;
 #else
                             pos = 17;
@@ -184,7 +184,7 @@ static void OnSplashPaint(WindowControl * Sender, LKSurface& Surface) {
                             pos = 20;
                             break;
                         case SCREEN_GEOMETRY_169:
-#ifdef __linux__
+#if defined(__linux__) || defined(__APPLE__)
                             pos = 22;
 #else
                             pos = 20;
