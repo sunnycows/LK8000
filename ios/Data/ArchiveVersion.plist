@@ -3,6 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>version</key>
-	<integer>1</integer>
+	<integer>2</integer>
+	<key>override</key>
+	<array>
+		<string>DEFAULT_DEVICE.dvc</string>
+	</array>
 </dict>
 </plist>
