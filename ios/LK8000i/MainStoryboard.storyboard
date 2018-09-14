@@ -57,7 +57,98 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d7V-J6-r5W">
                                 <rect key="frame" x="20" y="202" width="374" height="448"/>
                                 <attributedString key="attributedText">
-                                    <fragment content="Welcome to LK8000 beta for iOS">
+                                    <fragment content="Welcome to LK8000 ">
+                                        <attributes>
+                                            <font key="NSFont" size="24" name="Helvetica-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops>
+                                                    <textTab alignment="left" location="28.299999237060547">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="56.650001525878906">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="85">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="113.34999847412109">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="141.69999694824219">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="170.05000305175781">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="198.39999389648438">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="226.75">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="255.10000610351562">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="283.45001220703125">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="311.79998779296875">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="340.14999389648438">
+                                                        <options/>
+                                                    </textTab>
+                                                </tabStops>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="beta">
+                                        <attributes>
+                                            <color key="NSColor" red="0.88946000000000003" green="0.14202000000000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="24" name="Helvetica-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops>
+                                                    <textTab alignment="left" location="28.299999237060547">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="56.650001525878906">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="85">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="113.34999847412109">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="141.69999694824219">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="170.05000305175781">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="198.39999389648438">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="226.75">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="255.10000610351562">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="283.45001220703125">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="311.79998779296875">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="340.14999389648438">
+                                                        <options/>
+                                                    </textTab>
+                                                </tabStops>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" for iOS">
                                         <attributes>
                                             <font key="NSFont" size="24" name="Helvetica-Bold"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
@@ -494,7 +585,299 @@ How to add maps and so on:
                                     </fragment>
                                     <fragment>
                                         <string key="content" base64-UTF8="YES">
-CgoKA
+Cgo
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="12" name="Helvetica-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops>
+                                                    <textTab alignment="left" location="28.299999237060547">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="56.650001525878906">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="85">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="113.34999847412109">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="141.69999694824219">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="170.05000305175781">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="198.39999389648438">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="226.75">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="255.10000610351562">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="283.45001220703125">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="311.79998779296875">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="340.14999389648438">
+                                                        <options/>
+                                                    </textTab>
+                                                </tabStops>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">iOS TODO:
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="18" name="Helvetica-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops>
+                                                    <textTab alignment="left" location="28.299999237060547">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="56.650001525878906">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="85">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="113.34999847412109">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="141.69999694824219">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="170.05000305175781">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="198.39999389648438">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="226.75">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="255.10000610351562">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="283.45001220703125">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="311.79998779296875">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="340.14999389648438">
+                                                        <options/>
+                                                    </textTab>
+                                                </tabStops>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="18" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops>
+                                                    <textTab alignment="left" location="28.299999237060547">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="56.650001525878906">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="85">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="113.34999847412109">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="141.69999694824219">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="170.05000305175781">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="198.39999389648438">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="226.75">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="255.10000610351562">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="283.45001220703125">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="311.79998779296875">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="340.14999389648438">
+                                                        <options/>
+                                                    </textTab>
+                                                </tabStops>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">	•	Sounds support is missing
+	•	Send device compass informations to LK8000</string>
+                                        <attributes>
+                                            <font key="NSFont" size="18" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" headIndent="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops>
+                                                    <textTab alignment="left" location="11">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="natural" location="36">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="56.650001525878906">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="85">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="113.34999847412109">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="141.69999694824219">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="170.05000305175781">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="198.39999389648438">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="226.75">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="255.10000610351562">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="283.45001220703125">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="311.79998779296875">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="340.14999389648438">
+                                                        <options/>
+                                                    </textTab>
+                                                </tabStops>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="18" name="Helvetica-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" headIndent="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops>
+                                                    <textTab alignment="left" location="11">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="natural" location="36">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="56.650001525878906">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="85">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="113.34999847412109">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="141.69999694824219">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="170.05000305175781">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="198.39999389648438">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="226.75">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="255.10000610351562">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="283.45001220703125">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="311.79998779296875">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="340.14999389648438">
+                                                        <options/>
+                                                    </textTab>
+                                                </tabStops>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="18" name="Helvetica-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops>
+                                                    <textTab alignment="left" location="28.299999237060547">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="56.650001525878906">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="85">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="113.34999847412109">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="141.69999694824219">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="170.05000305175781">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="198.39999389648438">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="226.75">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="255.10000610351562">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="283.45001220703125">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="311.79998779296875">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="340.14999389648438">
+                                                        <options/>
+                                                    </textTab>
+                                                </tabStops>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+Cg
 </string>
                                         <attributes>
                                             <font key="NSFont" size="12" name="Helvetica-Bold"/>
@@ -590,6 +973,7 @@ CgoKA
                                     </fragment>
                                     <fragment>
                                         <string key="content">	•	switching from portrait to landscape and viceversa works only within the map view; switching from any opened dialog or from the startup screen would lead to a crash
+	•	the simulator is not working as expected
 </string>
                                         <attributes>
                                             <font key="NSFont" size="18" name="Helvetica"/>
@@ -735,7 +1119,7 @@ CgoKA
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content">	•	it is not possibile to connect any external device by any means</string>
+                                        <string key="content">	•	Connections to other devices should be possible via WiFi only but has not been tested properly yet.</string>
                                         <attributes>
                                             <font key="NSFont" size="18" name="Helvetica"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" headIndent="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
