@@ -49,7 +49,7 @@ protected:
 Mutex  CritSec_Messages; // Recusive Mutex Needed
 
 RECT Message::rcmsg;
-WndMessage Message::WndMsg;
+WndMessage *Message::WndMsg;
 
 Message::messages_t Message::messages; // from older to newer
 Message::messages_t Message::messagesHistory; // from newer to older
@@ -72,7 +72,12 @@ void Message::Initialize(RECT rc) {
     nvisible = 0;
     rcmsg = rc; // default; message window can be full size of screen
 
-    WndMsg.Create(&MainWindow, rc);
+    if (WndMsg != NULL) {
+        delete WndMsg;
+    }
+    
+    WndMsg = new WndMessage();
+    WndMsg->Create(MainWindow, rc);
 
     InitFont();
 }
@@ -80,15 +85,15 @@ void Message::Initialize(RECT rc) {
 void Message::InitFont() {
     // change message font for different resolutions
     // Caution, remember to set font also in Resize..
-    WndMsg.SetFont(ScreenLandscape ? LK8InfoBigFont : MapWindowBoldFont);
-    WndMsg.SetTextColor(LKColor(0x00,0x00,0x00));
-    WndMsg.SetBkColor(LKColor(0xFF,0xFF,0xFF));
+    WndMsg->SetFont(ScreenLandscape ? LK8InfoBigFont : MapWindowBoldFont);
+    WndMsg->SetTextColor(LKColor(0x00,0x00,0x00));
+    WndMsg->SetBkColor(LKColor(0xFF,0xFF,0xFF));
 }
 
 
 void Message::Destroy() {
   // destroy window
-    WndMsg.Destroy();
+    WndMsg->Destroy();
 }
 
 
@@ -110,17 +115,17 @@ void Message::Resize() {
 
   if (size==0) {
     if (!hidden) {
-        WndMsg.SetVisible(false);
+        WndMsg->SetVisible(false);
 #ifndef USE_GDI
-        MainWindow.Refresh();
+        MainWindow->Refresh();
 #endif
     }
     hidden = true;
   } else {
 
-    WndMsg.SetWndText(msgText.c_str());
+    WndMsg->SetWndText(msgText.c_str());
 
-    LKWindowSurface Surface(WndMsg);
+    LKWindowSurface Surface(*WndMsg);
     const auto oldfont = Surface.SelectObject(ScreenLandscape
                                               ? LK8InfoBigFont
                                               : MapWindowBoldFont);
@@ -129,7 +134,7 @@ void Message::Resize() {
 
     Surface.SelectObject(oldfont); // 100215
 
-    const int linecount = max(nvisible, max(1, WndMsg.GetLineCount()));
+    const int linecount = max(nvisible, max(1, WndMsg->GetLineCount()));
 
     int width =// min((rcmsg.right-rcmsg.left)*0.8,tsize.cx);
       (int)((rcmsg.right-rcmsg.left)*0.9);
@@ -145,13 +150,13 @@ void Message::Resize() {
     rthis.top = midy-h1;
     rthis.bottom = midy+h2;
 
-    WndMsg.SetTopWnd();
-    WndMsg.Move(rthis);
-    WndMsg.SetVisible(true);
+    WndMsg->SetTopWnd();
+    WndMsg->Move(rthis);
+    WndMsg->SetVisible(true);
     hidden = false;
 
 #ifndef USE_GDI
-    MainWindow.Refresh();
+    MainWindow->Refresh();
 #endif
 
   }
