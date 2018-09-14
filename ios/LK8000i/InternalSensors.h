@@ -13,7 +13,10 @@
 
 @interface InternalSensors : NSObject
 
+- (id)init:(size_t)index;
 - (void)sendLocation:(CLLocation *)location;
 - (void)sendAltitude:(CMAltitudeData *)altitude;
+
+@property (nonatomic, assign) size_t index;
 
 @end

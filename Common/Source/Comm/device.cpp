@@ -40,6 +40,10 @@
 
 #endif
 
+#ifdef __APPLE__
+#import "../../ios/LK8000i/InternalPort.hpp"
+#endif
+
 
 #ifdef RADIO_ACTIVE
 bool devDriverActivated(const TCHAR *DeviceName) ;
@@ -613,7 +617,7 @@ BOOL devInit() {
                 Com = new BthPort(i, &Port[3]);
             }
         } else if (_tcscmp(Port, _T("internal")) == 0) {
-#ifdef ANDROID
+#if defined(ANDROID) || defined(__APPLE__)
             Com = new InternalPort(i, Port);
 #else
             Com = new GpsIdPort(i, Port);

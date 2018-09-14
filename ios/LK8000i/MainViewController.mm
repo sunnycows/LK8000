@@ -32,15 +32,15 @@ extern int DeviceRegisterCount;
 @property (assign, nonatomic) BOOL running;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *ai;
 @property (weak, nonatomic) IBOutlet UILabel *labelDec;
-@property (strong, nonatomic) InternalSensors *internalSensors;
+//@property (strong, nonatomic) InternalSensors *internalSensors;
 @end
 
 @implementation MainViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.internalSensors = [InternalSensors new];
-    
+//    self.internalSensors = [InternalSensors new];
+
     __weak typeof(self) wself = self;
     _buttonRUN.enabled = false;
 
@@ -71,15 +71,15 @@ extern int DeviceRegisterCount;
                                                                    once = FALSE;
                                                                }
 
-                                                               if (GlobalRunning && wself.running) {
-                                                                   if (location) {
-                                                                       [wself.internalSensors sendLocation:location];
-                                                                   }
-
-                                                                   if (altitude) {
-                                                                       [wself.internalSensors sendAltitude:altitude];
-                                                                   }
-                                                               }
+//                                                               if (GlobalRunning && wself.running) {
+//                                                                   if (location) {
+//                                                                       [wself.internalSensors sendLocation:location];
+//                                                                   }
+//
+//                                                                   if (altitude) {
+//                                                                       [wself.internalSensors sendAltitude:altitude];
+//                                                                   }
+//                                                               }
 
                                                                return TRUE;
                                                            }];

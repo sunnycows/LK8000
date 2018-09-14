@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8A0683B11C924E8000D8BEE6 /* Font.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8AECF7391C8A5B6000CD6EFE /* Font.cpp */; };
 		8A323224214A75C500853E14 /* Firenze.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 8A323223214A75C500853E14 /* Firenze.gpx */; };
+		8A323229214C1BBC00853E14 /* InternalPort.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8A323227214C1BBC00853E14 /* InternalPort.mm */; };
 		8A479ECE1C9821AD000998D4 /* SoundIOS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8A479ECD1C9821AD000998D4 /* SoundIOS.cpp */; };
 		8A50A31E214921CE008A3C12 /* ArchiveVersion.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A50A31D214921CE008A3C12 /* ArchiveVersion.plist */; };
 		8A5DEEF12111ABCE00722645 /* resource_wave.S in Sources */ = {isa = PBXBuildFile; fileRef = 8AA732BA2111382C00CB8CA2 /* resource_wave.S */; };
@@ -669,6 +670,8 @@
 
 /* Begin PBXFileReference section */
 		8A323223214A75C500853E14 /* Firenze.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Firenze.gpx; sourceTree = "<group>"; };
+		8A323227214C1BBC00853E14 /* InternalPort.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; name = InternalPort.mm; path = ios/LK8000i/InternalPort.mm; sourceTree = "<group>"; };
+		8A323228214C1BBC00853E14 /* InternalPort.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = InternalPort.hpp; path = ios/LK8000i/InternalPort.hpp; sourceTree = "<group>"; };
 		8A479ECB1C9589D2000998D4 /* StdApple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StdApple.h; sourceTree = "<group>"; };
 		8A479ECD1C9821AD000998D4 /* SoundIOS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundIOS.cpp; sourceTree = "<group>"; };
 		8A50A31D214921CE008A3C12 /* ArchiveVersion.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = ArchiveVersion.plist; path = ios/Data/ArchiveVersion.plist; sourceTree = "<group>"; };
@@ -1151,7 +1154,7 @@
 		8AECF4071C8A5B5F00CD6EFE /* BthPort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BthPort.h; sourceTree = "<group>"; };
 		8AECF4081C8A5B5F00CD6EFE /* ComCheck.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ComCheck.cpp; sourceTree = "<group>"; };
 		8AECF4091C8A5B5F00CD6EFE /* ComPort.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ComPort.cpp; sourceTree = "<group>"; };
-		8AECF40A1C8A5B5F00CD6EFE /* device.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = device.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
+		8AECF40A1C8A5B5F00CD6EFE /* device.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; lineEnding = 0; path = device.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		8AECF40B1C8A5B5F00CD6EFE /* GpsIdPort.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GpsIdPort.cpp; sourceTree = "<group>"; };
 		8AECF40C1C8A5B5F00CD6EFE /* GpsIdPort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GpsIdPort.h; sourceTree = "<group>"; };
 		8AECF40D1C8A5B5F00CD6EFE /* LKFlarm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LKFlarm.cpp; sourceTree = "<group>"; };
@@ -2037,6 +2040,8 @@
 				8AA73284210DEDEC00CB8CA2 /* MainStoryboard.storyboard */,
 				8AA73286210DF05000CB8CA2 /* MainViewController.h */,
 				8AA73287210DF05000CB8CA2 /* MainViewController.mm */,
+				8A323227214C1BBC00853E14 /* InternalPort.mm */,
+				8A323228214C1BBC00853E14 /* InternalPort.hpp */,
 			);
 			name = "iOS specific";
 			path = ../..;
@@ -4437,6 +4442,7 @@
 				8AECFBBB1C8B2CE500CD6EFE /* DistanceToHome.cpp in Sources */,
 				8AECFD401C8B85EF00CD6EFE /* Loop.cpp in Sources */,
 				8AECFAFD1C8B16A700CD6EFE /* LKInstall.cpp in Sources */,
+				8A323229214C1BBC00853E14 /* InternalPort.mm in Sources */,
 				8AECFB6E1C8B2A3900CD6EFE /* DrawGlideThroughTerrain.cpp in Sources */,
 				8AECFBC81C8B2CE500CD6EFE /* Flaps.cpp in Sources */,
 				8AECFB381C8B28F500CD6EFE /* CScreenOrientation.cpp in Sources */,

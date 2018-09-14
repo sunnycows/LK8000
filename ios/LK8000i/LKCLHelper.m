@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreMotion/CoreMotion.h>
 #import "LKCLHelper.h"
+#import "InternalSensors.h"
 
 #define KUserDefaultsKey @"LKCLHelperStatus@"
 
@@ -20,6 +21,7 @@
 @property (nonatomic, assign) BOOL iosseven;
 @property (nonatomic, strong) CMAltimeter *altimeter;
 @property (nonatomic, strong) CMAltitudeData *altitudeData;
+@property (nonatomic, strong) NSMutableSet *subscribers;
 @end
 
 @implementation LKCLHelper
@@ -43,6 +45,7 @@
         self.manager.desiredAccuracy = kCLLocationAccuracyBest;
         self.manager.headingFilter = 1.0f;
         self.manager.allowsBackgroundLocationUpdates = true;
+        self.subscribers = [NSMutableSet new];
     }
     return self;
 }
@@ -99,6 +102,9 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     if (self.callback) {
+        for (InternalSensors *sensor in _subscribers) {
+            [sensor sendLocation:locations.lastObject];
+        }
         BOOL keep = self.callback(self.status, locations.lastObject, nil);
         if (keep == NO) {
             [self stopTracking];
@@ -267,7 +273,12 @@
                                             withHandler:^(CMAltitudeData * _Nullable altitudeData, NSError * _Nullable error) {
                                                 wself.altitudeData = altitudeData;
                                                 if (wself.callback) {
+                                                    for (InternalSensors *sensor in wself.subscribers) {
+                                                        [sensor sendAltitude:altitudeData];
+                                                    }
+
                                                     bool keep = wself.callback(wself.status, nil, altitudeData);
+
                                                     if (keep == NO) {
                                                         [wself stopTracking];
                                                         wself.callback = nil;
@@ -278,6 +289,14 @@
 
 - (void)stopTrackingAltitude {
     [self.altimeter stopRelativeAltitudeUpdates];
+}
+
+- (void)subscribe:(InternalSensors *)sensors {
+    [self.subscribers addObject:sensors];
+}
+
+- (void)unsubscribe:(InternalSensors *)sensors {
+    [self.subscribers removeObject:sensors];
 }
 
 

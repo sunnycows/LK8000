@@ -28,6 +28,14 @@ const float KF_PRESSURE_SENSOR_NOISE_VARIANCE_FALLBACK = 0.05f;
 
 @implementation InternalSensors
 
+- (id)init:(size_t)index {
+    self = [super init];
+    if (self) {
+        self.index = index;
+    }
+    return self;
+}
+
 - (int)approximatedNumberOfSatellites:(CLLocation *)location {
     // Warning: there is no scientific calculation behind this approximation!
     // This is just what *I* do feel like plausible; the better accuracy the more satellites
@@ -73,17 +81,15 @@ const float KF_PRESSURE_SENSOR_NOISE_VARIANCE_FALLBACK = 0.05f;
 }
 
 - (void)sendLocation:(CLLocation *)location {
-    int index = 0;
 
-    PDeviceDescriptor_t pdev = devX(index);
+    PDeviceDescriptor_t pdev = devX(_index);
 
     if (pdev) {
-        pdev->Disabled = false;
         pdev->nmeaParser.connected = true;
         pdev->nmeaParser.expire = false;
         pdev->nmeaParser.gpsValid = true;
-        GPS_INFO.NAVWarning = false;
         pdev->HB = LKHearthBeats;
+        GPS_INFO.NAVWarning = false;
     }
 
     if(pdev && pdev->nmeaParser.activeGPS) {
@@ -121,21 +127,18 @@ const float KF_PRESSURE_SENSOR_NOISE_VARIANCE_FALLBACK = 0.05f;
     static constexpr double KF_MAX_DT(60);
     static SelfTimingKalmanFilter1d kalman_filter(KF_MAX_DT, KF_VAR_ACCEL);
 
-    int index = 0;
-    PDeviceDescriptor_t pdev = devX(index);
+    PDeviceDescriptor_t pdev = devX(_index);
 
     if (pdev) {
+        pdev->nmeaParser.connected = true;
+        pdev->HB = LKHearthBeats;
         pdev->IsBaroSource = &IsBaroSource;
-
-        if (pDevPrimaryBaroSource == NULL) {
-            pDevPrimaryBaroSource = pdev;
-        }
 
         double abs_pressure = altitude.pressure.doubleValue * 10.0;
         kalman_filter.Update(abs_pressure, KF_PRESSURE_SENSOR_NOISE_VARIANCE_FALLBACK);
         double filtered_pressure = kalman_filter.GetXAbs();
         double altitude = StaticPressureToQNHAltitude(filtered_pressure * 100.0);
-        UpdateBaroSource(&GPS_INFO, BARO__CUSTOMFROM, pdev, altitude);
+        UpdateBaroSource(&GPS_INFO, 0, pdev, altitude);
     }
 }
 

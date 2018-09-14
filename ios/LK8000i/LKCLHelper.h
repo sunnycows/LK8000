@@ -20,6 +20,8 @@ typedef enum : NSUInteger {
     kLKCLHelperStatus_SystemRequest_Allow,
 } LKCLHelperStatus;
 
+@class InternalSensors;
+
 @interface LKCLHelper : NSObject
 
 @property (nonatomic, assign) LKCLHelperStatus status;
@@ -31,5 +33,8 @@ typedef enum : NSUInteger {
                                   block:(bool (^)(LKCLHelperStatus status,
                                                   CLLocation *location,
                                                   CMAltitudeData *altitude))block;
+
+- (void)subscribe:(InternalSensors *)sensors;
+- (void)unsubscribe:(InternalSensors *)sensors;
 
 @end
