@@ -114,7 +114,7 @@ int GetScreenDensity(void);
 void InitLKScreen() {
 
 #if (WINDOWSPC>0) || defined(__linux__) || defined(__APPLE__)
-    const PixelRect Rect(MainWindow.GetClientRect());
+    const PixelRect Rect(MainWindow->GetClientRect());
     ScreenSizeX = Rect.GetSize().cx;
     ScreenSizeY = Rect.GetSize().cy;
 #else

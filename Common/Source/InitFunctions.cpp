@@ -55,7 +55,7 @@
 #endif
 
 // windows
-WndMain MainWindow; // Main Window singleton
+WndMain *MainWindow; // Main Window singleton
 
 BOOL	InitInstance    (int);
 
@@ -211,11 +211,11 @@ BOOL InitInstance()
   StartupStore(TEXT(". Create main window%s"),NEWLINE);
   #endif
 
-  if(!MainWindow.Create(WindowSize)) {
+  if(!MainWindow->Create(WindowSize)) {
       StartupStore(TEXT(". FAILURE: Create main window%s"),NEWLINE);
       return FALSE;
   }
-  const PixelRect rc(MainWindow.GetClientRect());
+  const PixelRect rc(MainWindow->GetClientRect());
   ScreenSizeX = rc.GetSize().cx;
   ScreenSizeY = rc.GetSize().cy;
   ScreenHasChanged();
@@ -232,7 +232,7 @@ BOOL InitInstance()
 
   Message::Initialize(rc); // creates window, sets fonts
 
-  MainWindow.SetVisible(true);
+  MainWindow->SetVisible(true);
 
   return TRUE;
 }

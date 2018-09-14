@@ -90,7 +90,7 @@ bool RotateScreen(short angle) {
     event_queue->SetMouseRotation(orientation);
 #endif
     
-    MainWindow.CheckResize();
+    MainWindow->CheckResize();
     
     return true;
 }

@@ -145,7 +145,7 @@ void SettingsLeave() {
       || TOPOLOGYFILECHANGED
       ) {
 	CloseProgressDialog();
-	MainWindow.SetFocus();
+	MainWindow->SetFocus();
   }
 
   extern void ReinitScreen(void);
