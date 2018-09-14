@@ -1026,7 +1026,6 @@
 		8AECF3691C8A5B5F00CD6EFE /* vlapihlp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vlapihlp.h; sourceTree = "<group>"; };
 		8AECF36A1C8A5B5F00CD6EFE /* vlapityp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vlapityp.h; sourceTree = "<group>"; };
 		8AECF36B1C8A5B5F00CD6EFE /* vlconv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vlconv.h; sourceTree = "<group>"; };
-		8AECF36C1C8A5B5F00CD6EFE /* WaveThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveThread.h; sourceTree = "<group>"; };
 		8AECF36D1C8A5B5F00CD6EFE /* Waypointparser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Waypointparser.h; sourceTree = "<group>"; };
 		8AECF3841C8A5B5F00CD6EFE /* windanalyser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = windanalyser.h; sourceTree = "<group>"; };
 		8AECF3851C8A5B5F00CD6EFE /* WindEKF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindEKF.h; sourceTree = "<group>"; };
@@ -2319,7 +2318,6 @@
 				8AECF3601C8A5B5F00CD6EFE /* Utils.h */,
 				8AECF3611C8A5B5F00CD6EFE /* vector.h */,
 				8AECF3621C8A5B5F00CD6EFE /* Volkslogger */,
-				8AECF36C1C8A5B5F00CD6EFE /* WaveThread.h */,
 				8AECF36D1C8A5B5F00CD6EFE /* Waypointparser.h */,
 				8AECF3841C8A5B5F00CD6EFE /* windanalyser.h */,
 				8AECF3851C8A5B5F00CD6EFE /* WindEKF.h */,
