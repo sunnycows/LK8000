@@ -72,7 +72,8 @@ protected:
  *               4 |   5  |   6  |   7  |   8  |   9  |
  *                 +------+------+------+------+------+
  */
-static std::array<MenuButton, NUMBUTTONLABELS> MenuButtons;
+static std::array<MenuButton, NUMBUTTONLABELS> *MenuButtons;
+
 const struct {
     int row;
     int col;
@@ -122,7 +123,7 @@ PixelRect GetButtonPosition(unsigned MenuID, const PixelRect& rcScreen) {
 
     unsigned i = MenuID - 1;
     
-    LKASSERT(i < MenuButtons.size());
+    LKASSERT(i < MenuButtons->size());
     
     const PixelScalar row   = ScreenLandscape ? LandscapeLayout[i].row : PortraitLayout[i].row;
     const PixelScalar col   = ScreenLandscape ? LandscapeLayout[i].col :PortraitLayout[i].col;
@@ -147,11 +148,16 @@ PixelRect GetButtonPosition(unsigned MenuID, const PixelRect& rcScreen) {
 }
 
 void ButtonLabel::CreateButtonLabels(const PixelRect& rcScreen) {
-    for (unsigned i = 0; i < MenuButtons.size(); ++i) {
-        
-        MenuButton& currentButton = MenuButtons[i];
+    if (MenuButtons != NULL) {
+        delete MenuButtons;
+    }
+    MenuButtons = new std::array<MenuButton, NUMBUTTONLABELS>();
 
-        currentButton.Create(&MainWindow, GetButtonPosition(i+1, rcScreen));
+    for (unsigned i = 0; i < MenuButtons->size(); ++i) {
+        
+        MenuButton& currentButton = (*MenuButtons)[i];
+
+        currentButton.Create(MainWindow, GetButtonPosition(i+1, rcScreen));
         if(currentButton.IsDefined()) {
             currentButton.SetTextColor(RGB_BLACK);
             currentButton.SetBkColor(RGB_BUTTONS);
@@ -161,23 +167,23 @@ void ButtonLabel::CreateButtonLabels(const PixelRect& rcScreen) {
 }
 
 void ButtonLabel::SetFont(FontReference Font) {
-    std::for_each(MenuButtons.begin(), MenuButtons.end(), std::bind(&MenuButton::SetFont, _1, Font));
+    std::for_each(MenuButtons->begin(), MenuButtons->end(), std::bind(&MenuButton::SetFont, _1, Font));
 }
 
 void ButtonLabel::Destroy() {
-    std::for_each(MenuButtons.begin(), MenuButtons.end(), std::bind(&MenuButton::Destroy, _1));
+    std::for_each(MenuButtons->begin(), MenuButtons->end(), std::bind(&MenuButton::Destroy, _1));
 }
 
 void ButtonLabel::SetLabelText(unsigned MenuID, const TCHAR *text) {
 
     unsigned idx = MenuID - 1;
-    if(idx >= MenuButtons.size()) {
+    if(idx >= MenuButtons->size()) {
         BUGSTOP_LKASSERT(false);
         return;
     }
 
 
-    MenuButton& currentButton = MenuButtons[idx];
+    MenuButton& currentButton = (*MenuButtons)[idx];
 
     if ((text == NULL) || (*text == _T('\0')) || (*text == _T(' '))) {
         currentButton.SetVisible(false);
@@ -213,8 +219,8 @@ void ButtonLabel::SetLabelText(unsigned MenuID, const TCHAR *text) {
 
 bool ButtonLabel::IsVisible(unsigned MenuID) {
     unsigned i = MenuID - 1;
-    if(i < MenuButtons.size()) {
-        return MenuButtons[i].IsVisible();
+    if(i < MenuButtons->size()) {
+        return (*MenuButtons)[i].IsVisible();
     }
     BUGSTOP_LKASSERT(false);
     return false;
@@ -222,8 +228,8 @@ bool ButtonLabel::IsVisible(unsigned MenuID) {
 
 bool ButtonLabel::IsEnabled(unsigned MenuID) {
     unsigned i = MenuID - 1;
-    if(i < MenuButtons.size()) {
-        return MenuButtons[i].IsMenuEnabled();
+    if(i < MenuButtons->size()) {
+        return (*MenuButtons)[i].IsMenuEnabled();
     }
     BUGSTOP_LKASSERT(false);
     return false;

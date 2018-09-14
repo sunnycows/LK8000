@@ -68,7 +68,7 @@ class Message {
   static messages_t messages; // from older to newer
   static messages_t messagesHistory; // from newer to older
   static RECT rcmsg; // maximum message size
-  static WndMessage WndMsg;
+  static WndMessage *WndMsg;
   static tstring msgText;
   static void Resize();
   static bool hidden;
