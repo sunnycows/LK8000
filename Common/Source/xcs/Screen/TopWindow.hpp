@@ -215,6 +215,8 @@ public:
 public:
 #ifdef ANDROID
   TopWindow():screen(nullptr), paused(false), resumed(false), resized(false) {}
+#elif __APPLE__
+  TopWindow():screen(nullptr), isInBackground(false) {}
 #elif !defined(USE_GDI)
   TopWindow():screen(nullptr) {}
 #endif
