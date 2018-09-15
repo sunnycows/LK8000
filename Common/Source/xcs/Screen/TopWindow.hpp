@@ -379,6 +379,15 @@ public:
    * surface dimensions.
    */
   void RefreshSize();
+#elif defined (__APPLE__)
+
+  bool isInBackground;
+
+  bool CheckResumeSurface() {
+    return !isInBackground;
+  }
+
+  void RefreshSize() {}
 #else
   bool CheckResumeSurface() {
     return true;

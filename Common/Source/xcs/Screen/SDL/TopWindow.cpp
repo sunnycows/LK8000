@@ -177,6 +177,15 @@ TopWindow::OnEvent(const SDL_Event &event)
     return OnMouseUp(event.button.x, event.button.y);
 #endif
 
+#ifdef __APPLE__
+  case SDL_APP_WILLENTERBACKGROUND:
+    isInBackground = true;
+    break;
+  case SDL_APP_WILLENTERFOREGROUND:
+    isInBackground = false;
+    break;
+#endif
+
   case SDL_QUIT:
     return OnClose();
 
