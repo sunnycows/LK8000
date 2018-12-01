@@ -96,8 +96,8 @@
 #endif
 
 #define LKFORK		"LK8000"
-#define LKVERSION	"6"
-#define LKRELEASE	"1u"
+#define LKVERSION	"7"
+#define LKRELEASE	"1a"
 
 #define LKDATADIR	"LK8000"
 #define LKPROFILE	"DEFAULT_PROFILE.prf"
@@ -418,6 +418,12 @@
 // these are limiters
 #define BM_FIRST	0
 #define BM_LAST		9
+
+// BottomBar Switching mode
+#define BBSM_MANUAL           0
+#define BBSM_AUTO_THERMALLING 1
+#define BBSM_FULL_AUTO        2
+
 
 // Global MapSpaceModes : order is not important and you can also have unused modes
 //

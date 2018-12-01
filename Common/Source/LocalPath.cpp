@@ -111,7 +111,7 @@ void getExternalStoragePublicDirectory(TCHAR* szPath, size_t MaxSize) {
 }
 
 
-#else
+#elif !defined(KOBO) && !defined(OPENVARIO)
 // return Path including trailing directory separator.
 static
 const TCHAR * LKGetPath(TCHAR *localpath, TCHAR const *fileToSearch) {
@@ -167,7 +167,7 @@ const TCHAR * LKGetPath(TCHAR *localpath, TCHAR const *fileToSearch) {
 #endif
 
 const TCHAR * LKGetSystemPath(void) {
-#ifdef KOBO
+#if defined(KOBO) || defined(OPENVARIO)
     return _T("/opt/" LKDATADIR "/share/");
 #elif defined(ANDROID)
     // we use assets stored in apk, so, system directory is apk file....
@@ -191,6 +191,8 @@ const TCHAR * LKGetLocalPath(void) {
 #elif __APPLE__
     NSString *t = [ArchiveUnzip pathForArchiveRoot:nil];
     return [t cStringUsingEncoding:NSASCIIStringEncoding];
+#elif defined(OPENVARIO)
+    return _T("/home/root/" LKDATADIR "/");
 #else
 
     static TCHAR localpath[MAX_PATH + 1] = {0};

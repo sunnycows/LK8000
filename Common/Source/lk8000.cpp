@@ -64,7 +64,7 @@
 #include "devBlueFlyVario.h"
 #include "devLXV7easy.h"
 #include "ComCheck.h"
-
+#include "devOpenVario.h"
 
 #include "TraceThread.h"
 #include "Poco/NamedEvent.h"
@@ -91,6 +91,10 @@
 
 #ifdef __APPLE__
 #define main LK8000_main
+#endif
+
+#ifdef ANDROID
+#include "Android/LK8000Activity.h"
 #endif
 
 using std::min;
@@ -280,13 +284,11 @@ bool Startup(const TCHAR* szCmdLine) {
   }
 #endif
 
-  #if TESTBENCH
   TCHAR szPath[MAX_PATH] = {0};
   lk::filesystem::getExePath(szPath, MAX_PATH);
   StartupStore(_T(". Program execution path :   <%s>"), szPath);
   StartupStore(_T(". Program system directory : <%s>"), LKGetSystemPath());
   StartupStore(_T(". Program data directory :   <%s>"), LKGetLocalPath());
-  #endif
 
   InstallSystem();
 
@@ -319,6 +321,15 @@ bool Startup(const TCHAR* szCmdLine) {
     StartupStore(_T("++++++ InitInstance failed, program terminated!%s"),NEWLINE);
     return -1;
   }
+
+#ifdef ANDROID
+  LK8000Activity* activity = LK8000Activity::Get();
+  assert(activity);
+  if(activity) {
+    activity->RequestPermission();
+    activity->WaitPermission();
+  }
+#endif
 
 #ifdef RADIO_ACTIVE
   memset( &(RadioPara), 0, sizeof(Radio_t));
@@ -510,7 +521,7 @@ bool Startup(const TCHAR* szCmdLine) {
   ATR833Register();
 #endif  // RADIO_ACTIVE
   DevVaulter::Register();
-
+  DevOpenVario::Register();
   // REPETITION REMINDER ..
   // IMPORTANT: ADD NEW ONES TO BOTTOM OF THIS LIST
   // >>> Please check that the number of devices is not exceeding NUMREGDEV in device.h <<<

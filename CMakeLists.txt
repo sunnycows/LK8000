@@ -18,14 +18,16 @@ endif ()
 
 ExternalProject_Add (
     GeographicLib
-    URL https://netcologne.dl.sourceforge.net/project/geographiclib/distrib/GeographicLib-1.48.tar.gz
-    URL_HASH MD5=e99153cf41bf64998cc4f91c00aea167
+    URL https://netcologne.dl.sourceforge.net/project/geographiclib/distrib/GeographicLib-1.49.tar.gz
+    URL_HASH MD5=11300e88b4a38692b6a8712d5eafd4d7
     PREFIX ${GEOGRAPHIC_PREFIX}
     BINARY_DIR ${GEOGRAPHIC_PREFIX}/build/${ANDROID_ABI}
     INSTALL_DIR ${GEOGRAPHIC_PREFIX}/lib/${ANDROID_ABI}
     CMAKE_ARGS
+        "-DANDROID_STL=${ANDROID_STL}"
         "-DANDROID_ABI=${ANDROID_ABI}"
         "-DANDROID_NDK=${ANDROID_NDK}"
+        "-DANDROID_ARM_NEON=${ANDROID_ARM_NEON}"
         "-DCMAKE_INSTALL_PREFIX=${GEOGRAPHIC_PREFIX}/lib/${ANDROID_ABI}"
         "-DCMAKE_MAKE_PROGRAM=${CMAKE_MAKE_PROGRAM}"
         "-DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}"
@@ -49,8 +51,8 @@ set(BOOST_PREFIX ${CMAKE_CURRENT_LIST_DIR}/android-studio/app/Thirdparty/boost)
 
 ExternalProject_Add (
     boost
-    URL https://dl.bintray.com/boostorg/release/1.64.0/source/boost_1_64_0.zip
-    URL_HASH SHA256=b99973c805f38b549dbeaf88701c0abeff8b0e8eaa4066df47cac10a32097523
+    URL http://dl.bintray.com/boostorg/release/1.66.0/source/boost_1_66_0.zip
+    URL_HASH SHA256=e1c55ebb00886c1a96528e4024be98a38b815115f62ecfe878fcf587ba715aad
     PREFIX ${BOOST_PREFIX}
     UPDATE_COMMAND ""
     PATCH_COMMAND ""
@@ -62,7 +64,7 @@ ExternalProject_Add (
 ExternalProject_Get_Property(boost source_dir)
 set(BOOST_INCLUDE ${source_dir})
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror -std=c++11 -fexceptions -frtti -Wall -fopenmp")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror -Wall -fopenmp")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wparentheses -Wuninitialized -Wredundant-decls")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DBOOST_NO_IOSTREAM -DBOOST_NO_IOSFWD -DBOOST_NO_STRINGSTREAM -DBOOST_NO_WSTREAMBUF ")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D__linux__ -DHAVE_POSIX -DANDROID -D__STDC_FORMAT_MACROS ")
@@ -105,6 +107,8 @@ add_library( LK8000 SHARED
 
     Common/Source/Android/UsbSerialHelper.cpp
     Common/Source/Android/UsbSerialPort.cpp
+
+	Common/Source/Android/LK8000Activity.cpp
 
     Common/Source/Window/WndMain.cpp
 
@@ -281,11 +285,12 @@ add_library( LK8000 SHARED
     Common/Source/Logger/ReplayLogger.cpp
     Common/Source/Logger/StartStopLogger.cpp
 
+    Common/Source/Topology/shapelib/mapalloc.c
     Common/Source/Topology/shapelib/mapbits.c
-    Common/Source/Topology/shapelib/maperror.c
     Common/Source/Topology/shapelib/mapprimitive.c
     Common/Source/Topology/shapelib/mapsearch.c
     Common/Source/Topology/shapelib/mapshape.c
+    Common/Source/Topology/shapelib/mapstring.c
     Common/Source/Topology/shapelib/maptree.c
     Common/Source/Topology/shapelib/mapxbase.c
 
@@ -630,6 +635,7 @@ add_library( LK8000 SHARED
     Common/Source/Devices/devAR620x.cpp
     Common/Source/Devices/devATR833.cpp
     Common/Source/Devices/devVaulter.cpp
+    Common/Source/Devices/devOpenVario.cpp
 
     Common/Source/Dialogs/AddCustomKeyList.cpp
     Common/Source/Dialogs/dlgAirspace.cpp
@@ -715,22 +721,12 @@ add_library( LK8000 SHARED
     Common/Source/Devices/Volkslogger/vlconv.cpp
     Common/Source/Devices/Volkslogger/vlutils.cpp
 
-
-    Common/Source/Library/zzip/adler32.c
-    Common/Source/Library/zzip/crc32.c
     Common/Source/Library/zzip/err.c
     Common/Source/Library/zzip/fetch.c
     Common/Source/Library/zzip/file.c
-    Common/Source/Library/zzip/infback.c
-    Common/Source/Library/zzip/inffast.c
-    Common/Source/Library/zzip/inflate.c
     Common/Source/Library/zzip/info.c
-    Common/Source/Library/zzip/inftrees.c
     Common/Source/Library/zzip/plugin.c
-    Common/Source/Library/zzip/uncompr.c
     Common/Source/Library/zzip/zip.c
-    Common/Source/Library/zzip/zstat.c
-    Common/Source/Library/zzip/zutil.c
 
     Common/Source/Library/poco/Debugger.cpp
     Common/Source/Library/poco/Bugcheck.cpp
@@ -820,6 +816,7 @@ add_dependencies(LK8000 boost)
 find_library( log-lib log )
 find_library( android-lib android )
 find_library( gles-lib GLESv1_CM )
+find_library( zlib-lib z )
 
 target_link_libraries(
     LK8000
@@ -827,4 +824,5 @@ target_link_libraries(
     ${android-lib}
     ${log-lib}
     ${gles-lib}
+    ${zlib-lib}
 )

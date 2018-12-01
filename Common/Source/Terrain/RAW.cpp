@@ -9,8 +9,10 @@
 #include "externs.h"
 #include "RasterTerrain.h"
 #include "OS/Memory.h"
+#include "OS/ByteOrder.hpp"
 #include "utils/make_unique.h"
 
+static_assert(IsLittleEndian(), "Big-Endian Arch is not supported");
 
 ////// Field access ////////////////////////////////////////////////////
 
@@ -106,11 +108,11 @@ bool RasterMap::Open(const TCHAR* zfilename) {
 
 
 void RasterMap::Close(void) {
-  TerrainMem = nullptr;
-
   // this 2 line are needed for debug diagnostics
   TerrainInfo.Columns = 0;
   TerrainInfo.Rows = 0;
+
+  TerrainMem = nullptr;
 
   pTerrainMem.reset();
 

@@ -12,7 +12,6 @@
 #include <winsock.h>
 #else
 #include <winsock2.h>
-#include <zzip/zlib.h>
 #endif
 #endif
 
@@ -24,7 +23,6 @@
 	#include <netdb.h>
 	#include <unistd.h>
 	#include <sys/ioctl.h>
-	#include <zlib.h>
 
 	#define SOCKET int
 	#define SOCKET_ERROR -1
@@ -38,6 +36,7 @@
 #include <cctype>
 #include <sstream>
 #include <time.h>
+#include <zlib.h>
 
 #include "externs.h"
 #include "LiveTracker.h"
@@ -205,7 +204,11 @@ static char* UrlEncode(const char *szText, char* szDst, int bufsize) {
 
 // Init Live Tracker services, if available
 void LiveTrackerInit() {
-	if (LiveTrackerInterval == 0
+	if (((LiveTrackerInterval == 0) 
+#ifndef TESTBENCH	     // if not compiled as testbench
+	     || (SIMMODE)    // disable tracking for simulation mode
+#endif	     
+	    )
 			&& (!LiveTrackerRadar_config || !EnableFLARMMap)) {
 		// If livetracker is not enabled at startup, we do nothing,
 		// but in this case LK must be restarted, if user enables it!
@@ -1193,7 +1196,7 @@ static bool LiveTrack24_Radar() {
 			Time_Fix = GPS_INFO.Time;
 
 		if (!flarmwasinit) {
-			DoStatusMessage(gettext(TEXT("_@M279_")), TEXT("LiveTrack24")); // FLARM DETECTED from LiveTrack24
+			DoStatusMessage(LKGetText(TEXT("_@M279_")), TEXT("LiveTrack24")); // FLARM DETECTED from LiveTrack24
 			flarmwasinit = true;
 		}
 

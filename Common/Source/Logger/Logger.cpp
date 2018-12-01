@@ -216,7 +216,7 @@ void StopLogger(void) {
       _tcsncat(szMessage,sztmplogfile,MAX_PATH);
 
       MessageBoxX(
-		gettext(szMessage),
+		LKGetText(szMessage),
 	// LKTOKEN  _@M404_ = "Logger Error"
 		MsgToken(404), mbOk);
       StartupStore(_T("%s") NEWLINE, szMessage);
@@ -226,7 +226,7 @@ void StopLogger(void) {
       LK_tcsncpy(szMessage,TEXT("--- Logger file not copied.  It is in the root folder of your device"),MAX_PATH);
 
       MessageBoxX(
-		gettext(szMessage),
+		LKGetText(szMessage),
 	// LKTOKEN  _@M404_ = "Logger Error"
 		MsgToken(404), mbOk);
       StartupStore(_T("%s") NEWLINE, szMessage);
@@ -237,7 +237,7 @@ void StopLogger(void) {
       _tcsncat(szMessage,sztmplogfile,MAX_PATH);
 
       MessageBoxX(
-		gettext(szMessage),
+		LKGetText(szMessage),
 	// LKTOKEN  _@M404_ = "Logger Error"
 		MsgToken(404), mbOk);
       StartupStore(_T("%s") NEWLINE, szMessage);
@@ -247,7 +247,7 @@ void StopLogger(void) {
       LK_tcsncpy(szMessage,TEXT("++++++ Insufficient storage.  Logger file is in the root folder of your device"),MAX_PATH);
 
       MessageBoxX(
-		gettext(szMessage),
+		LKGetText(szMessage),
 	// LKTOKEN  _@M404_ = "Logger Error"
 		MsgToken(404), mbOk);
       StartupStore(_T("%s") NEWLINE, szMessage);
@@ -714,7 +714,14 @@ void LoggerHeader(void)
     sprintf(temp,"HFFTYFRTYPE:%sC LINUX\r\n", LKFORK);
 	#endif
   #endif
-// Kobo AFTER __linux__
+// Kobo & android AFTER __linux__
+  #ifdef ANDROID
+    #ifndef LKCOMPETITION
+      sprintf(temp,"HFFTYFRTYPE:%s ANDROID\r\n", LKFORK);
+    #else
+      sprintf(temp,"HFFTYFRTYPE:%sC ANDROID\r\n", LKFORK);
+    #endif
+  #endif
   #ifdef KOBO
 	#ifndef LKCOMPETITION
     sprintf(temp,"HFFTYFRTYPE:%s KOBO\r\n", LKFORK);

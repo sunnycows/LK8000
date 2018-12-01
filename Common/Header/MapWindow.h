@@ -14,7 +14,6 @@
 #include "Defines.h"
 #include "Parser.h"
 #include "Calculations.h"
-#include "mapprimitive.h"
 #include "Screen/BrushReference.h"
 #include "Screen/PenReference.h"
 #include "Screen/LKBitmap.h"
@@ -46,6 +45,7 @@
 #define DISPLAYFIRST10 6
 #define DISPLAYFIRST12 7
 #define DISPLAYNONE 8
+#define DISPLAYICAO 9
 
 #define AIRPORT		0x01
 #define TURNPOINT	0x02

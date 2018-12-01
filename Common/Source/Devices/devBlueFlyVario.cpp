@@ -192,10 +192,6 @@ public:
                         ParameterList_t::iterator It = _ParameterList.find(key);
                         if (It != _ParameterList.end()) {
                             (*It).second.Value(value);
-                        } else {
-#ifndef NDEBUG
-                            printf("BlueFly unknown param <%s : %s> \n", key.c_str(), value.c_str());
-#endif
                         }
                     }
                     PrevPosKey = ++PosKey;
@@ -405,7 +401,7 @@ namespace dlgBlueFlyConfig {
             // Set Value to all WndProperty
             CHardwareParameters& HardwareParameters = gHardwareParameters[pDevice];
             AssocFieldParam.clear();
-            std::for_each(HardwareParameters.begin(), HardwareParameters.end(), std::ptr_fun(FillProperty));
+            std::for_each(HardwareParameters.begin(), HardwareParameters.end(), std::ref(FillProperty));
 
             Init = false;
             if (wfDlg->ShowModal()) {

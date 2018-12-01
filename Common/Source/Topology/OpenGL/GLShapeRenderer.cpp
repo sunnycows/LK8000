@@ -13,7 +13,6 @@
 #include "GLShapeRenderer.h"
 
 #include <memory>
-#include <mapprimitive.h>
 #include "utils/make_unique.h"
 
 #include "Screen/OpenGL/Scope.hpp"

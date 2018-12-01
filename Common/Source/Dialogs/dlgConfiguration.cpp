@@ -2029,6 +2029,8 @@ DataField* dfe = wp->GetDataField();
 
 	// LKTOKEN  _@M479_ = "None" 
     dfe->addEnumText(MsgToken(479));
+
+    dfe->addEnumText(MsgToken(2336));
     dfe->Set(DisplayTextType);
     wp->RefreshDisplay();
   }
@@ -2463,10 +2465,10 @@ DataField* dfe = wp->GetDataField();
 #ifdef ANDROID
       dfe->ScanZipDirectory(_T(LKD_SYS_POLAR), _T("*" LKS_POLARS));
 #else
-#warning "not implemented"
-#endif
+      dfe->ScanSystemDirectoryTop(_T(LKD_SYS_POLAR), _T("*" LKS_POLARS));
 #endif
       dfe->Sort();
+#endif
       dfe->Lookup(temptext);
     }
     wp->RefreshDisplay();
@@ -2597,7 +2599,7 @@ DataField* dfe = wp->GetDataField();
 #ifdef ANDROID      
       dfe->ScanZipDirectory(_T(LKD_SYS_LANGUAGE), _T("*" LKS_LANGUAGE));
 #else
-#warning "not implemented"
+      dfe->ScanSystemDirectoryTop(_T(LKD_SYS_LANGUAGE), _T("*" LKS_LANGUAGE));
 #endif
       dfe->Sort();
 #endif
@@ -2983,6 +2985,8 @@ DataField* dfe = wp->GetDataField();
     dfe->addEnumText(MsgToken(98));
 	// LKTOKEN  _@M254_ = "EfficiencyReq" 
     dfe->addEnumText(MsgToken(254));
+	// LKTOKEN  _@M491_ = "Off"
+    dfe->addEnumText(MsgToken(491));
     dfe->Set(ArrivalValue);
     wp->RefreshDisplay();
   }
@@ -3198,7 +3202,7 @@ DataField* dfe = wp->GetDataField();
     dfe->addEnumText(MsgToken(210));
 	// LKTOKEN  _@M274_ = "FAI Sector" 
     dfe->addEnumText(MsgToken(274));
-    dfe->addEnumText(gettext(TEXT("DAe 0.5/10")));
+    dfe->addEnumText(LKGetText(TEXT("DAe 0.5/10")));
     dfe->addEnumText(MsgToken(393));
     
     dfe->Set(SectorType);
