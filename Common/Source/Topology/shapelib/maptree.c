@@ -27,8 +27,10 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
  * DEALINGS IN THE SOFTWARE.
  ****************************************************************************/
-
+#ifndef __APPLE__
 #include <malloc.h>
+#endif
+
 #include <string.h>
 #include "utils/openzip.h"
 

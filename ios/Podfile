@@ -11,7 +11,7 @@ pod 'ZipUtilities', '~> 1.7.2'
 pod 'boost', '~> 1.59.0'
 pod 'glm', '~> 0.9.4.6'
 pod 'zziplib'
-pod 'sdl2', '~> 2.0.8'
+pod 'sdl2', '~> 2.0.9'
 pod 'Fabric'
 pod 'Crashlytics'
 

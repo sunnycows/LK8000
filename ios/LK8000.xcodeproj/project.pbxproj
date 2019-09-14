@@ -16,6 +16,9 @@
 		8A5DEEF32111ABCE00722645 /* resource_data.S in Sources */ = {isa = PBXBuildFile; fileRef = 8AECF5D11C8A5B6000CD6EFE /* resource_data.S */; };
 		8A5DEEF621135B1700722645 /* resource_bmp.png.S in Sources */ = {isa = PBXBuildFile; fileRef = 8ADDD2221C8C93AD004CD260 /* resource_bmp.png.S */; };
 		8A5DEEF721135B1A00722645 /* resource_xml.min.S in Sources */ = {isa = PBXBuildFile; fileRef = 8ADDD2231C8C93AD004CD260 /* resource_xml.min.S */; };
+		8A6C8C5D21B34AA7005C96DD /* mapstring.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A6C8C5B21B34AA7005C96DD /* mapstring.c */; };
+		8A6C8C5E21B34AA7005C96DD /* mapalloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A6C8C5C21B34AA7005C96DD /* mapalloc.c */; };
+		8A6C8C6021B34CCC005C96DD /* devOpenVario.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8A6C8C5F21B34CCC005C96DD /* devOpenVario.cpp */; };
 		8A94A9661C9DC74300639756 /* LKCLHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A94A9651C9DC74300639756 /* LKCLHelper.m */; };
 		8A94A9691C9DD97900639756 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A94A9681C9DD97900639756 /* CoreLocation.framework */; };
 		8A9FD3E31C9F34B500176E4A /* SystemInfo.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8A9FD3E21C9F34B500176E4A /* SystemInfo.mm */; };
@@ -109,7 +112,6 @@
 		8AECFB121C8B175C00CD6EFE /* ReplayLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8AECF5A71C8A5B6000CD6EFE /* ReplayLogger.cpp */; };
 		8AECFB131C8B175C00CD6EFE /* StartStopLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8AECF5A81C8A5B6000CD6EFE /* StartStopLogger.cpp */; };
 		8AECFB141C8B267500CD6EFE /* mapbits.c in Sources */ = {isa = PBXBuildFile; fileRef = 8AECF6151C8A5B6000CD6EFE /* mapbits.c */; };
-		8AECFB151C8B268000CD6EFE /* maperror.c in Sources */ = {isa = PBXBuildFile; fileRef = 8AECF6161C8A5B6000CD6EFE /* maperror.c */; };
 		8AECFB161C8B268700CD6EFE /* mapprimitive.c in Sources */ = {isa = PBXBuildFile; fileRef = 8AECF6171C8A5B6000CD6EFE /* mapprimitive.c */; };
 		8AECFB171C8B26A200CD6EFE /* mapsearch.c in Sources */ = {isa = PBXBuildFile; fileRef = 8AECF6181C8A5B6000CD6EFE /* mapsearch.c */; };
 		8AECFB181C8B26A800CD6EFE /* mapshape.c in Sources */ = {isa = PBXBuildFile; fileRef = 8AECF6191C8A5B6000CD6EFE /* mapshape.c */; };
@@ -676,6 +678,9 @@
 		8A479ECD1C9821AD000998D4 /* SoundIOS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundIOS.cpp; sourceTree = "<group>"; };
 		8A50A31D214921CE008A3C12 /* ArchiveVersion.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = ArchiveVersion.plist; path = ios/Data/ArchiveVersion.plist; sourceTree = "<group>"; };
 		8A6439381C91922A004F42B6 /* Font.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Font.cpp; sourceTree = "<group>"; };
+		8A6C8C5B21B34AA7005C96DD /* mapstring.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mapstring.c; sourceTree = "<group>"; };
+		8A6C8C5C21B34AA7005C96DD /* mapalloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mapalloc.c; sourceTree = "<group>"; };
+		8A6C8C5F21B34CCC005C96DD /* devOpenVario.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = devOpenVario.cpp; sourceTree = "<group>"; };
 		8A94A9641C9DC74300639756 /* LKCLHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LKCLHelper.h; path = ios/LK8000i/LKCLHelper.h; sourceTree = "<group>"; };
 		8A94A9651C9DC74300639756 /* LKCLHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LKCLHelper.m; path = ios/LK8000i/LKCLHelper.m; sourceTree = "<group>"; };
 		8A94A9681C9DD97900639756 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -1609,7 +1614,6 @@
 		8AECF6121C8A5B6000CD6EFE /* GLShapeRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLShapeRenderer.cpp; sourceTree = "<group>"; };
 		8AECF6131C8A5B6000CD6EFE /* GLShapeRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLShapeRenderer.h; sourceTree = "<group>"; };
 		8AECF6151C8A5B6000CD6EFE /* mapbits.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mapbits.c; sourceTree = "<group>"; };
-		8AECF6161C8A5B6000CD6EFE /* maperror.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = maperror.c; sourceTree = "<group>"; };
 		8AECF6171C8A5B6000CD6EFE /* mapprimitive.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mapprimitive.c; sourceTree = "<group>"; };
 		8AECF6181C8A5B6000CD6EFE /* mapsearch.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mapsearch.c; sourceTree = "<group>"; };
 		8AECF6191C8A5B6000CD6EFE /* mapshape.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mapshape.c; sourceTree = "<group>"; };
@@ -2781,6 +2785,7 @@
 		8AECF4241C8A5B5F00CD6EFE /* Devices */ = {
 			isa = PBXGroup;
 			children = (
+				8A6C8C5F21B34CCC005C96DD /* devOpenVario.cpp */,
 				8AA732972111374700CB8CA2 /* devAR620x.cpp */,
 				8AA732992111374800CB8CA2 /* devATR833.cpp */,
 				8AA732982111374700CB8CA2 /* devGPSBip.cpp */,
@@ -3415,8 +3420,9 @@
 		8AECF6141C8A5B6000CD6EFE /* shapelib */ = {
 			isa = PBXGroup;
 			children = (
+				8A6C8C5C21B34AA7005C96DD /* mapalloc.c */,
+				8A6C8C5B21B34AA7005C96DD /* mapstring.c */,
 				8AECF6151C8A5B6000CD6EFE /* mapbits.c */,
-				8AECF6161C8A5B6000CD6EFE /* maperror.c */,
 				8AECF6171C8A5B6000CD6EFE /* mapprimitive.c */,
 				8AECF6181C8A5B6000CD6EFE /* mapsearch.c */,
 				8AECF6191C8A5B6000CD6EFE /* mapshape.c */,
@@ -4488,6 +4494,7 @@
 				8AECFC851C8B4B3C00CD6EFE /* dlgTopology.cpp in Sources */,
 				8AECFB2D1C8B282400CD6EFE /* Thread_Draw.cpp in Sources */,
 				8AECFC011C8B2DBE00CD6EFE /* RasterTerrain.cpp in Sources */,
+				8A6C8C5E21B34AA7005C96DD /* mapalloc.c in Sources */,
 				8AECFB781C8B2A3900CD6EFE /* DrawTaskAAT.cpp in Sources */,
 				8AECFC751C8B4B3C00CD6EFE /* dlgRadioSettings.cpp in Sources */,
 				8AECFB331C8B28BF00CD6EFE /* LKInit.cpp in Sources */,
@@ -4501,6 +4508,7 @@
 				8AECFCC41C8B660900CD6EFE /* Window.cpp in Sources */,
 				8AECFBD91C8B2CE500CD6EFE /* ResetFlightStats.cpp in Sources */,
 				8ABEB3C02114948B0015DD56 /* InternalSensors.mm in Sources */,
+				8A6C8C6021B34CCC005C96DD /* devOpenVario.cpp in Sources */,
 				8AECFD561C8B8DDF00CD6EFE /* TerrainFootprint.cpp in Sources */,
 				8A5DEEF721135B1A00722645 /* resource_xml.min.S in Sources */,
 				8AECFB251C8B27F500CD6EFE /* LoadCupTask.cpp in Sources */,
@@ -4744,6 +4752,7 @@
 				8AECFB5B1C8B2A0900CD6EFE /* CalculateScreen.cpp in Sources */,
 				8AECFC9A1C8B4B5F00CD6EFE /* Update.cpp in Sources */,
 				8AECFC911C8B4B5F00CD6EFE /* RenderContest.cpp in Sources */,
+				8A6C8C5D21B34AA7005C96DD /* mapstring.c in Sources */,
 				8AECFBAE1C8B2CE500CD6EFE /* AltitudeRequired.cpp in Sources */,
 				8AECFDB21C8BACB000CD6EFE /* render.c in Sources */,
 				8AECFB4B1C8B29BF00CD6EFE /* FindMatchingWaypoint.cpp in Sources */,
@@ -4787,7 +4796,6 @@
 				8AECFB571C8B29CC00CD6EFE /* SetHome.cpp in Sources */,
 				8AECFD451C8B86A100CD6EFE /* FileUtil.cpp in Sources */,
 				8AECFC5A1C8B4B3000CD6EFE /* dlgAirspace.cpp in Sources */,
-				8AECFB151C8B268000CD6EFE /* maperror.c in Sources */,
 				8AECFC631C8B4B3000CD6EFE /* dlgChecklist.cpp in Sources */,
 				8AECFBFE1C8B2D9B00CD6EFE /* CalculateTaskSectors.cpp in Sources */,
 				8AA732C12111389300CB8CA2 /* hmac_sha2.cpp in Sources */,

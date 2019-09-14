@@ -107,7 +107,10 @@ TopCanvas::Create(SDL_Window *_window, PixelSize new_size)
 
   OpenGL::SetupContext();
 
-  SetupViewport(GetNativeSize());
+  PixelSize pp = GetNativeSize();
+  OpenGL::SetupViewport(Point2D<unsigned>(pp.cx, pp.cy));
+  Canvas::Create(pp);
+//  SetupViewport(GetNativeSize());
 #endif
 
 #ifdef GREYSCALE
@@ -156,6 +159,36 @@ TopCanvas::CheckResize(const PixelSize new_native_size)
   return true;
 }
 
+#else
+void
+TopCanvas::SetupViewport(PixelSize native_size)
+{
+    auto new_size = OpenGL::SetupViewport(UnsignedPoint2D(native_size.cx,
+                                                          native_size.cy));
+    Canvas::Create(PixelSize(new_size.x, new_size.y));
+}
+
+void
+TopCanvas::Resume()
+{
+#if defined(ANDROID) && defined(USE_EGL)
+    surface = eglGetCurrentSurface(EGL_DRAW);
+#endif
+
+    OpenGL::SetupContext();
+    OpenGL::SetupViewport(UnsignedPoint2D(size.cx, size.cy));
+}
+
+bool
+TopCanvas::CheckResize(PixelSize new_native_size)
+{
+//    if ((unsigned)new_native_size.cx == OpenGL::window_size.x &&
+//        (unsigned)new_native_size.cy == OpenGL::window_size.y)
+//        return false;
+
+    SetupViewport(new_native_size);
+    return true;
+}
 #endif
 
 #ifdef USE_MEMORY_CANVAS

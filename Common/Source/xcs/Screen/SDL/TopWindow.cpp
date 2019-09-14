@@ -43,7 +43,7 @@ Copyright_License {
 extern void dlgReleaseStarterBitmaps();
 #endif
 
-gcc_const
+//gcc_const
 static Uint32
 MakeSDLFlags(bool full_screen, bool resizable)
 {
@@ -246,6 +246,7 @@ TopWindow::OnEvent(const SDL_Event &event)
         Resize(screen->GetSize());
 #else
       Resize(event.window.data1, event.window.data2);
+#endif
 #endif
 #endif
         return true;

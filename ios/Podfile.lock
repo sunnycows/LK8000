@@ -20,7 +20,7 @@ PODS:
   - freetype (2.6.4)
   - glm (0.9.4.6)
   - libpng (1.6.18)
-  - sdl2 (2.0.8)
+  - sdl2 (2.0.9)
   - ZipUtilities (1.7.2)
   - zziplib (0.13.62)
 
@@ -31,7 +31,7 @@ DEPENDENCIES:
   - freetype (~> 2.6.4)
   - glm (~> 0.9.4.6)
   - libpng (~> 1.6.18)
-  - sdl2 (~> 2.0.8)
+  - sdl2 (~> 2.0.9)
   - ZipUtilities (~> 1.7.2)
   - zziplib
 
@@ -42,10 +42,10 @@ SPEC CHECKSUMS:
   freetype: f1607aa45440e7cc17c85c32e901f32b7b801fad
   glm: e22c8d9df10404059b19c2952f9fa44d9a9f3056
   libpng: 9c661ee692282485a9cf7fcf0159458c91b4f943
-  sdl2: 55bb4580fe98d923a64b1ea83fbb19f84d9f2122
+  sdl2: f8d1403f2d40b0691b230484e5950703ec8061b6
   ZipUtilities: e266a234f60bc53d47e1a030a353275e7213b17b
   zziplib: 2dac36c0d81aa09a22bd14856c2117f80c2eb388
 
-PODFILE CHECKSUM: 72fd57b8aca65af33c3f9c78aaa2829dd8100934
+PODFILE CHECKSUM: 582307e1543659a77649c18949906aa54fce2fb5
 
 COCOAPODS: 1.4.0

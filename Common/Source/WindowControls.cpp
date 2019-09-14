@@ -1807,7 +1807,7 @@ int WndForm::ShowModal(void) {
 
     mModalResult = 0;
 
-    Window* oldFocus = MainWindow.GetFocusedWindow();
+    Window* oldFocus = MainWindow->GetFocusedWindow();
     FocusNext(NULL);
 
     Redraw();
