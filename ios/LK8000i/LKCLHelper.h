@@ -21,6 +21,7 @@ typedef enum : NSUInteger {
 } LKCLHelperStatus;
 
 @class InternalSensors;
+@class UIViewController;
 
 @interface LKCLHelper : NSObject
 
@@ -29,7 +30,7 @@ typedef enum : NSUInteger {
 
 + (instancetype)sharedInstance;
 
-- (void)requestLocationIfPossibleWithUI:(BOOL)ui
+- (void)requestLocationIfPossibleWithParent:(UIViewController *)parentVC
                                   block:(bool (^)(LKCLHelperStatus status,
                                                   CLLocation *location,
                                                   CMAltitudeData *altitude))block;

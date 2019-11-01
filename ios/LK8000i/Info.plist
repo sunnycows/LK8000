@@ -41,11 +41,11 @@
 	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<true/>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Always allow location is required to properly log IGC files and keep LK8000 working when you use your device while flying; is not required to display fly informations.</string>
+	<string>Location is required to properly log IGC files and keep LK8000 working when you use your device while flying</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Always allow location is required to properly log IGC files and keep LK8000 working when you use your device while flying; is not required to display fly informations.</string>
+	<string>Location is required to properly log IGC files and keep LK8000 working when you use your device while flying</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Always allow location is required to properly log IGC files and keep LK8000 working when you use your device while flying; is not required to display fly informations.</string>
+	<string>Location is required to properly log IGC files and keep LK8000 working when you use your device while flying</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>

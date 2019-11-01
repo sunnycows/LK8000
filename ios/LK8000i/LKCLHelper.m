@@ -15,13 +15,11 @@
 
 @interface LKCLHelper () <CLLocationManagerDelegate, UIAlertViewDelegate>
 @property (nonatomic, copy) bool (^callback)(LKCLHelperStatus, CLLocation *, CMAltitudeData *);
-@property (nonatomic, weak) UIAlertView *av_appspecific;
-@property (nonatomic, weak) UIAlertView *av_systemdisallow;
 @property (nonatomic, assign) BOOL requesting_userpermission;
-@property (nonatomic, assign) BOOL iosseven;
 @property (nonatomic, strong) CMAltimeter *altimeter;
 @property (nonatomic, strong) CMAltitudeData *altitudeData;
 @property (nonatomic, strong) NSMutableSet *subscribers;
+@property (nonatomic, weak) UIViewController *parentVC;
 @end
 
 @implementation LKCLHelper
@@ -40,7 +38,6 @@
         self.status = kLKCLHelperStatus_AppSpecific_NotDermined_Requesting;
 
         self.manager = [[CLLocationManager alloc] init];
-        self.iosseven = ![self.manager respondsToSelector:@selector(requestWhenInUseAuthorization)];
         self.manager.delegate = self;
         self.manager.desiredAccuracy = kCLLocationAccuracyBest;
         self.manager.headingFilter = 1.0f;
@@ -56,7 +53,8 @@
         case kCLAuthorizationStatusNotDetermined:
             self.status = kLKCLHelperStatus_AppSpecific_NotDetermined;
             if (self.requesting_userpermission) {
-                [self showAppspecificRequest];
+                self.status = kLKCLHelperStatus_AppSpecific_Allow;
+                [self.manager requestAlwaysAuthorization];
                 return;
             }
             break;
@@ -72,7 +70,9 @@
 
         case kCLAuthorizationStatusDenied:
         case kCLAuthorizationStatusRestricted:
-            self.status = kLKCLHelperStatus_SystemRequest_Disallow;
+        if (self.status != kLKCLHelperStatus_AppSpecific_Disallow) {
+            [self askForLocationInApp:NO];
+        }
             break;
             
         default:
@@ -113,24 +113,12 @@
     }
 }
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
-    return;
-
-    if (newHeading.headingAccuracy < 0)
-        return;
-
-    CLLocationDirection  theHeading = ((newHeading.trueHeading > 0) ?
-                                       newHeading.trueHeading : newHeading.magneticHeading);
-    NSLog(@"Heading: %f", theHeading);
-}
-
-
 - (void)locationManagerDidPauseLocationUpdates:(CLLocationManager *)manager {
     self.callback = nil;
     [self stopTracking];
 }
 
-- (void)requestLocationIfPossibleWithUI:(BOOL)ui
+- (void)requestLocationIfPossibleWithParent:(UIViewController *)parentVC
                                   block:(bool (^)(LKCLHelperStatus status,
                                                   CLLocation *location,
                                                   CMAltitudeData *data))block {
@@ -144,9 +132,10 @@
         self.callback = nil;
     }
     
-    self.requesting_userpermission = ui;
+    self.requesting_userpermission = (parentVC != nil);
+    self.parentVC = parentVC;
 
-    if (ui == NO) {
+    if (!parentVC) {
         switch (self.status) {
             case kLKCLHelperStatus_AppSpecific_NotDermined_Requesting:
             case kLKCLHelperStatus_AppSpecific_NotDetermined:
@@ -168,19 +157,13 @@
         self.callback = block;
         
         switch (self.status) {
-            case kLKCLHelperStatus_AppSpecific_NotDetermined:
             case kLKCLHelperStatus_AppSpecific_Disallow:
                 // request user popup
-                [self showAppspecificRequest];
+                [self askForLocationInApp:YES];
                 break;
                 
             case kLKCLHelperStatus_SystemRequest_Disallow:
-                // we need permissions from main Settings
-                if (self.iosseven) {
-                    block(self.status, nil, nil);
-                    self.callback = nil;
-                }
-                [self showSystemDisallowed];
+                [self askForLocationInApp:NO];
                 return;
                 break;
                 
@@ -196,68 +179,32 @@
     return;
 }
 
-- (void)showAppspecificRequest {
-    NSString *title = NSLocalizedString(@"Warning", @"Warning");
-    NSString *msg = NSLocalizedString(@"LK8000 requires your position.", @"LK8000 requires your position to show fly informations and create IGC log files");
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
-                                                    message:msg
-                                                   delegate:self
-                                          cancelButtonTitle:NSLocalizedString(@"Do not allow", @"Do not allow")
-                                          otherButtonTitles:NSLocalizedString(@"Ok", @"Ok"), nil];
-    self.av_appspecific = alert;
-    [alert show];
-}
+- (void)askForLocationInApp:(BOOL)possibleInApp {
+    NSString *message = possibleInApp ? NSLocalizedString(@"LK8000 requires your position to show fly informations and create IGC log files", "") : NSLocalizedString(@"LK8000 has not been not allowed to receive your position. To enable location updates tap here.", "");
 
-- (void)showSystemDisallowed {
-    NSString *title = NSLocalizedString(@"Error", @"Error");
-    NSString *msg = NSLocalizedString(@"LK8000 has not been not allowed to receive your position.", @"LK8000 has not been not allowed to receive your position.");
-    NSMutableString *mmsg = [NSMutableString new];
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"LK8000 requires your position.", "") message:message preferredStyle:UIAlertControllerStyleAlert];
     
-    [mmsg appendString:msg];
-    
-    if (self.iosseven) {
-        [mmsg appendString:NSLocalizedString(@"Per abilitare la posizione dell'utente apri Impostazioni -> Privacy -> Posizione -> attiva LK8000", @"Per abilitare la posizione dell'utente apri Impostazioni -> Privacy -> Posizione -> attiva LK8000")];
-    } else {
-        [mmsg appendString:NSLocalizedString(@"To enable location updates tap here.", @"To enable location updates tap here.")];
-    }
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
-                                                    message:mmsg
-                                                   delegate:self.iosseven ? nil : self
-                                          cancelButtonTitle:NSLocalizedString(@"Ok", @"Ok")
-                                          otherButtonTitles:nil];
-    self.av_systemdisallow = alert;
-    [alert show];
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (alertView == self.av_appspecific) {
-        if (buttonIndex == 1) {
-            // ok
-            self.status = kLKCLHelperStatus_AppSpecific_Allow;
-            
-            if (!self.iosseven) {
-                // iOS >= 8
-                [self.manager requestAlwaysAuthorization];
-            } else {
-                // iOS == 7
-                [self startTracking];
-            }
-        } else  {
-            // no
+    [alertVC addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", "") style:UIAlertActionStyleCancel handler:^(UIAlertAction* action) {
+        if (possibleInApp) {
             self.status = kLKCLHelperStatus_AppSpecific_Disallow;
             self.callback(self.status, nil, nil);
             self.callback = nil;
+        } else {
+            self.status = kLKCLHelperStatus_SystemRequest_Disallow;
         }
-    }
-    
-    if (alertView == self.av_systemdisallow) {
-        if (buttonIndex == 0) {
+    }]];
+
+    [alertVC addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Allow", "") style:UIAlertActionStyleDefault handler:^(UIAlertAction* action) {
+        if (possibleInApp) {
+            self.status = kLKCLHelperStatus_AppSpecific_Allow;
+            [self.manager requestAlwaysAuthorization];
+        } else {
             NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
             [[UIApplication sharedApplication] openURL:url];
         }
-    }
+    }]];
+
+    [self.parentVC presentViewController:alertVC animated:YES completion:nil];
 }
 
 - (IBAction)startTrackingAltitude {

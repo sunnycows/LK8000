@@ -61,7 +61,7 @@ extern int DeviceRegisterCount;
     __weak typeof(self) wself = self;
     __block BOOL once = TRUE;
 
-    [[LKCLHelper sharedInstance] requestLocationIfPossibleWithUI:YES
+    [[LKCLHelper sharedInstance] requestLocationIfPossibleWithParent:self
                                                            block:^bool(LKCLHelperStatus status, CLLocation *location, CMAltitudeData *altitude) {
                                                                if (once) {
                                                                    [wself.ai stopAnimating];
