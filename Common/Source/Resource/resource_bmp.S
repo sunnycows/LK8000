@@ -39,6 +39,6 @@
     .const_data
 
     binfile IDB_EMPTY,              Common/Data/Bitmaps/Empty.bmp
-    binfile IDB_TOWN                Common/Data/Bitmaps/town.bmp
-    binfile IDB_LKSMALLTOWN         Common/Data/Bitmaps/smalltown.bmp
-    binfile IDB_LKVERYSMALLTOWN     Common/Data/Bitmaps/verysmalltown.bmp
+    binfile IDB_TOWN,                Common/Data/Bitmaps/town.bmp
+    binfile IDB_LKSMALLTOWN,         Common/Data/Bitmaps/smalltown.bmp
+    binfile IDB_LKVERYSMALLTOWN,     Common/Data/Bitmaps/verysmalltown.bmp
