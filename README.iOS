@@ -1,17 +1,8 @@
-Current build instruction
+External dependencies:
+- Homebrew Package Manager - https://brew.sh
+- CocoaPods - https://cocoapods.org
+- Xcode
 
-Dependencies:
-brew
-cocoapods
-Xcode
-
-0. brew install imagemagick
-
-3. mkdir Bin/LINUX/Resource
-4. make data
-5. cd ios
-6. pod install
-7. open LK8000.xcworkspace
-8. fix resource_bmp.png.S by adding missing commas, ie: binfile IDB, Bin/… 
-9. BUILD
-
+Build steps:
+- Run in Terminal ./prepare_iOS.sh
+- Build in Xcode
