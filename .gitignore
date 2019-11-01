@@ -53,6 +53,7 @@ output.map
 /LK8000-CUBIE_debug-ns
 # Xcode
 ios/build/*
+*.xcworkspace
 *.pbxuser
 !default.pbxuser
 *.mode1v3
