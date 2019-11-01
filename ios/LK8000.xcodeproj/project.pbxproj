@@ -644,6 +644,8 @@
 			compilerSpec = com.apple.compilers.proxy.script;
 			filePatterns = "*.S";
 			fileType = pattern.proxy;
+			inputFiles = (
+			);
 			isEditable = 1;
 			outputFiles = (
 				"$(DERIVED_FILE_DIR)/${arch}/${INPUT_FILE_NAME}.o",
@@ -654,6 +656,8 @@
 			isa = PBXBuildRule;
 			compilerSpec = com.apple.compilers.gcc;
 			fileType = sourcecode.cpp;
+			inputFiles = (
+			);
 			isEditable = 1;
 			outputFiles = (
 			);
@@ -663,6 +667,8 @@
 			isa = PBXBuildRule;
 			compilerSpec = com.apple.compilers.lex;
 			fileType = sourcecode.asm;
+			inputFiles = (
+			);
 			isEditable = 1;
 			outputFiles = (
 			);
@@ -4126,11 +4132,7 @@
 				8AECF21B1C8A59E800CD6EFE /* Sources */,
 				8AECF21C1C8A59E800CD6EFE /* Frameworks */,
 				8AECF21D1C8A59E800CD6EFE /* Resources */,
-				C4BDA26D64C63FD49B9275DE /* 📦 Embed Pods Frameworks */,
-				54F3191A5AF5B40D1319EB95 /* 📦 Copy Pods Resources */,
 				8AD3C9F71CA4A670000985B4 /* ShellScript */,
-				D15DB6E2F33D4A6B7241A964 /* [CP] Embed Pods Frameworks */,
-				02307C66ACC6A7775FFEF57E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 				8A5DEEF521131B7900722645 /* PBXBuildRule */,
@@ -4170,6 +4172,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -4204,36 +4207,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		02307C66ACC6A7775FFEF57E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LK8000/Pods-LK8000-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		54F3191A5AF5B40D1319EB95 /* 📦 Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LK8000/Pods-LK8000-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		78FBC05B81FA093B659A6DE1 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -4261,36 +4234,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" 22cfdf76e40a36f79fe950fa7bb469f92e3782dd afbb0f99a535a5c8811dd1debe4b7821e70b91641baff9efbee6f26b78353c00";
-		};
-		C4BDA26D64C63FD49B9275DE /* 📦 Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LK8000/Pods-LK8000-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D15DB6E2F33D4A6B7241A964 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LK8000/Pods-LK8000-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 		E1A7F87F022D6569219D0D0A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
